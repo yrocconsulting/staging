@@ -78,6 +78,7 @@ jobs:
           FORCE=${{ github.event.inputs.force_content == 'true' && '1' || '0' }}
           ssh target "cd $DEPLOY_PATH \
             && wp theme activate yroc \
+            && wp eval 'wp_get_theme()->delete_pattern_cache();' \
             && wp rewrite structure '/%category%/%postname%/' --hard \
             && YROC_FORCE=$FORCE wp eval-file ~/yroc-deploy/import.php ~/yroc-deploy/content \
             && wp cache flush \
