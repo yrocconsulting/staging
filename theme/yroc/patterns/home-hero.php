@@ -32,7 +32,7 @@ $rv  = yroc_reviews();
 			</div>
 		</div>
 		<div class="yr-stage">
-			<p class="yr-hero__cap"><span class="yr-live">On stage</span> Cory Long, founder, speaking at the Magnify Your Wealth Summit</p>
+			<p class="yr-hero__cap"><span class="yr-live">On stage</span> Cory Long, founder — Magnify Your Wealth Summit, eForge Cory Long, founder, speaking at the Magnify Your Wealth Summitamp; association events</p>
 			<div class="yr-float yr-chip yr-reveal"><span class="yr-live">Live tracking</span><b data-count="10517230">10,517,230</b><span>leads generated for clients</span></div>
 			<div class="yr-float yr-aicard" data-yr-aicard aria-live="polite">
 				<div class="yr-aicard__top"><span class="yr-aicard__av"></span><span data-src>ChatGPT · answer preview</span></div>
