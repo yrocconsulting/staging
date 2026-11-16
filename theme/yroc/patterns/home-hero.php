@@ -27,13 +27,13 @@ $rv  = yroc_reviews();
 			<p class="yr-check__note">Instant preview. Your full AI Visibility Audit is prepared by our team.</p>
 			<div class="yr-trust">
 				<div><b><span class="yr-stars" aria-hidden="true">★★★★★</span> <?php echo esc_html( number_format( (float) $rv['rating'], 1 ) ); ?></b><span><?php echo esc_html( $rv['count'] ); ?> verified client reviews</span></div>
-				<div><b>400+</b><span>companies advised</span></div>
-				<div><b>$94.5M</b><span>client revenue generated</span></div>
+				<div><b>5.0</b><span>rating on Clutch</span></div>
+				<div><b>Nationwide</b><span>clients, headquartered in Texas</span></div>
 			</div>
 		</div>
 		<div class="yr-stage">
 			<p class="yr-hero__cap"><span class="yr-live">On stage</span> Cory Long, founder, at Magnify Your Wealth Summit, eForge &amp; association events</p>
-			<div class="yr-float yr-chip yr-reveal"><span class="yr-live">Live tracking</span><b data-count="10517230">10,517,230</b><span>leads generated for clients</span></div>
+			<div class="yr-float yr-chip yr-reveal"><span class="yr-live">Live AI tracking</span><b>6 platforms</b><span>ChatGPT · Gemini · Perplexity<br>Copilot · AI Overviews · AI Mode</span></div>
 			<div class="yr-float yr-aicard" data-yr-aicard aria-live="polite">
 				<div class="yr-aicard__top"><span class="yr-aicard__av"></span><span data-src>ChatGPT · answer preview</span></div>
 				<p class="yr-aicard__q" data-q>› Who's the most trusted roofing company in Tulsa?</p>

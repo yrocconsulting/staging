@@ -26,13 +26,30 @@ function yroc_ai_platforms() {
 	);
 }
 
+/** The four homepage stats (value can include a prefix/suffix, e.g. "$94.5M", "400+"). */
+function yroc_stat_slot_defaults() {
+	return array(
+		array( '6', 'AI platforms tracked for our clients' ),
+		array( '400+', 'Companies advised since 2005' ),
+		array( '$94.5M', 'Client revenue generated' ),
+		array( '15+', 'Years in search & visibility' ),
+	);
+}
+
+/** Splits "$94.5M" into array( prefix, number, suffix, decimals ) for the count-up animation. */
+function yroc_stat_parts( $value ) {
+	if ( preg_match( '/^(\D*?)([\d,]+(?:\.(\d+))?)(.*)$/', trim( $value ), $m ) ) {
+		return array( $m[1], (float) str_replace( ',', '', $m[2] ), $m[4], isset( $m[3] ) ? strlen( $m[3] ) : 0 );
+	}
+	return array( '', null, $value, 0 );
+}
+
 function yroc_ai_stats_defaults() {
 	return array(
 		'appearances'   => 0,
 		'prompts'       => 0,
 		'platforms'     => array_fill_keys( array_keys( yroc_ai_platforms() ), 0 ),
-		'leads'         => 10517230,
-		'rank'          => 2.2,
+		'slots'         => yroc_stat_slot_defaults(),
 		'source'        => 'manual',
 		'updated'       => 0,
 	);
@@ -42,6 +59,11 @@ function yroc_ai_stats() {
 	$s = get_option( YROC_STATS_OPTION, array() );
 	$s = wp_parse_args( is_array( $s ) ? $s : array(), yroc_ai_stats_defaults() );
 	$s['platforms'] = wp_parse_args( (array) $s['platforms'], yroc_ai_stats_defaults()['platforms'] );
+	$slots = array_values( (array) $s['slots'] );
+	if ( count( $slots ) !== 4 ) {
+		$slots = yroc_stat_slot_defaults();
+	}
+	$s['slots'] = $slots;
 	return $s;
 }
 
@@ -110,10 +132,17 @@ function yroc_ai_stats_page() {
 	}
 	if ( isset( $_POST['yroc_stats_nonce'] ) && wp_verify_nonce( sanitize_key( $_POST['yroc_stats_nonce'] ), 'yroc_stats' ) ) {
 		$s = yroc_ai_stats();
-		foreach ( array( 'appearances', 'prompts', 'leads' ) as $k ) {
+		foreach ( array( 'appearances', 'prompts' ) as $k ) {
 			$s[ $k ] = absint( $_POST[ $k ] ?? 0 );
 		}
-		$s['rank'] = round( (float) ( $_POST['rank'] ?? 0 ), 1 );
+		$slots = array();
+		for ( $n = 0; $n < 4; $n++ ) {
+			$slots[] = array(
+				sanitize_text_field( wp_unslash( $_POST['slot_value'][ $n ] ?? '' ) ),
+				sanitize_text_field( wp_unslash( $_POST['slot_label'][ $n ] ?? '' ) ),
+			);
+		}
+		$s['slots'] = $slots;
 		foreach ( yroc_ai_platforms() as $k => $label ) {
 			$s['platforms'][ $k ] = absint( $_POST['p'][ $k ] ?? 0 );
 		}
@@ -168,8 +197,10 @@ function yroc_ai_stats_page() {
 				<?php foreach ( yroc_ai_platforms() as $k => $label ) : ?>
 					<tr><th><label for="p-<?php echo esc_attr( $k ); ?>">&nbsp;&nbsp;↳ <?php echo esc_html( $label ); ?></label></th><td><input name="p[<?php echo esc_attr( $k ); ?>]" id="p-<?php echo esc_attr( $k ); ?>" type="number" min="0" value="<?php echo esc_attr( $s['platforms'][ $k ] ); ?>" class="small-text"></td></tr>
 				<?php endforeach; ?>
-				<tr><th><label for="leads">Leads generated</label></th><td><input name="leads" id="leads" type="number" min="0" value="<?php echo esc_attr( $s['leads'] ); ?>" class="regular-text"></td></tr>
-				<tr><th><label for="rank">Avg. page-one rank</label></th><td><input name="rank" id="rank" type="number" step="0.1" min="0" value="<?php echo esc_attr( $s['rank'] ); ?>" class="small-text"></td></tr>
+				<tr><th colspan="2"><h2 style="margin:1rem 0 0">Stats bar</h2><p style="font-weight:400">Four numbers under the homepage hero. Values can include symbols, e.g. <code>$94.5M</code>, <code>400+</code>, <code>6</code>. When ProRankTracker is connected, the first slot is replaced by live AI answer appearances.</p></th></tr>
+				<?php foreach ( $s['slots'] as $n => $slot ) : ?>
+					<tr><th>Stat <?php echo (int) $n + 1; ?></th><td><input name="slot_value[<?php echo (int) $n; ?>]" value="<?php echo esc_attr( $slot[0] ); ?>" class="small-text" style="width:8em" aria-label="Value"> <input name="slot_label[<?php echo (int) $n; ?>]" value="<?php echo esc_attr( $slot[1] ); ?>" class="regular-text" aria-label="Label"></td></tr>
+				<?php endforeach; ?>
 			</table>
 			<?php submit_button(); ?>
 		</form>

@@ -18,7 +18,7 @@ $cases = array(
 	<div class="yr-wrap">
 		<div class="yr-sechead">
 			<div><p class="yr-eyebrow">Client results</p><h2>Results across <em>every industry</em> we touch.</h2></div>
-			<p class="yr-lead">From local service companies to multi-location clinics and national brands, our work is measured in calls, leads and revenue.</p>
+			<p class="yr-lead">From local service companies to multi-location clinics and national brands, our work is measured in real business outcomes.</p>
 		</div>
 		<div class="yr-cases">
 			<?php foreach ( $cases as $c ) : ?>

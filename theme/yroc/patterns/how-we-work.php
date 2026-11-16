@@ -16,7 +16,7 @@
 			<div class="yr-reveal"><b>01</b><h3>Audit</h3><p>We test how AI sees you today across every major platform and benchmark your competitors.</p></div>
 			<div class="yr-reveal"><b>02</b><h3>Strategy</h3><p>Your team maps a prioritized roadmap with clear goals, timelines and responsibilities.</p></div>
 			<div class="yr-reveal"><b>03</b><h3>Execution</h3><p>In-house specialists in entity, content, technical SEO and reputation do the work.</p></div>
-			<div class="yr-reveal"><b>04</b><h3>Reporting</h3><p>Monthly reporting tracks AI mentions, rankings, calls and leads, with a strategist walking you through it.</p></div>
+			<div class="yr-reveal"><b>04</b><h3>Reporting</h3><p>Monthly reporting tracks AI mentions, citations and visibility across every platform, with a strategist walking you through it.</p></div>
 		</div>
 	</div>
 </section>
