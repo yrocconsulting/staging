@@ -160,6 +160,12 @@
       "title": "White Label Partners",
       "file": "pages/white-label-services.html",
       "template": "page-landing"
+    },
+    {
+      "slug": "reviews",
+      "title": "Client Reviews",
+      "file": "pages/reviews.html",
+      "template": "page-landing"
     }
   ]
 }

@@ -21,7 +21,9 @@ WordPress block theme (`theme/yroc`) + content (`content/`) deployed to SiteGrou
 - Homepage sections are PHP patterns in `theme/yroc/patterns/` (`home-hero`, `method`, `cases`, ...).
 - Business info, mega menu, departments, speaking list: `theme/yroc/inc/site.php`.
 - Forms: `[yroc_form type="contact|audit"]`, submissions saved under **Leads** (`inc/forms.php`).
-- Reviews: synced daily from Trustindex (`inc/reviews.php`), 5-star only, staff-name filter.
+- Reviews: only from Trustindex (synced daily, `inc/reviews.php`, 5-star only, staff-name filter), Clutch and
+  AI Authority Engine's Trustpilot (`theme/yroc/data/reviews-aae.json`, curated snapshot; Trustpilot blocks bots).
+  Never use testimonials from the old website.
 - Homepage stats: `inc/ai-stats.php`. AI numbers come from the weekly ProRankTracker PDF that lands in a
   shared Drive folder each Monday; `.github/workflows/ai-stats.yml` parses it (`tools/prt_report.py`,
   totals only, Yroc's own domain excluded, never client names) and applies it via `deploy/apply_ai_stats.php`.

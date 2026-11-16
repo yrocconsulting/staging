@@ -669,3 +669,22 @@ body:has(.yr-ctaband) .yr-footer__cta { display: none; }
 @media (max-width: 860px) { .yr-timeline { grid-template-columns: 1fr 1fr; gap: 20px; } }
 .yr-stat__wk { margin: 1rem 0 0 !important; font: 600 .68rem var(--yr-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--yr-muted); }
 .yr-stat__wk + .yr-stat__plats { margin-top: .4rem; }
+
+/* ---------- Reviews page ---------- */
+.yr-rgrid { columns: 3 320px; column-gap: 18px; }
+.yr-rgrid .yr-rcard { width: auto; break-inside: avoid; margin: 0 0 18px; }
+.yr-rcard--light { background: #fff; border-color: var(--yr-line); }
+.yr-rcard--light blockquote { color: var(--yr-text); -webkit-line-clamp: unset; display: block; }
+.yr-rcard--light figcaption { color: var(--yr-muted); }
+.yr-rcard--light figcaption b { color: var(--yr-ink); }
+.yr-rcard--light:hover { background: #fff; border-color: var(--yr-green); }
+.yr-rcard__t { margin: .75rem 0 0; font-size: 1.1rem; color: #fff; }
+.yr-rgrid--dark blockquote { -webkit-line-clamp: 8; }
+.yr-rcard__more { display: inline-block; margin: -6px 0 18px; font-size: .85rem; font-weight: 600; color: var(--yr-green); text-decoration: none; }
+.yr-ragg { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 2rem; }
+.yr-ragg a { display: block; padding: 1.4rem 1.5rem; border-radius: 18px; background: #fff; border: 1px solid var(--yr-line); text-decoration: none; color: var(--yr-muted); font-size: .9rem; transition: .25s; }
+.yr-ragg a:hover { border-color: var(--yr-ink); transform: translateY(-3px); }
+.yr-ragg b { display: block; font: 700 2.25rem/1 var(--yr-head); color: var(--yr-ink); letter-spacing: -.03em; margin: .5rem 0 .35rem; }
+.yr-ragg span { font: 600 .72rem var(--yr-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--yr-green-d); }
+@media (max-width: 760px) { .yr-ragg { grid-template-columns: 1fr; } }
+.yr-ragg b small { font-size: .9rem; vertical-align: middle; }
