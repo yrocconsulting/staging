@@ -12,6 +12,7 @@ WordPress block theme (`theme/yroc`) + content (`content/`) deployed to SiteGrou
 - Type: Inter (body), Inter Tight (headings), JetBrains Mono (small labels only). Emphasis = color, not italics.
 - AI Authority Engine lives on its own site, https://aiauthorityengine.org (Cory's AI SEO certification &
   training program). Link there (new tab); /ai-authority-engine/* on this site 301-redirects to it.
+- Never show how many clients we have (it reads small). Aggregate totals only.
 - Tone: established firm (team, office in Sherman TX, track record), not a solo agency.
 
 ## How things work

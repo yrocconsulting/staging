@@ -18,7 +18,7 @@ $slots = $ai ? array_slice( $s['slots'], 1 ) : $s['slots'];
       <div class="yr-stat yr-stat--ai" data-reveal>
         <p class="yr-stat__live"><span class="yr-stat__dot"></span><?php echo $live ? 'Live tracking · updated ' . esc_html( $asof ? $asof : human_time_diff( $s['updated'] ) . ' ago' ) : 'Tracked across AI platforms'; ?></p>
         <p class="yr-stat__n"><span data-count="<?php echo esc_attr( $s['appearances'] ); ?>"><?php echo esc_html( number_format( $s['appearances'] ) ); ?></span></p>
-        <p class="yr-stat__l">Client appearances in AI answers this week<?php if ( $s['prompts'] && $s['clients'] ) : ?>, across <?php echo esc_html( $s['prompts'] ); ?> tracked prompts for <?php echo esc_html( $s['clients'] ); ?> clients<?php endif; ?></p>
+        <p class="yr-stat__l">Client appearances in AI answers this week<?php if ( $s['prompts'] ) : ?>, across <?php echo esc_html( $s['prompts'] ); ?> tracked prompts<?php endif; ?></p>
         <?php if ( $plats ) : ?>
           <ul class="yr-stat__plats">
             <?php foreach ( $plats as $k => $n ) : ?>
