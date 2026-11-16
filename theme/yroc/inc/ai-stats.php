@@ -17,8 +17,8 @@ const YROC_STATS_OPTION = 'yroc_ai_stats';
 
 function yroc_ai_platforms() {
 	return array(
-		'aio'        => 'AI Overviews',
-		'ai_mode'    => 'AI Mode',
+		'aio'        => 'Google AI Overviews',
+		'ai_mode'    => 'Google AI Mode',
 		'chatgpt'    => 'ChatGPT',
 		'gemini'     => 'Gemini',
 		'perplexity' => 'Perplexity',
@@ -52,7 +52,10 @@ function yroc_ai_stats_live( $s ) {
 function yroc_ai_stats_defaults() {
 	return array(
 		'appearances'   => 0,
-		'total'         => 0,
+		'total'           => 0,
+		'total_mentions'  => 0,
+		'total_links'     => 0,
+		'platform_totals' => array(),
 		'prompts'       => 0,
 		'clients'       => 0,
 		'mentions'      => 0,

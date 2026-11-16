@@ -16,13 +16,30 @@ foreach ( array( 'appearances', 'mentions', 'links', 'prompts', 'clients', 'visi
 }
 $s['platforms']   = array_map( 'intval', (array) ( $data['platforms'] ?? array() ) );
 
-// Running total: one entry per report date, so re-running the same report never double-counts.
+// Running totals: one entry per report date, so re-running the same report never double-counts.
 $history = (array) get_option( 'yroc_ai_history', array() );
 $key     = sanitize_text_field( $data['report_date'] ?? gmdate( 'Y-m-d' ) );
-$history[ $key ] = (int) $data['appearances'];
+$history[ $key ] = array(
+	'appearances' => (int) $data['appearances'],
+	'mentions'    => (int) ( $data['mentions'] ?? 0 ),
+	'links'       => (int) ( $data['links'] ?? 0 ),
+	'platforms'   => $s['platforms'],
+);
 ksort( $history );
 update_option( 'yroc_ai_history', $history, false );
-$s['total'] = array_sum( $history );
+$s['total']           = 0;
+$s['total_mentions']  = 0;
+$s['total_links']     = 0;
+$s['platform_totals'] = array();
+foreach ( $history as $h ) {
+	$h = is_array( $h ) ? $h : array( 'appearances' => (int) $h ); // older single-number entries
+	$s['total']          += (int) ( $h['appearances'] ?? 0 );
+	$s['total_mentions'] += (int) ( $h['mentions'] ?? 0 );
+	$s['total_links']    += (int) ( $h['links'] ?? 0 );
+	foreach ( (array) ( $h['platforms'] ?? array() ) as $k => $v ) {
+		$s['platform_totals'][ $k ] = ( $s['platform_totals'][ $k ] ?? 0 ) + (int) $v;
+	}
+}
 $s['report_date'] = sanitize_text_field( $data['report_date'] ?? '' );
 $s['source']      = 'prt-report';
 $s['updated']     = time();
