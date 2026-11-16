@@ -667,3 +667,5 @@ body:has(.yr-ctaband) .yr-footer__cta { display: none; }
 .yr-timeline b { font: 700 1.6rem var(--yr-head); color: var(--yr-ink); letter-spacing: -.03em; }
 .yr-timeline p { margin: .4rem 0 0; color: var(--yr-muted); font-size: .95rem; }
 @media (max-width: 860px) { .yr-timeline { grid-template-columns: 1fr 1fr; gap: 20px; } }
+.yr-stat__wk { margin: 1rem 0 0 !important; font: 600 .68rem var(--yr-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--yr-muted); }
+.yr-stat__wk + .yr-stat__plats { margin-top: .4rem; }

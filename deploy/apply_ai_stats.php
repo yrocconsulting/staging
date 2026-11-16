@@ -15,8 +15,16 @@ foreach ( array( 'appearances', 'mentions', 'links', 'prompts', 'clients', 'visi
 	$s[ $k ] = (int) ( $data[ $k ] ?? 0 );
 }
 $s['platforms']   = array_map( 'intval', (array) ( $data['platforms'] ?? array() ) );
+
+// Running total: one entry per report date, so re-running the same report never double-counts.
+$history = (array) get_option( 'yroc_ai_history', array() );
+$key     = sanitize_text_field( $data['report_date'] ?? gmdate( 'Y-m-d' ) );
+$history[ $key ] = (int) $data['appearances'];
+ksort( $history );
+update_option( 'yroc_ai_history', $history, false );
+$s['total'] = array_sum( $history );
 $s['report_date'] = sanitize_text_field( $data['report_date'] ?? '' );
 $s['source']      = 'prt-report';
 $s['updated']     = time();
 update_option( 'yroc_ai_stats', $s, false );
-WP_CLI::success( "AI stats updated: {$s['appearances']} appearances, {$s['prompts']} prompts, {$s['clients']} clients ({$s['report_date']})." );
+WP_CLI::success( "AI stats updated: {$s['appearances']} this week, {$s['total']} running total across " . count( $history ) . " reports ({$s['report_date']})." );

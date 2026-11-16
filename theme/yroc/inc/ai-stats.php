@@ -52,6 +52,7 @@ function yroc_ai_stats_live( $s ) {
 function yroc_ai_stats_defaults() {
 	return array(
 		'appearances'   => 0,
+		'total'         => 0,
 		'prompts'       => 0,
 		'clients'       => 0,
 		'mentions'      => 0,

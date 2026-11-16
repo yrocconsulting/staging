@@ -17,9 +17,11 @@ $slots = $ai ? array_slice( $s['slots'], 1 ) : $s['slots'];
     <?php if ( $ai ) : ?>
       <div class="yr-stat yr-stat--ai" data-reveal>
         <p class="yr-stat__live"><span class="yr-stat__dot"></span><?php echo $live ? 'Live tracking · updated ' . esc_html( $asof ? $asof : human_time_diff( $s['updated'] ) . ' ago' ) : 'Tracked across AI platforms'; ?></p>
-        <p class="yr-stat__n"><span data-count="<?php echo esc_attr( $s['appearances'] ); ?>"><?php echo esc_html( number_format( $s['appearances'] ) ); ?></span></p>
-        <p class="yr-stat__l">Client appearances in AI answers this week<?php if ( $s['prompts'] ) : ?>, across <?php echo esc_html( $s['prompts'] ); ?> tracked prompts<?php endif; ?></p>
+        <?php $big = max( (int) $s['total'], (int) $s['appearances'] ); ?>
+        <p class="yr-stat__n"><span data-count="<?php echo esc_attr( $big ); ?>"><?php echo esc_html( number_format( $big ) ); ?></span><?php echo $s['total'] ? '+' : ''; ?></p>
+        <p class="yr-stat__l">Client appearances in AI answers, and counting</p>
         <?php if ( $plats ) : ?>
+          <p class="yr-stat__wk">This week</p>
           <ul class="yr-stat__plats">
             <?php foreach ( $plats as $k => $n ) : ?>
               <li><?php echo esc_html( yroc_ai_platforms()[ $k ] ); ?> <b><?php echo esc_html( number_format( $n ) ); ?></b></li>

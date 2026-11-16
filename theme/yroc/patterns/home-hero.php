@@ -35,7 +35,7 @@ $rv  = yroc_reviews();
 			<p class="yr-hero__cap"><span class="yr-live">On stage</span> Cory Long, founder, at Magnify Your Wealth Summit, eForge &amp; association events</p>
 			<?php $ais = yroc_ai_stats(); ?>
 			<?php if ( $ais['appearances'] > 0 ) : ?>
-				<div class="yr-float yr-chip yr-reveal"><span class="yr-live">Live AI tracking</span><b data-count="<?php echo esc_attr( $ais['appearances'] ); ?>"><?php echo esc_html( number_format( $ais['appearances'] ) ); ?></b><span>client appearances in AI<br>answers this week</span></div>
+				<div class="yr-float yr-chip yr-reveal"><span class="yr-live">Live AI tracking</span><?php $big = max( (int) $ais['total'], (int) $ais['appearances'] ); ?><b><span data-count="<?php echo esc_attr( $big ); ?>"><?php echo esc_html( number_format( $big ) ); ?></span>+</b><span>client appearances in AI<br>answers, and counting</span></div>
 			<?php else : ?>
 				<div class="yr-float yr-chip yr-reveal"><span class="yr-live">Live AI tracking</span><b>6 platforms</b><span>ChatGPT · Gemini · Perplexity<br>Copilot · AI Overviews · AI Mode</span></div>
 			<?php endif; ?>
