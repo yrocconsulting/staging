@@ -1,0 +1,13 @@
+{
+  "_note": "Display names for AI tracking clients. Only domains listed here can appear on the site (hero examples, case studies). Remove a client to hide them everywhere.",
+  "frigiserve.com": { "name": "FrigiServe Cold Storage", "industry": "Cold storage", "city": "Fort Worth, TX" },
+  "lovewellandwaterworks.com": { "name": "Lovewell & Water Works", "industry": "Water well drilling", "city": "Marshville, NC" },
+  "cashoutonmyhome.com": { "name": "Cash Out On My Home", "industry": "Home buyers", "city": "Chattanooga, TN" },
+  "thescotttomanteam.com": { "name": "The Scott Toman Team", "industry": "Real estate", "city": "Lubbock, TX" },
+  "bighamsbbq.com": { "name": "Bigham's Smokehouse", "industry": "BBQ & catering", "city": "Lubbock, TX" },
+  "btacinc.com": { "name": "BTAC", "industry": "Plumbing, heating & air", "city": "Lubbock, TX" },
+  "agmoving.com": { "name": "AG Moving", "industry": "Moving company", "city": "McKinney, TX" },
+  "droddyroofing.com": { "name": "Droddy Roofing", "industry": "Roofing", "city": "Port Neches, TX" },
+  "atlasrealestateinspections.com": { "name": "Atlas Real Estate Inspections", "industry": "Home inspections", "city": "Texas" },
+  "classactinterpreting.com": { "name": "Class Act Interpreting", "industry": "ASL interpreting", "city": "Texas" }
+}

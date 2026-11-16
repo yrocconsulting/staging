@@ -41,6 +41,20 @@ foreach ( $history as $h ) {
 	}
 }
 $s['report_date'] = sanitize_text_field( $data['report_date'] ?? '' );
+$s['showcase']    = array();
+foreach ( (array) ( $data['showcase'] ?? array() ) as $r ) {
+	$s['showcase'][] = array(
+		'domain'      => sanitize_text_field( $r['domain'] ),
+		'prompt'      => sanitize_text_field( $r['prompt'] ),
+		'platforms'   => array_map( 'sanitize_key', (array) $r['platforms'] ),
+		'visibility'  => (int) $r['visibility'],
+		'appearances' => (int) $r['appearances'],
+	);
+}
+$s['sites'] = array();
+foreach ( (array) ( $data['sites'] ?? array() ) as $dom => $v ) {
+	$s['sites'][ sanitize_text_field( $dom ) ] = array_map( 'intval', (array) $v );
+}
 $s['source']      = 'prt-report';
 $s['updated']     = time();
 update_option( 'yroc_ai_stats', $s, false );

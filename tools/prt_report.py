@@ -5,8 +5,9 @@ Usage:
   prt_report.py --pdf report.pdf                 # parse a local PDF
   prt_report.py --drive-folder <folder-id>       # download the newest report from a public Drive folder
 
-Needs `pdftotext` (poppler-utils). Client domains are only used to compute totals; they are
-never written to the output, so client names never reach the website.
+Needs `pdftotext` (poppler-utils). Output: client-only totals, plus a "showcase" of strong per-prompt
+results and per-client numbers (clients have agreed to be named; display names live in
+theme/yroc/data/clients.json, and domains not listed there are never shown).
 Yroc's own domain is excluded so the numbers reflect client results only.
 """
 import argparse
@@ -67,6 +68,75 @@ def parse(pdf):
     return sites
 
 
+def parse_prompts(pdf):
+    """Per-prompt rows: domain, prompt text, platforms that named the client, appearances, visibility %.
+
+    Each prompt is a block of lines separated from the next by two or more blank lines; the prompt text
+    sits left of the first platform column and may wrap above and below the row of results.
+    """
+    text = subprocess.run(['pdftotext', '-layout', pdf, '-'], capture_output=True, text=True, check=True).stdout
+    rows, domain, cols, block, blanks = [], None, None, [], 0
+
+    def flush():
+        nonlocal block
+        if domain and cols and block:
+            words, row = [], None
+            for line in block:
+                left = line[:cols[0] - 6].strip()
+                if left and 'United States' not in left and not left.startswith(('check_circle', 'cancel')):
+                    words.append(left)
+                if 'check_circle' in line or re.search(r'\bcancel\b', line):
+                    row = line
+            if row and words:
+                plats = []
+                for mm in re.finditer(r'check_circle\s+(\d+)', row):
+                    center = mm.start() + len(mm.group(0)) // 2
+                    plats.append(COLS[min(range(len(cols)), key=lambda i: abs(cols[i] - center))])
+                vm = re.search(r'(\d+)\s+(\d+)%\s*\S*\s*$', row.rstrip())
+                prompt = re.sub(r'\s+', ' ', ' '.join(words)).strip()
+                prompt = re.sub(r'^\d+\.\s*', '', prompt)
+                if not prompt.endswith('?'):
+                    prompt += '?'
+                rows.append({'domain': domain, 'prompt': prompt[0].upper() + prompt[1:], 'platforms': plats,
+                             'appearances': int(vm.group(1)) if vm else 0, 'visibility': int(vm.group(2)) if vm else 0})
+        block = []
+
+    for line in text.replace('\f', '\n').splitlines():
+        m = re.match(r'^(\S+\.[a-z]{2,})\s+done_all', line)
+        if m:
+            flush()
+            domain, cols = m.group(1), None
+            continue
+        if domain is None:
+            continue
+        if re.search(r'\bAIO\b.*\bAIM\b.*\bChatGPT\b', line):
+            cols = [line.index(h) + len(h) // 2 for h in HEAD]
+            block = []
+            continue
+        if not line.strip():
+            blanks += 1
+            continue
+        if blanks >= 2:
+            flush()
+        blanks = 0
+        block.append(line)
+    flush()
+    return rows
+
+
+def showcase(rows):
+    """Best proof rows for the homepage: client domains only, highest visibility first, one or two per client."""
+    good = sorted((r for r in rows if r['domain'] not in OWN_DOMAINS and r['visibility'] >= 75 and r['platforms']),
+                  key=lambda r: (-r['visibility'], -len(r['platforms']), -r['appearances']))
+    out, per = [], {}
+    for r in good:
+        if per.get(r['domain'], 0) >= 2:
+            continue
+        per[r['domain']] = per.get(r['domain'], 0) + 1
+        out.append(r)
+    return out[:12]
+
+
 def summarize(sites, date):
     clients = [s for s in sites if s['domain'] not in OWN_DOMAINS]
     plat = dict.fromkeys(COLS, 0)
@@ -100,4 +170,7 @@ if __name__ == '__main__':
         pdf, date = newest_report(a.drive_folder)
     else:
         pdf, date = a.pdf, a.date
-    print(json.dumps(summarize(parse(pdf), date)))
+    out = summarize(parse(pdf), date)
+    out['showcase'] = showcase(parse_prompts(pdf))
+    out['sites'] = {x['domain']: {k: x[k] for k in ('appearances', 'mentions', 'links', 'visibility', 'prompts')} for x in parse(pdf) if x['domain'] not in OWN_DOMAINS}
+    print(json.dumps(out))

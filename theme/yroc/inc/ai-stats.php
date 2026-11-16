@@ -49,6 +49,30 @@ function yroc_ai_stats_live( $s ) {
 	return in_array( $s['source'], array( 'proranktracker', 'prt-report' ), true ) && $s['updated'] > time() - 8 * DAY_IN_SECONDS;
 }
 
+/** Client display names (theme/yroc/data/clients.json). Only listed domains are ever shown. */
+function yroc_clients() {
+	static $c = null;
+	if ( null === $c ) {
+		$c = json_decode( (string) file_get_contents( get_theme_file_path( 'data/clients.json' ) ), true );
+		$c = is_array( $c ) ? $c : array();
+		unset( $c['_note'] );
+	}
+	return $c;
+}
+
+/** Weekly showcase rows with client names, only for clients in clients.json. */
+function yroc_ai_showcase() {
+	$s   = yroc_ai_stats();
+	$c   = yroc_clients();
+	$out = array();
+	foreach ( (array) ( $s['showcase'] ?? array() ) as $r ) {
+		if ( isset( $c[ $r['domain'] ] ) ) {
+			$out[] = $r + $c[ $r['domain'] ];
+		}
+	}
+	return $out;
+}
+
 function yroc_ai_stats_defaults() {
 	return array(
 		'appearances'   => 0,

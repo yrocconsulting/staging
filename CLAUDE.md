@@ -13,6 +13,8 @@ WordPress block theme (`theme/yroc`) + content (`content/`) deployed to SiteGrou
 - AI Authority Engine lives on its own site, https://aiauthorityengine.org (Cory's AI SEO certification &
   training program). Link there (new tab); /ai-authority-engine/* on this site 301-redirects to it.
 - Never show how many clients we have (it reads small). Aggregate totals only.
+- AI tracking clients may be named (client approved). Display names: `theme/yroc/data/clients.json`;
+  a domain not listed there is never shown.
 - Tone: established firm (team, office in Sherman TX, track record), not a solo agency.
 
 ## How things work
@@ -33,5 +35,6 @@ WordPress block theme (`theme/yroc`) + content (`content/`) deployed to SiteGrou
 - SEO: `theme/yroc/inc/seo.php` (titles, descriptions, OG/Twitter, page schema incl. FAQPage/Service/
   BreadcrumbList, core sitemap at /wp-sitemap.xml). Per-page title/description live in `content/seo.json`;
   add an entry for every new page (title under 60 chars, description 110 to 160, no em dashes).
-- Hero video: `theme/yroc/assets/video/hero-speaking.mp4` (720p H.264, keep under ~4 MB).
+- Homepage hero: live AI results window cycling real prompts from the weekly report (`showcase` in
+  `tools/prt_report.py`, prompts at 75%+ visibility, max two per client). No conference footage in the hero.
 - Bump `Version` in `style.css` when adding new pattern files (WordPress caches the pattern list).

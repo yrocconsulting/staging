@@ -103,54 +103,90 @@
 		});
 	});
 
-	/* ---------- Hero video ---------- */
-	var vid = $('[data-yr-video]'), pauseBtn = $('[data-yr-pause]');
-	if (vid) {
-		if (reduce) { vid.pause(); vid.removeAttribute('autoplay'); }
-		if (pauseBtn) {
-			if (reduce) pauseBtn.setAttribute('aria-pressed', 'true');
-			pauseBtn.addEventListener('click', function () {
-				var paused = pauseBtn.getAttribute('aria-pressed') === 'true';
-				if (paused) { vid.play(); } else { vid.pause(); }
-				pauseBtn.setAttribute('aria-pressed', paused ? 'false' : 'true');
-				$('.yr-sr', pauseBtn).textContent = paused ? 'Pause background video' : 'Play background video';
+	/* ---------- Hero: live AI results + "See what AI says" ---------- */
+	var live = $('[data-yr-live]');
+	if (live) {
+		var items = [];
+		try { items = JSON.parse(live.getAttribute('data-items') || '[]'); } catch (err) { items = []; }
+		var PL = { chatgpt: 'ChatGPT', aio: 'AI Overviews', ai_mode: 'AI Mode', gemini: 'Gemini', perplexity: 'Perplexity', copilot: 'Copilot' };
+		var qEl = $('[data-l-q]', live), nameEl = $('[data-l-name]', live), metaEl = $('[data-l-meta]', live), pick = $('[data-l-pick]', live);
+		var footEl = $('[data-l-foot]', live), navEl = $('[data-l-nav]', live), modeEl = $('[data-l-mode]', live), plats = $$('[data-p]', live);
+		var tok = 0, timer = null;
+		navEl.innerHTML = items.map(function () { return '<i></i>'; }).join('');
+		var dots = $$('i', navEl);
+		var wait = function (ms, t) { return new Promise(function (res, rej) { setTimeout(function () { if (t === tok) { res(); } else { rej(); } }, ms); }); };
+		var typeInto = function (el, text, t) {
+			if (reduce) { el.textContent = text; return Promise.resolve(); }
+			var n = 0;
+			el.innerHTML = '<span></span><span class="yr-caret"></span>';
+			var sp = el.firstChild;
+			var step = function () {
+				if (t !== tok) return Promise.reject();
+				if (n > text.length) { el.textContent = text; return Promise.resolve(); }
+				sp.textContent = text.slice(0, n++);
+				return wait(22, t).then(step);
+			};
+			return step();
+		};
+		var setPlats = function (on) { plats.forEach(function (p) { p.classList.toggle('is-on', on.indexOf(p.getAttribute('data-p')) > -1); }); };
+		var show = function (i) {
+			if (!items.length) return;
+			var it = items[i], t = ++tok;
+			clearTimeout(timer);
+			dots.forEach(function (d, k) { d.classList.toggle('is-on', k === i); });
+			pick.classList.remove('is-in', 'is-yours');
+			setPlats([]);
+			typeInto(qEl, it.q, t).then(function () { return wait(350, t); }).then(function () {
+				nameEl.textContent = it.n;
+				metaEl.textContent = it.i + ' · ' + it.c;
+				footEl.textContent = 'Named by ' + it.p.map(function (k) { return PL[k] || k; }).join(', ');
+				pick.classList.add('is-in');
+				return it.p.reduce(function (pr, k) {
+					return pr.then(function () {
+						plats.forEach(function (p) { if (p.getAttribute('data-p') === k) p.classList.add('is-on'); });
+						return wait(180, t);
+					});
+				}, Promise.resolve());
+			}).then(function () {
+				if (!reduce) timer = setTimeout(function () { if (t === tok) show((i + 1) % items.length); }, 4200);
+			}).catch(function () {});
+		};
+		if (items.length) {
+			pick.classList.add('is-in');
+			if (dots[0]) dots[0].classList.add('is-on');
+			if ('IntersectionObserver' in window && !reduce) {
+				var started = false;
+				new IntersectionObserver(function (en) {
+					if (en[0].isIntersecting && !started) { started = true; timer = setTimeout(function () { show(items.length > 1 ? 1 : 0); }, 3500); }
+				}).observe(live);
+			}
+		}
+
+		var check = $('[data-yr-check]');
+		if (check) {
+			check.addEventListener('submit', function (e) {
+				e.preventDefault();
+				var bizIn = check.elements.business, cityIn = check.elements.market;
+				var biz = (bizIn.value || bizIn.placeholder).trim(), city = (cityIn.value || cityIn.placeholder).trim();
+				var t = ++tok;
+				clearTimeout(timer);
+				if (modeEl) modeEl.textContent = 'Your preview';
+				dots.forEach(function (d) { d.classList.remove('is-on'); });
+				pick.classList.remove('is-in');
+				setPlats([]);
+				if (window.innerWidth < 980) live.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' });
+				typeInto(qEl, 'Who should I trust in ' + city + '? Is ' + biz + ' a good choice?', t).then(function () { return wait(350, t); }).then(function () {
+					nameEl.textContent = biz;
+					metaEl.textContent = city + ' · Could this be you?';
+					footEl.textContent = '';
+					var a = document.createElement('a');
+					a.href = check.action + '?business=' + encodeURIComponent(bizIn.value) + '&market=' + encodeURIComponent(cityIn.value) + '#audit';
+					a.textContent = 'See where you really stand: get your free AI Visibility Audit →';
+					footEl.appendChild(a);
+					pick.classList.add('is-in', 'is-yours');
+				}).catch(function () {});
 			});
 		}
-		// Save battery/data: pause when the hero is off screen.
-		if ('IntersectionObserver' in window) {
-			new IntersectionObserver(function (en) {
-				if (pauseBtn && pauseBtn.getAttribute('aria-pressed') === 'true') return;
-				if (en[0].isIntersecting) { var p = vid.play(); if (p && p.catch) p.catch(function () {}); } else { vid.pause(); }
-			}).observe(vid);
-		}
-	}
-
-	/* ---------- Hero: "See what AI says" ---------- */
-	var check = $('[data-yr-check]'), card = $('[data-yr-aicard]');
-	if (check && card) {
-		var qEl = $('[data-q]', card), aEl = $('[data-a]', card), srcEl = $('[data-src]', card), go = $('[data-go]', card), tok = 0;
-		var engines = ['ChatGPT', 'Gemini', 'Perplexity', 'Google AI Overviews'];
-		check.addEventListener('submit', function (e) {
-			e.preventDefault();
-			var bizIn = check.elements.business, cityIn = check.elements.market;
-			var biz = (bizIn.value || bizIn.placeholder).trim(), city = (cityIn.value || cityIn.placeholder).trim();
-			var my = ++tok;
-			card.classList.remove('is-done');
-			srcEl.textContent = engines[Math.floor(Math.random() * engines.length)] + ' · answer preview';
-			qEl.textContent = '› Who should I trust in ' + city + '? Is ' + biz + ' a good choice?';
-			go.href = check.action + '?business=' + encodeURIComponent(bizIn.value) + '&market=' + encodeURIComponent(cityIn.value) + '#audit';
-			var html = 'AI recommends businesses it can clearly identify and verify. Whether <b>' + esc(biz) + '</b> gets named in ' + esc(city) + ' depends on its entity signals, reviews and third-party mentions. A full audit shows exactly where you stand.';
-			if (reduce) { aEl.innerHTML = html; card.classList.add('is-done'); return; }
-			var parts = html.match(/<[^>]+>[^<]*<\/[^>]+>\s*|[^<\s]+\s*/g), i = 0, out = '';
-			aEl.innerHTML = '<span class="yr-caret"></span>';
-			if (window.innerWidth < 980) card.scrollIntoView({ behavior: 'smooth', block: 'center' });
-			setTimeout(function step() {
-				if (my !== tok) return;
-				if (i >= parts.length) { aEl.innerHTML = out; card.classList.add('is-done'); return; }
-				out += parts[i++]; aEl.innerHTML = out + '<span class="yr-caret"></span>';
-				setTimeout(step, 30 + Math.random() * 45);
-			}, 450);
-		});
 	}
 
 	/* ---------- The Yroc Method: entity graph ---------- */
