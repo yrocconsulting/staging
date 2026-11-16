@@ -87,18 +87,48 @@ function yroc_mega_menu() {
 	);
 }
 
+/** In-house departments (no individual names on the site). */
+function yroc_departments() {
+	return array(
+		array( 'ST', 'Strategy & Leadership', 'AI visibility strategy, audits and roadmaps for every client engagement.' ),
+		array( 'SEO', 'SEO & Technology', 'Technical SEO, schema, entity optimization, automation and development.' ),
+		array( 'WEB', 'Web Design & Development', 'AI-ready websites, landing pages, speed and accessibility.' ),
+		array( 'CNT', 'Content & Authority', 'Answer-first content, PR mentions, citations and the AI Authority Engine.' ),
+		array( 'REP', 'Reputation Management', 'Review strategy, suppression, knowledge panels and brand monitoring.' ),
+		array( 'CR', 'Client Relations', 'Onboarding, account management, reporting and day-to-day support.' ),
+	);
+}
+
+/** Where Yroc has spoken / been featured. */
+function yroc_speaking() {
+	return array(
+		array( 'Magnify Your Wealth', 'Featured speaker' ),
+		array( 'Realtor Associations', 'Keynotes & workshops' ),
+		array( 'Apartment Associations', 'Industry sessions' ),
+		array( 'eForge Podcast', 'Guest expert' ),
+	);
+}
+
+/** Hero image chosen in Settings → Yroc Site (empty = designed HQ map card). */
+function yroc_hero_image() {
+	$id = (int) get_option( 'yroc_hero_image_id', 0 );
+	return $id ? wp_get_attachment_image_url( $id, 'large' ) : '';
+}
+
 /** Primary nav (top level). 'mega' => true opens the services panel. */
 function yroc_primary_nav() {
 	return array(
 		array( 'label' => 'Services', 'mega' => true ),
+		array( 'label' => 'AI Authority Engine', 'url' => '/ai-authority-engine/' ),
 		array( 'label' => 'Websites', 'url' => '/website-packages/' ),
-		array( 'label' => 'Case Studies', 'url' => '/case-studies/' ),
+		array( 'label' => 'Results', 'url' => '/case-studies/' ),
 		array(
 			'label' => 'Resources',
 			'children' => array(
 				array( 'Blog', '/blog/' ),
 				array( 'Knowledge Base', '/kb/' ),
 				array( 'Podcast', '/podcasts/how-ai-is-changing-marketing/' ),
+				array( 'Speaking', '/about-us/#speaking' ),
 			),
 		),
 		array(

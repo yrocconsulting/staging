@@ -126,7 +126,7 @@ function yroc_render_form( $atts ) {
 							<?php foreach ( $opts as $o ) : ?><option><?php echo esc_html( $o ); ?></option><?php endforeach; ?>
 						</select>
 					<?php else : ?>
-						<input id="<?php echo esc_attr( $fid ); ?>" name="<?php echo esc_attr( $name ); ?>" type="<?php echo esc_attr( $ftype ); ?>"<?php echo $ac ? ' autocomplete="' . esc_attr( $ac ) . '"' : ''; ?><?php echo $req ? ' required' : ''; ?> placeholder="<?php echo esc_attr( $ph ); ?>">
+						<input id="<?php echo esc_attr( $fid ); ?>" name="<?php echo esc_attr( $name ); ?>" type="<?php echo esc_attr( $ftype ); ?>"<?php echo $ac ? ' autocomplete="' . esc_attr( $ac ) . '"' : ''; ?><?php echo $req ? ' required' : ''; ?> placeholder="<?php echo esc_attr( $ph ); ?>" value="<?php echo esc_attr( isset( $_GET[ $name ] ) ? sanitize_text_field( wp_unslash( $_GET[ $name ] ) ) : '' ); // phpcs:ignore WordPress.Security.NonceVerification ?>">
 					<?php endif; ?>
 					<p class="yr-field__err" aria-live="polite"></p>
 				</div>

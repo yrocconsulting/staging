@@ -10,15 +10,14 @@ $cols = yroc_mega_menu();
 ?>
 <!-- wp:html -->
 <footer class="yr-footer">
-	<div class="yr-footer__glow" aria-hidden="true"></div>
-	<div class="yr-wrap">
+		<div class="yr-wrap">
 		<div class="yr-footer__cta">
 			<div>
 				<p class="yr-eyebrow">Ready when you are</p>
-				<p class="yr-footer__cta-h">Become the answer AI recommends.</p>
+				<p class="yr-footer__cta-h">Become the answer <em>AI recommends.</em></p>
 			</div>
 			<div class="yr-footer__cta-btns">
-				<a class="yr-btn" href="<?php echo esc_url( home_url( '/ai-visibility-audit/' ) ); ?>">Get an AI Visibility Audit</a>
+				<a class="yr-btn" href="<?php echo esc_url( home_url( '/ai-visibility-audit/' ) ); ?>">Get a free AI Visibility Audit</a>
 				<a class="yr-btn yr-btn--ghost" href="tel:<?php echo esc_attr( $i['tel'] ); ?>">Call <?php echo esc_html( $i['phone'] ); ?></a>
 			</div>
 		</div>

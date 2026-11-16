@@ -6,22 +6,22 @@
 	var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 	var $ = function (s, c) { return (c || document).querySelector(s); };
 	var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
-	var isDesktop = function () { return window.matchMedia('(min-width: 1081px)').matches; };
+	var isDesktop = function () { return window.matchMedia('(min-width: 1141px)').matches; };
+	var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
+	var fmt = function (n, d) { return n.toLocaleString('en-US', { minimumFractionDigits: d, maximumFractionDigits: d }); };
 
 	/* ---------- Header ---------- */
 	var header = $('[data-yr-header]');
 	if (header) {
-		var onScroll = function () { header.classList.toggle('is-scrolled', window.scrollY > 10); };
+		var onScroll = function () {
+			header.classList.toggle('is-scrolled', window.scrollY > 10);
+			doc.style.setProperty('--yr-hh', header.getBoundingClientRect().bottom + 'px');
+		};
 		onScroll();
 		window.addEventListener('scroll', onScroll, { passive: true });
-		var setHH = function () { doc.style.setProperty('--yr-hh', header.getBoundingClientRect().bottom + 'px'); };
-		setHH();
-		window.addEventListener('resize', setHH);
-		window.addEventListener('scroll', setHH, { passive: true });
+		window.addEventListener('resize', onScroll);
 	}
-
-	var burger = $('[data-yr-burger]');
-	var nav = $('#yr-nav');
+	var burger = $('[data-yr-burger]'), nav = $('#yr-nav');
 	if (burger && nav) {
 		burger.addEventListener('click', function () {
 			var open = burger.getAttribute('aria-expanded') !== 'true';
@@ -30,7 +30,6 @@
 			document.body.style.overflow = open ? 'hidden' : '';
 		});
 	}
-
 	var closeAll = function (except) {
 		$$('[data-yr-drop]').forEach(function (b) {
 			if (b === except) return;
@@ -40,11 +39,7 @@
 	};
 	$$('[data-yr-drop]').forEach(function (btn) {
 		var li = btn.parentNode, timer;
-		var set = function (open) {
-			if (open) closeAll(btn);
-			btn.setAttribute('aria-expanded', open);
-			li.classList.toggle('is-open', open);
-		};
+		var set = function (open) { if (open) closeAll(btn); btn.setAttribute('aria-expanded', open); li.classList.toggle('is-open', open); };
 		btn.addEventListener('click', function (e) { e.stopPropagation(); set(btn.getAttribute('aria-expanded') !== 'true'); });
 		li.addEventListener('mouseenter', function () { if (isDesktop()) { clearTimeout(timer); set(true); } });
 		li.addEventListener('mouseleave', function () { if (isDesktop()) { timer = setTimeout(function () { set(false); }, 160); } });
@@ -52,53 +47,39 @@
 	document.addEventListener('click', function (e) { if (!e.target.closest('.yr-nav__item')) closeAll(); });
 	document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeAll(); });
 
-	/* ---------- Reveal on scroll ---------- */
-	var revealEls = $$('[data-reveal], .yr-card, .yr-section h2, .yr-tabs, .yr-faq__item');
+	/* ---------- Reveal + counters ---------- */
+	var runCount = function (el) {
+		var target = parseFloat(el.getAttribute('data-count')), d = parseInt(el.getAttribute('data-decimals') || el.getAttribute('data-dec') || '0', 10);
+		if (isNaN(target)) return;
+		if (reduce) { el.textContent = fmt(target, d); return; }
+		var start = performance.now();
+		(function tick(t) {
+			var p = Math.min(1, (t - start) / 1800);
+			el.textContent = fmt(target * (1 - Math.pow(1 - p, 4)), d);
+			if (p < 1) requestAnimationFrame(tick);
+		})(start);
+	};
+	var revealEls = $$('.yr-reveal, [data-reveal], .yr-card, .yr-faq__item, .yr-step');
+	var counters = $$('[data-count]');
 	if ('IntersectionObserver' in window && !reduce) {
 		var io = new IntersectionObserver(function (entries) {
 			entries.forEach(function (en) {
 				if (!en.isIntersecting) return;
-				var el = en.target, sibs = el.parentNode ? Array.prototype.indexOf.call(el.parentNode.children, el) : 0;
-				el.style.transitionDelay = Math.min(sibs, 5) * 80 + 'ms';
+				var el = en.target, i = el.parentNode ? Array.prototype.indexOf.call(el.parentNode.children, el) : 0;
+				el.style.transitionDelay = Math.min(i, 5) * 70 + 'ms';
 				el.classList.add('is-visible');
 				setTimeout(function () { el.style.transitionDelay = ''; }, 1200);
 				io.unobserve(el);
 			});
 		}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 		revealEls.forEach(function (el) { io.observe(el); });
+		var co = new IntersectionObserver(function (en) {
+			en.forEach(function (x) { if (x.isIntersecting) { runCount(x.target); co.unobserve(x.target); } });
+		}, { threshold: 0.5 });
+		counters.forEach(function (c) { c.textContent = '0'; co.observe(c); });
 	} else {
 		revealEls.forEach(function (el) { el.classList.add('is-visible'); });
 	}
-
-	/* ---------- Counters ---------- */
-	var fmt = function (n, d) { return n.toLocaleString('en-US', { minimumFractionDigits: d, maximumFractionDigits: d }); };
-	var runCount = function (el) {
-		var target = parseFloat(el.getAttribute('data-count')), d = parseInt(el.getAttribute('data-decimals') || '0', 10);
-		if (reduce) { el.textContent = fmt(target, d); return; }
-		var start = performance.now(), dur = 1800;
-		var tick = function (t) {
-			var p = Math.min(1, (t - start) / dur), e = 1 - Math.pow(1 - p, 4);
-			el.textContent = fmt(target * e, d);
-			if (p < 1) requestAnimationFrame(tick);
-		};
-		requestAnimationFrame(tick);
-	};
-	var counters = $$('[data-count]');
-	if ('IntersectionObserver' in window) {
-		var co = new IntersectionObserver(function (en) {
-			en.forEach(function (x) { if (x.isIntersecting) { runCount(x.target); co.unobserve(x.target); } });
-		}, { threshold: 0.6 });
-		counters.forEach(function (c) { c.textContent = '0'; co.observe(c); });
-	}
-
-	/* ---------- Card spotlight ---------- */
-	$$('.yr-card--glow').forEach(function (card) {
-		card.addEventListener('pointermove', function (e) {
-			var r = card.getBoundingClientRect();
-			card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
-			card.style.setProperty('--my', (e.clientY - r.top) + 'px');
-		});
-	});
 
 	/* ---------- Tabs ---------- */
 	$$('[data-yr-tabs]').forEach(function (wrap) {
@@ -106,92 +87,141 @@
 		var select = function (tab, focus) {
 			tabs.forEach(function (t) {
 				var on = t === tab;
-				t.setAttribute('aria-selected', on);
-				t.tabIndex = on ? 0 : -1;
-				var p = document.getElementById(t.getAttribute('aria-controls'));
-				if (p) p.hidden = !on;
+				t.setAttribute('aria-selected', on); t.tabIndex = on ? 0 : -1;
+				var p = document.getElementById(t.getAttribute('aria-controls')); if (p) p.hidden = !on;
 			});
 			if (focus) tab.focus();
 		};
 		tabs.forEach(function (t, i) {
 			t.addEventListener('click', function () { select(t); });
 			t.addEventListener('keydown', function (e) {
-				var k = e.key, n = null;
-				if (k === 'ArrowDown' || k === 'ArrowRight') n = tabs[(i + 1) % tabs.length];
-				if (k === 'ArrowUp' || k === 'ArrowLeft') n = tabs[(i - 1 + tabs.length) % tabs.length];
+				var n = null;
+				if (e.key === 'ArrowDown' || e.key === 'ArrowRight') n = tabs[(i + 1) % tabs.length];
+				if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') n = tabs[(i - 1 + tabs.length) % tabs.length];
 				if (n) { e.preventDefault(); select(n, true); }
 			});
 		});
 	});
 
-	/* ---------- AI answer demo ---------- */
-	var chat = $('[data-yr-chat]');
-	if (chat) {
-		var scenes = [
-			{ q: 'Who is the most trusted roofing company near me?', intro: 'Based on reviews, local mentions and expertise, here are the top-recommended roofers:', you: 'Your Roofing Co.', why: '4.9★ · 312 reviews · cited by local news', others: [['Summit Roofing', '4.4★ · 88 reviews'], ['A1 Roof Repair', '4.1★ · 41 reviews']] },
-			{ q: 'Which tax resolution firm can help me with an IRS problem?', intro: 'These firms are frequently recommended for IRS debt and tax resolution:', you: 'Your Tax Firm', why: 'Licensed EAs · featured expert · 5.0★', others: [['National Tax Relief', 'Mixed reviews'], ['TaxFix Pros', 'Limited info']] },
-			{ q: "What's the best med spa for Botox in my area?", intro: 'For Botox and aesthetics, people consistently recommend:', you: 'Your Med Spa', why: 'Board-certified · 4.9★ · before/after gallery', others: [['Glow Aesthetics', '4.3★'], ['Radiance Clinic', '4.0★']] },
-			{ q: 'Who should I call for termites and pest control?', intro: 'Highly rated pest control companies serving your area:', you: 'Your Pest Control', why: 'Same-day service · 4.8★ · 15 years local', others: [['BugAway', '4.2★'], ['PestPro Services', '3.9★']] }
-		];
-		var qEl = $('[data-yr-q]', chat), aEl = $('[data-yr-a]', chat), tabs = $$('.yr-chat__tabs button', chat);
-		var token = 0, auto = true, idx = 0, autoTimer;
-		var esc = function (s) { return s.replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
-		var wait = function (ms, tk) { return new Promise(function (res, rej) { setTimeout(function () { tk === token ? res() : rej(); }, ms); }); };
-		var play = function (i) {
-			var tk = ++token, s = scenes[i];
-			clearTimeout(autoTimer);
-			tabs.forEach(function (b, j) { b.setAttribute('aria-selected', j === i); });
-			aEl.innerHTML = '';
-			var list = '<p class="yr-chat__intro">' + esc(s.intro) + '</p><ol class="yr-chat__list">' +
-				'<li class="is-you"><span class="yr-chat__rank">1</span><span><b>' + esc(s.you) + '</b><small>' + esc(s.why) + '</small></span><span class="yr-chat__chip">Recommended</span></li>' +
-				s.others.map(function (o, k) { return '<li><span class="yr-chat__rank">' + (k + 2) + '</span><span><b>' + esc(o[0]) + '</b><small>' + esc(o[1]) + '</small></span></li>'; }).join('') + '</ol>';
-			if (reduce) { qEl.textContent = s.q; aEl.innerHTML = list; $$('li', aEl).forEach(function (l) { l.classList.add('is-in'); }); return; }
-			qEl.innerHTML = '<span data-t></span><span class="yr-chat__caret"></span>';
-			var t = $('[data-t]', qEl), n = 0;
-			var type = function () {
-				if (tk !== token) return Promise.reject();
-				if (n > s.q.length) return Promise.resolve();
-				t.textContent = s.q.slice(0, n++);
-				return wait(28, tk).then(type);
-			};
-			type().then(function () { return wait(450, tk); }).then(function () {
-				$('.yr-chat__caret', qEl) && $('.yr-chat__caret', qEl).remove();
-				aEl.innerHTML = list;
-				var items = $$('li', aEl);
-				return items.reduce(function (p, li) { return p.then(function () { li.classList.add('is-in'); return wait(380, tk); }); }, wait(250, tk));
-			}).then(function () {
-				if (auto) autoTimer = setTimeout(function () { if (tk === token) { idx = (i + 1) % scenes.length; play(idx); } }, 4200);
-			}).catch(function () {});
-		};
-		tabs.forEach(function (b, j) { b.addEventListener('click', function () { auto = false; idx = j; play(j); }); });
-		if ('IntersectionObserver' in window) {
-			var started = false;
-			new IntersectionObserver(function (en) { if (en[0].isIntersecting && !started) { started = true; play(0); } }).observe(chat);
-		} else { play(0); }
+	/* ---------- Hero: "See what AI says" ---------- */
+	var check = $('[data-yr-check]'), card = $('[data-yr-aicard]');
+	if (check && card) {
+		var qEl = $('[data-q]', card), aEl = $('[data-a]', card), srcEl = $('[data-src]', card), go = $('[data-go]', card), tok = 0;
+		var engines = ['ChatGPT', 'Gemini', 'Perplexity', 'Google AI Overviews'];
+		check.addEventListener('submit', function (e) {
+			e.preventDefault();
+			var bizIn = check.elements.business, cityIn = check.elements.market;
+			var biz = (bizIn.value || bizIn.placeholder).trim(), city = (cityIn.value || cityIn.placeholder).trim();
+			var my = ++tok;
+			card.classList.remove('is-done');
+			srcEl.textContent = engines[Math.floor(Math.random() * engines.length)] + ' · answer preview';
+			qEl.textContent = '› Who should I trust in ' + city + '? Is ' + biz + ' a good choice?';
+			go.href = check.action + '?business=' + encodeURIComponent(bizIn.value) + '&market=' + encodeURIComponent(cityIn.value) + '#audit';
+			var html = 'AI recommends businesses it can clearly identify and verify. Whether <b>' + esc(biz) + '</b> gets named in ' + esc(city) + ' depends on its entity signals, reviews and third-party mentions. A full audit shows exactly where you stand.';
+			if (reduce) { aEl.innerHTML = html; card.classList.add('is-done'); return; }
+			var parts = html.match(/<[^>]+>[^<]*<\/[^>]+>\s*|[^<\s]+\s*/g), i = 0, out = '';
+			aEl.innerHTML = '<span class="yr-caret"></span>';
+			if (window.innerWidth < 980) card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+			setTimeout(function step() {
+				if (my !== tok) return;
+				if (i >= parts.length) { aEl.innerHTML = out; card.classList.add('is-done'); return; }
+				out += parts[i++]; aEl.innerHTML = out + '<span class="yr-caret"></span>';
+				setTimeout(step, 30 + Math.random() * 45);
+			}, 450);
+		});
 	}
 
-	/* ---------- Authority simulator ---------- */
-	var sim = $('[data-yr-sim]');
-	if (sim) {
-		var arc = $('[data-yr-arc]', sim), scoreEl = $('[data-yr-score]', sim), verdict = $('[data-yr-verdict]', sim);
-		var boxes = $$('input[type="checkbox"]', sim), base = 12, current = base;
-		var verdicts = [[25, 'AI barely knows you exist'], [45, 'AI knows you — but doesn’t trust you yet'], [65, 'You’re in the conversation'], [85, 'AI is starting to recommend you'], [101, 'You’re the answer AI recommends']];
-		var update = function () {
-			var target = base + boxes.reduce(function (s, b) { return s + (b.checked ? parseInt(b.getAttribute('data-w'), 10) : 0); }, 0);
-			target = Math.min(target, 98);
-			arc.setAttribute('stroke-dashoffset', 100 - target);
-			for (var v = 0; v < verdicts.length; v++) { if (target < verdicts[v][0]) { verdict.textContent = verdicts[v][1]; break; } }
-			var from = current, start = performance.now();
-			current = target;
-			var step = function (t) {
-				var p = reduce ? 1 : Math.min(1, (t - start) / 700);
-				scoreEl.textContent = Math.round(from + (target - from) * (1 - Math.pow(1 - p, 3)));
-				if (p < 1) requestAnimationFrame(step);
-			};
-			requestAnimationFrame(step);
+	/* ---------- The Yroc Method: entity graph ---------- */
+	var method = $('[data-yr-method]');
+	if (method) {
+		var cv = $('[data-yr-graph]', method), ctx = cv.getContext('2d'), dpr = Math.min(window.devicePixelRatio || 1, 2), W = 0, H = 0;
+		var meter = $('[data-meter]', method), conf = $('[data-conf]', method), steps = $$('.yr-mstep', method);
+		var L = [['Google Business Profile', 0], ['Website', 0], ['Schema.org', 0], ['Wikidata', 0], ['LinkedIn', 0], ['Bing Places', 0], ['Apple Maps', 0], ['Founder bio', 0], ['NAP citations', 0],
+			['Google reviews', 1], ['Yelp', 1], ['BBB', 1], ['Press mention', 1], ['Podcast', 1], ['YouTube', 1], ['Industry directory', 1], ['Case study', 1], ['Clutch', 1], ['Local news', 1],
+			['FAQ answers', 2], ['Knowledge panel', 2], ['Expert article', 2], ['Comparison page', 2], ['Awards', 2]];
+		var rc = [0, 0, 0], ri = L.map(function (l) { return rc[l[1]]++; });
+		var nodes = L.map(function (l, i) { return { label: l[0], k: l[1], x: Math.random() * 500, y: Math.random() * 400, vx: 0, vy: 0, a: ri[i] / rc[l[1]] * Math.PI * 2 + l[1] * 0.35, sx: Math.random(), sy: Math.random(), seed: Math.random() * 99 }; });
+		var drag = null, mouse = { x: -1e4, y: -1e4 }, prog = 0.05, tgt = 0.05, started = false, visible = false, timer, t = 0, thr = [0.2, 0.5, 0.85];
+		var size = function () { var r = cv.getBoundingClientRect(); W = r.width; H = r.height; cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); };
+		size(); window.addEventListener('resize', size);
+		var pos = function (e) { var r = cv.getBoundingClientRect(); return { x: e.clientX - r.left, y: e.clientY - r.top }; };
+		cv.addEventListener('pointerdown', function (e) { var p = pos(e), b = null, bd = 28; nodes.forEach(function (n) { var d = Math.hypot(n.x - p.x, n.y - p.y); if (d < bd) { bd = d; b = n; } }); drag = b; if (b) cv.setPointerCapture(e.pointerId); });
+		cv.addEventListener('pointermove', function (e) { var p = pos(e); mouse = p; if (drag) { drag.x = p.x; drag.y = p.y; drag.vx = drag.vy = 0; } });
+		cv.addEventListener('pointerup', function () { drag = null; });
+		cv.addEventListener('pointerleave', function () { mouse = { x: -1e4, y: -1e4 }; });
+		var setPhase = function (p, user) {
+			tgt = [0.3, 0.6, 0.95][p];
+			steps.forEach(function (s, i) { s.setAttribute('aria-selected', i === p); var b = $('.yr-bar', s); b.style.animation = 'none'; void b.offsetWidth; b.style.animation = ''; });
+			clearTimeout(timer);
+			if (!user && !reduce) timer = setTimeout(function () { setPhase((p + 1) % 3); }, 6000);
 		};
-		boxes.forEach(function (b) { b.addEventListener('change', update); });
+		steps.forEach(function (s, i) { s.addEventListener('click', function () { setPhase(i, true); }); });
+		if ('IntersectionObserver' in window) {
+			new IntersectionObserver(function (en) {
+				visible = en[0].isIntersecting;
+				if (visible && !started) { started = true; setPhase(0); }
+				if (visible) requestAnimationFrame(frame);
+			}, { threshold: 0.25 }).observe(cv);
+		} else { started = visible = true; setPhase(0); }
+		var frame = function () {
+			if (!visible) return;
+			t += 0.016; prog += (tgt - prog) * (reduce ? 1 : 0.03);
+			var X = W * 0.46, Y = H / 2 - 10, R = Math.min(W * 0.62, H) * 0.56, connected = 0;
+			ctx.clearRect(0, 0, W, H);
+			nodes.forEach(function (n) {
+				var on = prog > thr[n.k]; if (on) connected++;
+				if (n === drag) return;
+				var hx, hy;
+				if (on) { var ring = [0.42, 0.74, 1][n.k], a = n.a + t * 0.04 * (n.k === 1 ? -1 : 1); hx = X + Math.cos(a) * R * ring * 1.05; hy = Y + Math.sin(a) * R * ring * 0.92; }
+				else { hx = W * (0.05 + n.sx * 0.7) + Math.sin(t * 0.6 + n.seed) * 12; hy = H * (0.08 + n.sy * 0.78) + Math.cos(t * 0.5 + n.seed) * 12; }
+				n.vx += (hx - n.x) * 0.012; n.vy += (hy - n.y) * 0.012;
+				var dm = Math.hypot(n.x - mouse.x, n.y - mouse.y);
+				if (dm < 90 && dm > 0) { n.vx += (n.x - mouse.x) / dm * 0.6; n.vy += (n.y - mouse.y) / dm * 0.6; }
+				n.vx *= 0.86; n.vy *= 0.86; n.x += n.vx; n.y += n.vy;
+			});
+			nodes.forEach(function (n) {
+				if (prog <= thr[n.k]) return;
+				var k = Math.min(1, (prog - thr[n.k]) * 5);
+				ctx.strokeStyle = 'rgba(126,217,87,' + (0.45 * k) + ')'; ctx.lineWidth = 1;
+				ctx.beginPath(); ctx.moveTo(X, Y); ctx.lineTo(X + (n.x - X) * k, Y + (n.y - Y) * k); ctx.stroke();
+				var pp = (t * 0.5 + n.seed) % 1;
+				ctx.fillStyle = 'rgba(126,217,87,' + k + ')'; ctx.beginPath(); ctx.arc(n.x + (X - n.x) * pp, n.y + (Y - n.y) * pp, 1.6, 0, 7); ctx.fill();
+			});
+			ctx.font = '500 11.5px Poppins, sans-serif'; ctx.textBaseline = 'middle';
+			nodes.forEach(function (n) {
+				var on = prog > thr[n.k];
+				ctx.fillStyle = on ? (n.k === 2 ? '#0099FF' : '#7ED957') : 'rgba(84,117,144,.9)';
+				ctx.beginPath(); ctx.arc(n.x, n.y, on ? 4 : 3, 0, 7); ctx.fill();
+				ctx.fillStyle = on ? 'rgba(233,238,245,.88)' : 'rgba(233,238,245,.35)'; ctx.fillText(n.label, n.x + 9, n.y);
+			});
+			var c = connected / nodes.length, core = (14 + c * 26) * (1 + Math.sin(t * 2.4) * 0.04);
+			var g = ctx.createRadialGradient(X, Y, 0, X, Y, core * 4);
+			g.addColorStop(0, 'rgba(126,217,87,' + (0.12 + c * 0.35) + ')'); g.addColorStop(1, 'rgba(126,217,87,0)');
+			ctx.fillStyle = g; ctx.beginPath(); ctx.arc(X, Y, core * 4, 0, 7); ctx.fill();
+			ctx.fillStyle = c > 0.95 ? '#7ED957' : '#E9EEF5'; ctx.beginPath(); ctx.arc(X, Y, core, 0, 7); ctx.fill();
+			ctx.fillStyle = '#0B1220'; ctx.textAlign = 'center'; ctx.font = '700 ' + Math.round(9 + c * 4) + 'px Poppins, sans-serif';
+			ctx.fillText(c > 0.95 ? 'RECOMMENDED' : 'YOUR BRAND', X, Y); ctx.textAlign = 'left';
+			var sc = Math.round(8 + c * 88); meter.style.width = sc + '%'; conf.textContent = sc + '%';
+			requestAnimationFrame(frame);
+		};
 	}
+
+	/* ---------- Before / after slider ---------- */
+	$$('[data-yr-cmp]').forEach(function (cmp) {
+		var h = $('[data-handle]', cmp), dragging = false;
+		var set = function (p) { p = Math.max(4, Math.min(96, p)); cmp.style.setProperty('--cut', p + '%'); h.setAttribute('aria-valuenow', Math.round(p)); };
+		var from = function (e) { var r = cmp.getBoundingClientRect(); set((e.clientX - r.left) / r.width * 100); };
+		cmp.addEventListener('pointerdown', function (e) { dragging = true; cmp.setPointerCapture(e.pointerId); from(e); });
+		cmp.addEventListener('pointermove', function (e) { if (dragging) from(e); });
+		cmp.addEventListener('pointerup', function () { dragging = false; });
+		h.addEventListener('keydown', function (e) { var v = +h.getAttribute('aria-valuenow'); if (e.key === 'ArrowLeft') set(v - 5); if (e.key === 'ArrowRight') set(v + 5); });
+		if (reduce || !('IntersectionObserver' in window)) { set(18); return; }
+		new IntersectionObserver(function (en, o) {
+			if (!en[0].isIntersecting) return; o.disconnect();
+			var s = null;
+			requestAnimationFrame(function sw(n) { if (!s) s = n; var p = Math.min(1, (n - s) / 1600); if (!dragging) set(85 - 67 * (1 - Math.pow(1 - p, 3))); if (p < 1) requestAnimationFrame(sw); });
+		}, { threshold: 0.5 }).observe(cmp);
+	});
 
 	/* ---------- Forms ---------- */
 	$$('[data-yr-form]').forEach(function (form) {
@@ -228,54 +258,4 @@
 		});
 		$$('input, textarea', form).forEach(function (el) { el.addEventListener('input', function () { if (el.closest('.has-error')) setErr(el.name, ''); }); });
 	});
-
-	/* ---------- Hero entity network ---------- */
-	var cv = $('[data-yr-net]');
-	if (cv && cv.getContext && !reduce) {
-		var ctx = cv.getContext('2d'), pts = [], W = 0, H = 0, dpr = Math.min(window.devicePixelRatio || 1, 2), mouse = { x: -999, y: -999 }, running = true;
-		var resize = function () {
-			var r = cv.getBoundingClientRect();
-			W = r.width; H = r.height;
-			cv.width = W * dpr; cv.height = H * dpr;
-			ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-			var count = Math.round(Math.min(90, (W * H) / 14000));
-			pts = [];
-			for (var i = 0; i < count; i++) {
-				pts.push({ x: Math.random() * W, y: Math.random() * H, vx: (Math.random() - 0.5) * 0.35, vy: (Math.random() - 0.5) * 0.35, r: Math.random() * 1.8 + 0.6, g: Math.random() < 0.18 });
-			}
-		};
-		var hero = cv.closest('.yr-hero') || cv.parentNode;
-		hero.addEventListener('pointermove', function (e) { var r = cv.getBoundingClientRect(); mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top; });
-		hero.addEventListener('pointerleave', function () { mouse.x = mouse.y = -999; });
-		var draw = function () {
-			if (!running) return;
-			ctx.clearRect(0, 0, W, H);
-			var max = 130;
-			for (var i = 0; i < pts.length; i++) {
-				var p = pts[i];
-				p.x += p.vx; p.y += p.vy;
-				if (p.x < 0 || p.x > W) p.vx *= -1;
-				if (p.y < 0 || p.y > H) p.vy *= -1;
-				var dm = Math.hypot(p.x - mouse.x, p.y - mouse.y);
-				for (var j = i + 1; j < pts.length; j++) {
-					var q = pts[j], d = Math.hypot(p.x - q.x, p.y - q.y);
-					if (d < max) {
-						var near = dm < 180;
-						ctx.strokeStyle = near ? 'rgba(126,217,87,' + (1 - d / max) * 0.55 + ')' : 'rgba(140,170,200,' + (1 - d / max) * 0.18 + ')';
-						ctx.lineWidth = near ? 1 : 0.6;
-						ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y); ctx.stroke();
-					}
-				}
-				ctx.fillStyle = p.g || dm < 140 ? '#7ED957' : 'rgba(180,200,220,.6)';
-				ctx.beginPath(); ctx.arc(p.x, p.y, p.g ? p.r + 1 : p.r, 0, Math.PI * 2); ctx.fill();
-			}
-			requestAnimationFrame(draw);
-		};
-		resize();
-		window.addEventListener('resize', resize);
-		if ('IntersectionObserver' in window) {
-			new IntersectionObserver(function (en) { var was = running; running = en[0].isIntersecting; if (running && !was) draw(); }).observe(cv);
-		}
-		draw();
-	}
 })();

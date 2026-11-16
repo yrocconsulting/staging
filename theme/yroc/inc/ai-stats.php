@@ -78,7 +78,7 @@ function yroc_prt_fetch( $api_key ) {
 /* ---------- Settings → AI Stats ---------- */
 
 add_action( 'admin_menu', function () {
-	add_options_page( 'AI Stats', 'AI Stats', 'manage_options', 'yroc-ai-stats', 'yroc_ai_stats_page' );
+	add_options_page( 'Yroc Site Settings', 'Yroc Site', 'manage_options', 'yroc-ai-stats', 'yroc_ai_stats_page' );
 } );
 
 function yroc_ai_stats_page() {
@@ -94,6 +94,7 @@ function yroc_ai_stats_page() {
 		foreach ( yroc_ai_platforms() as $k => $label ) {
 			$s['platforms'][ $k ] = absint( $_POST['p'][ $k ] ?? 0 );
 		}
+		update_option( 'yroc_hero_image_id', absint( $_POST['hero_image_id'] ?? 0 ) );
 		$s['source']  = 'manual';
 		$s['updated'] = time();
 		update_option( YROC_STATS_OPTION, $s, false );
@@ -104,9 +105,31 @@ function yroc_ai_stats_page() {
 	}
 	$s   = yroc_ai_stats();
 	$prt = defined( 'YROC_PRT_API_KEY' ) && YROC_PRT_API_KEY;
+	$hid = (int) get_option( 'yroc_hero_image_id', 0 );
+	wp_enqueue_media();
 	?>
 	<div class="wrap">
-		<h1>AI Stats</h1>
+		<h1>Yroc Site Settings</h1>
+		<form method="post">
+		<h2>Homepage hero image</h2>
+		<p>Shown on the right side of the homepage hero (e.g. a photo of the building). Leave empty to show the designed HQ map card.</p>
+		<p><img id="yroc-hero-prev" src="<?php echo esc_url( $hid ? wp_get_attachment_image_url( $hid, 'medium' ) : '' ); ?>" style="max-width:320px;border-radius:12px;<?php echo $hid ? '' : 'display:none'; ?>"></p>
+		<input type="hidden" name="hero_image_id" id="yroc-hero-id" value="<?php echo esc_attr( $hid ); ?>">
+		<button type="button" class="button" id="yroc-hero-pick">Choose image</button>
+		<button type="button" class="button-link-delete" id="yroc-hero-clear" style="margin-left:8px">Remove</button>
+		<script>
+		jQuery(function ($) {
+			var frame;
+			$('#yroc-hero-pick').on('click', function () {
+				frame = frame || wp.media({ title: 'Homepage hero image', library: { type: 'image' }, multiple: false });
+				frame.off('select').on('select', function () { var a = frame.state().get('selection').first().toJSON(); $('#yroc-hero-id').val(a.id); $('#yroc-hero-prev').attr('src', (a.sizes && a.sizes.medium ? a.sizes.medium.url : a.url)).show(); });
+				frame.open();
+			});
+			$('#yroc-hero-clear').on('click', function () { $('#yroc-hero-id').val(0); $('#yroc-hero-prev').hide(); });
+		});
+		</script>
+		<hr>
+		<h2>Homepage stats</h2>
 		<p>Numbers shown in the homepage stats bar.
 			<?php if ( $prt ) : ?>
 				A ProRankTracker key is configured; synced values overwrite AI appearances, prompts and platform counts hourly.
@@ -115,7 +138,6 @@ function yroc_ai_stats_page() {
 			<?php endif; ?>
 			Last updated: <?php echo $s['updated'] ? esc_html( human_time_diff( $s['updated'] ) . ' ago (' . $s['source'] . ')' ) : 'never'; ?>.
 		</p>
-		<form method="post">
 			<?php wp_nonce_field( 'yroc_stats', 'yroc_stats_nonce' ); ?>
 			<table class="form-table" role="presentation">
 				<tr><th><label for="appearances">AI answer appearances</label></th><td><input name="appearances" id="appearances" type="number" min="0" value="<?php echo esc_attr( $s['appearances'] ); ?>" class="regular-text"><p class="description">Total times client brands appeared (mentioned or cited) in AI answers.</p></td></tr>

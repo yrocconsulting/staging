@@ -11,17 +11,17 @@ $req = isset( $_SERVER['REQUEST_URI'] ) ? strtok( wp_unslash( $_SERVER['REQUEST_
 <!-- wp:html -->
 <div class="yr-topbar">
 	<div class="yr-wrap yr-topbar__in">
-		<span class="yr-topbar__loc"><?php echo yroc_icon( 'pin' ); ?> <?php echo esc_html( $i['city'] . ', ' . $i['region'] ); ?> &middot; Serving businesses nationwide</span>
+		<span class="yr-topbar__hq">Headquartered in <b>Sherman, Texas</b> &middot; Serving businesses nationwide &middot; Advising companies since 2005</span>
 		<span class="yr-topbar__links">
-			<a href="tel:<?php echo esc_attr( $i['tel'] ); ?>"><?php echo yroc_icon( 'phone' ); ?> <?php echo esc_html( $i['phone'] ); ?></a>
-			<a href="mailto:<?php echo esc_attr( $i['email'] ); ?>"><?php echo yroc_icon( 'mail' ); ?> <?php echo esc_html( $i['email'] ); ?></a>
+			<a href="tel:<?php echo esc_attr( $i['tel'] ); ?>"><?php echo esc_html( $i['phone'] ); ?></a>
+			<a href="mailto:<?php echo esc_attr( $i['email'] ); ?>"><?php echo esc_html( $i['email'] ); ?></a>
 		</span>
 	</div>
 </div>
 <header class="yr-header" data-yr-header>
 	<div class="yr-wrap yr-header__in">
 		<a class="yr-logo" href="<?php echo esc_url( home_url( '/' ) ); ?>" aria-label="Yroc Consulting home">
-			<img src="<?php echo esc_url( get_theme_file_uri( 'assets/img/logo.png' ) ); ?>" alt="Yroc Consulting" width="185" height="56">
+			<img src="<?php echo esc_url( get_theme_file_uri( 'assets/img/logo.png' ) ); ?>" alt="Yroc Consulting" width="185" height="56" fetchpriority="high">
 		</a>
 		<button class="yr-burger" type="button" aria-expanded="false" aria-controls="yr-nav" data-yr-burger>
 			<span></span><span></span><span></span><span class="screen-reader-text">Menu</span>
@@ -67,7 +67,8 @@ $req = isset( $_SERVER['REQUEST_URI'] ) ? strtok( wp_unslash( $_SERVER['REQUEST_
 					<?php endif; ?>
 				<?php endforeach; ?>
 			</ul>
-			<a class="yr-btn yr-header__cta" href="<?php echo esc_url( home_url( '/book-a-strategy-call/' ) ); ?>">Book a Strategy Call</a>
+			<a class="yr-header__phone" href="tel:<?php echo esc_attr( $i['tel'] ); ?>"><?php echo esc_html( $i['phone'] ); ?></a>
+			<a class="yr-btn yr-header__cta" href="<?php echo esc_url( home_url( '/book-a-strategy-call/' ) ); ?>">Book a strategy call</a>
 		</nav>
 	</div>
 </header>
