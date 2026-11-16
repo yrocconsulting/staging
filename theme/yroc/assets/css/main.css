@@ -428,3 +428,4 @@ body:has(.yr-ctaband) .yr-footer { padding-top: 0; }
 .yr-hero .yr-checks a { color: #fff; }
 .yr-hero .yr-form { box-shadow: 0 40px 80px rgba(0, 0, 0, .35); }
 .yr-hero .yr-glass .yr-eyebrow { color: var(--yr-green); }
+.wp-block-post-content iframe[src*="youtube"], .wp-block-post-content iframe[src*="vimeo"] { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; border-radius: 16px; margin-block: 1.5rem; }
