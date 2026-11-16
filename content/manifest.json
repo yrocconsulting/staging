@@ -298,6 +298,14 @@
       "title": "Terms and Conditions",
       "file": "pages/legal-terms-and-conditions.html",
       "template": "page-landing"
+    },
+    {
+      "slug": "frigiserve-ai-visibility-case-study",
+      "title": "FrigiServe Cold Storage: AI Visibility Case Study",
+      "parent": "case-studies",
+      "file": "pages/case-frigiserve-ai-visibility-case-study.html",
+      "template": "page-landing",
+      "excerpt": "How FrigiServe became the cold storage company ChatGPT and Gemini recommend in Dallas–Fort Worth."
     }
   ]
 }

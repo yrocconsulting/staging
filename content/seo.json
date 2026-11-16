@@ -1,43 +1,170 @@
 {
-  "/": ["AI Search Optimization Agency in Texas | Yroc Consulting", "Yroc Consulting helps businesses get recommended by ChatGPT, Gemini, Perplexity and Google AI. AI search optimization firm in Sherman, Texas."],
-  "/blog/": ["AI Search Insights & Articles | Yroc Consulting", "Research, playbooks and plain-English guides on getting your business recommended by ChatGPT, Gemini and Google AI Overviews."],
-  "/ai-search-optimization/": ["AI Search Optimization Services | Yroc Consulting", "Get found, cited and recommended in ChatGPT, Google AI Overviews, Gemini and Perplexity with entity, content, schema and authority work."],
-  "/ai-visibility-audit/": ["Free AI Visibility Audit | Yroc Consulting", "See what ChatGPT, Gemini, Perplexity and Google AI say about your business, which competitors they recommend, and what to fix first."],
-  "/contact/": ["Contact Yroc Consulting | Sherman, TX", "Talk with Yroc Consulting about AI search optimization, reputation management or a new website. Call 903.300.LEADS or send us a message."],
-  "/website-packages/": ["AI-Ready Website Design Packages | Yroc Consulting", "Websites built for Google and AI search, with AI search optimization included. Essential, Growth and Enterprise packages from $4,000."],
-  "/reputation-management/": ["AI Reputation Management | Yroc Consulting", "Control what Google and AI say about you. We suppress negative results, repair Knowledge Panels and build a reputation AI repeats."],
-  "/reputation-management/negative-search-results/": ["Remove & Suppress Negative Search Results | Yroc", "Push negative articles, complaint sites and outdated stories off page one of Google and out of the AI answers built from them."],
-  "/reputation-management/personal-reputation-management/": ["Personal Reputation Management | Yroc Consulting", "Protect your name in Google and AI answers. Reputation management for executives, founders, physicians, attorneys and professionals."],
-  "/reputation-management/business-reputation-management/": ["Business Reputation Management | Yroc Consulting", "Manage reviews, complaint sites, news and AI summaries so customers and AI platforms describe your business accurately and favorably."],
-  "/reputation-management/knowledge-panel-repair/": ["Google Knowledge Panel Claim & Repair | Yroc", "Get, claim, correct and enhance your Google Knowledge Panel, one of the key sources AI uses to understand you or your business."],
-  "/reputation-management/rebrand-strategy/": ["Rebrand Reputation Strategy | Yroc Consulting", "Rebrand, merge or change ownership without losing trust. We connect your new identity to your earned reputation in search and AI."],
-  "/about-us/": ["About Yroc Consulting | AI Search Firm in Sherman, TX", "Yroc Consulting is an AI search optimization firm headquartered in Sherman, Texas, advising businesses since 2005. Meet our team and story."],
-  "/case-studies/": ["Case Studies & Client Results | Yroc Consulting", "Real results from AI search visibility, reputation recovery and local growth work, from #1 in ChatGPT to page one reclaimed in 90 days."],
-  "/case-studies/thai-ginger-case-study/": ["Thai Ginger Case Study: #1 in ChatGPT | Yroc", "How an AI SEO strategy made a Bellevue restaurant the top recommendation in ChatGPT, Google AI Overviews, the map pack and organic search."],
-  "/case-studies/fractional-cfo-reputation-management-case-study/": ["Reputation Management Case Study | Yroc Consulting", "Negative press buried a financial professional's brand. See how we suppressed 80% of negative results and reclaimed page one in 90 days."],
-  "/case-studies/blacksmith-roofing-case-study/": ["Roofing Case Study: 8× Phone Calls | Yroc", "How an Oklahoma roofing contractor's maps visibility jumped 4,900% and inbound phone calls octupled within a single month."],
-  "/case-studies/irs-trouble-solvers-case-study/": ["Tax Resolution Case Study: 604% ROI | Yroc", "How a tax resolution firm outranked the IRS on Google and turned search traffic into a steady stream of high-value leads."],
-  "/case-studies/the-bug-guys/": ["Pest Control Case Study: +285% Traffic | Yroc", "How a new pest control company in San Angelo went from page 8 to page one and nearly quadrupled organic traffic in one month."],
-  "/case-studies/medical-weight-loss-case-study/": ["Medical Weight Loss Case Study | Yroc Consulting", "How a weight loss clinic grew new users 84% in 30 days and generated a steady flow of patients without spending on ads."],
-  "/case-studies/hormone-replacement-therapy-clinic-case-study/": ["Hormone Clinic Case Study: $20K in 60 Days | Yroc", "How SEO, paid social and local marketing drove a 70% traffic surge and $20K in new revenue for a hormone therapy clinic."],
-  "/white-label-services/": ["White Label AI SEO for Agencies | Yroc Consulting", "Sell AI search optimization under your own brand. Certified AI Authority Engine partners get white-label fulfillment from our team."],
-  "/reviews/": ["Yroc Consulting Reviews | 5-Star Client Reviews", "Read verified 5-star reviews of Yroc Consulting from clients on Trustindex and Clutch, plus reviews of our AI Authority Engine training."],
-  "/kb/": ["AI Search Learning Center | Guides & Glossary | Yroc", "Free plain-English guides, a glossary and FAQs on how ChatGPT, Gemini and Google AI Overviews decide which businesses to recommend."],
-  "/kb/what-is-ai-search-optimization/": ["What Is AI Search Optimization? | Yroc Learning Center", "A plain-English definition of AI search optimization and why AI systems recommend some businesses while ignoring others."],
-  "/kb/how-ai-understands-entities/": ["How AI Understands Entities | Yroc Learning Center", "AI doesn't search for pages, it searches for entities. Learn how AI identifies, disambiguates and builds confidence in a business."],
-  "/kb/how-ai-decides-what-to-recommend/": ["How AI Decides What to Recommend | Yroc", "The step-by-step evaluation AI search and answer systems run before they name a business, from discovery to recommendation."],
-  "/kb/ai-search-vs-traditional-seo/": ["AI Search vs. Traditional SEO | Yroc Learning Center", "What changes when search returns an answer instead of a list of links, and how AI search optimization differs from classic SEO."],
-  "/kb/authority-and-trust-signals/": ["Authority & Trust Signals in AI Search | Yroc", "The authority and trust signals that make AI systems confident enough to recommend a business, and how to strengthen them."],
-  "/kb/structured-data-and-ai/": ["Structured Data & Schema for AI Search | Yroc", "How schema markup and structured data reduce ambiguity, confirm identity and help AI systems understand your business."],
-  "/kb/reviews-and-reputation/": ["Reviews & Reputation in AI Search | Yroc", "How reviews, ratings and public sentiment shape the way ChatGPT, Gemini and Google AI describe and compare your business."],
-  "/kb/ai-search-glossary/": ["AI Search Glossary: AEO, GEO, Entities & More | Yroc", "Plain-English definitions of AI search terms: AEO, GEO, AI Overviews, AI Mode, entities, Knowledge Graph, schema and more."],
-  "/entity-optimization/": ["Entity Optimization Services for AI Search | Yroc", "Make AI certain who you are. We align your business data, profiles, schema and knowledge sources so AI can confidently recommend you."],
-  "/schema-structured-data/": ["Schema Markup & Structured Data Services | Yroc", "Custom JSON-LD schema for your organization, services, locations, reviews and FAQs, built to help search engines and AI understand you."],
-  "/ai-content-optimization/": ["AI Content Optimization & AEO Services | Yroc", "Answer-first content that ChatGPT, Gemini and Google AI can extract, quote and cite: service pages, FAQs, comparisons and proof."],
-  "/ai-search-reporting/": ["AI Search Visibility Reporting | Yroc Consulting", "Weekly tracking of where your business appears in ChatGPT, Gemini, AI Overviews, AI Mode, Copilot and Perplexity, with monthly reviews."],
-  "/book-a-strategy-call/": ["Book a Free AI Search Strategy Call | Yroc", "Request a free 30-minute call with an AI search strategist to see where your business stands and what it takes to be recommended."],
-  "/privacy-policy/": ["Privacy Policy | Yroc Consulting", "How Yroc Consulting, LLC collects, uses and protects information submitted through yrocconsulting.com."],
-  "/accessibility-statement/": ["Accessibility Statement | Yroc Consulting", "Yroc Consulting's commitment to an accessible website, the WCAG 2.2 AA features we support, and how to request assistance."],
-  "/disclaimer/": ["Disclaimer | Yroc Consulting", "Important information about results, case studies, statistics, previews and third-party names on yrocconsulting.com."],
-  "/terms-and-conditions/": ["Terms and Conditions | Yroc Consulting", "Website terms of use, client service terms and affiliate program terms for Yroc Consulting, LLC."]
+  "/": [
+    "AI Search Optimization Agency in Texas | Yroc Consulting",
+    "Yroc Consulting helps businesses get recommended by ChatGPT, Gemini, Perplexity and Google AI. AI search optimization firm in Sherman, Texas."
+  ],
+  "/blog/": [
+    "AI Search Insights & Articles | Yroc Consulting",
+    "Research, playbooks and plain-English guides on getting your business recommended by ChatGPT, Gemini and Google AI Overviews."
+  ],
+  "/ai-search-optimization/": [
+    "AI Search Optimization Services | Yroc Consulting",
+    "Get found, cited and recommended in ChatGPT, Google AI Overviews, Gemini and Perplexity with entity, content, schema and authority work."
+  ],
+  "/ai-visibility-audit/": [
+    "Free AI Visibility Audit | Yroc Consulting",
+    "See what ChatGPT, Gemini, Perplexity and Google AI say about your business, which competitors they recommend, and what to fix first."
+  ],
+  "/contact/": [
+    "Contact Yroc Consulting | Sherman, TX",
+    "Talk with Yroc Consulting about AI search optimization, reputation management or a new website. Call 903.300.LEADS or send us a message."
+  ],
+  "/website-packages/": [
+    "AI-Ready Website Design Packages | Yroc Consulting",
+    "Websites built for Google and AI search, with AI search optimization included. Essential, Growth and Enterprise packages from $4,000."
+  ],
+  "/reputation-management/": [
+    "AI Reputation Management | Yroc Consulting",
+    "Control what Google and AI say about you. We suppress negative results, repair Knowledge Panels and build a reputation AI repeats."
+  ],
+  "/reputation-management/negative-search-results/": [
+    "Remove & Suppress Negative Search Results | Yroc",
+    "Push negative articles, complaint sites and outdated stories off page one of Google and out of the AI answers built from them."
+  ],
+  "/reputation-management/personal-reputation-management/": [
+    "Personal Reputation Management | Yroc Consulting",
+    "Protect your name in Google and AI answers. Reputation management for executives, founders, physicians, attorneys and professionals."
+  ],
+  "/reputation-management/business-reputation-management/": [
+    "Business Reputation Management | Yroc Consulting",
+    "Manage reviews, complaint sites, news and AI summaries so customers and AI platforms describe your business accurately and favorably."
+  ],
+  "/reputation-management/knowledge-panel-repair/": [
+    "Google Knowledge Panel Claim & Repair | Yroc",
+    "Get, claim, correct and enhance your Google Knowledge Panel, one of the key sources AI uses to understand you or your business."
+  ],
+  "/reputation-management/rebrand-strategy/": [
+    "Rebrand Reputation Strategy | Yroc Consulting",
+    "Rebrand, merge or change ownership without losing trust. We connect your new identity to your earned reputation in search and AI."
+  ],
+  "/about-us/": [
+    "About Yroc Consulting | AI Search Firm in Sherman, TX",
+    "Yroc Consulting is an AI search optimization firm headquartered in Sherman, Texas, advising businesses since 2005. Meet our team and story."
+  ],
+  "/case-studies/": [
+    "Case Studies & Client Results | Yroc Consulting",
+    "Real results from AI search visibility, reputation recovery and local growth work, from #1 in ChatGPT to page one reclaimed in 90 days."
+  ],
+  "/case-studies/thai-ginger-case-study/": [
+    "Thai Ginger Case Study: #1 in ChatGPT | Yroc",
+    "How an AI SEO strategy made a Bellevue restaurant the top recommendation in ChatGPT, Google AI Overviews, the map pack and organic search."
+  ],
+  "/case-studies/fractional-cfo-reputation-management-case-study/": [
+    "Reputation Management Case Study | Yroc Consulting",
+    "Negative press buried a financial professional's brand. See how we suppressed 80% of negative results and reclaimed page one in 90 days."
+  ],
+  "/case-studies/blacksmith-roofing-case-study/": [
+    "Roofing Case Study: 8× Phone Calls | Yroc",
+    "How an Oklahoma roofing contractor's maps visibility jumped 4,900% and inbound phone calls octupled within a single month."
+  ],
+  "/case-studies/irs-trouble-solvers-case-study/": [
+    "Tax Resolution Case Study: 604% ROI | Yroc",
+    "How a tax resolution firm outranked the IRS on Google and turned search traffic into a steady stream of high-value leads."
+  ],
+  "/case-studies/the-bug-guys/": [
+    "Pest Control Case Study: +285% Traffic | Yroc",
+    "How a new pest control company in San Angelo went from page 8 to page one and nearly quadrupled organic traffic in one month."
+  ],
+  "/case-studies/medical-weight-loss-case-study/": [
+    "Medical Weight Loss Case Study | Yroc Consulting",
+    "How a weight loss clinic grew new users 84% in 30 days and generated a steady flow of patients without spending on ads."
+  ],
+  "/case-studies/hormone-replacement-therapy-clinic-case-study/": [
+    "Hormone Clinic Case Study: $20K in 60 Days | Yroc",
+    "How SEO, paid social and local marketing drove a 70% traffic surge and $20K in new revenue for a hormone therapy clinic."
+  ],
+  "/white-label-services/": [
+    "White Label AI SEO for Agencies | Yroc Consulting",
+    "Sell AI search optimization under your own brand. Certified AI Authority Engine partners get white-label fulfillment from our team."
+  ],
+  "/reviews/": [
+    "Yroc Consulting Reviews | 5-Star Client Reviews",
+    "Read verified 5-star reviews of Yroc Consulting from clients on Trustindex and Clutch, plus reviews of our AI Authority Engine training."
+  ],
+  "/kb/": [
+    "AI Search Learning Center | Guides & Glossary | Yroc",
+    "Free plain-English guides, a glossary and FAQs on how ChatGPT, Gemini and Google AI Overviews decide which businesses to recommend."
+  ],
+  "/kb/what-is-ai-search-optimization/": [
+    "What Is AI Search Optimization? | Yroc Learning Center",
+    "A plain-English definition of AI search optimization and why AI systems recommend some businesses while ignoring others."
+  ],
+  "/kb/how-ai-understands-entities/": [
+    "How AI Understands Entities | Yroc Learning Center",
+    "AI doesn't search for pages, it searches for entities. Learn how AI identifies, disambiguates and builds confidence in a business."
+  ],
+  "/kb/how-ai-decides-what-to-recommend/": [
+    "How AI Decides What to Recommend | Yroc",
+    "The step-by-step evaluation AI search and answer systems run before they name a business, from discovery to recommendation."
+  ],
+  "/kb/ai-search-vs-traditional-seo/": [
+    "AI Search vs. Traditional SEO | Yroc Learning Center",
+    "What changes when search returns an answer instead of a list of links, and how AI search optimization differs from classic SEO."
+  ],
+  "/kb/authority-and-trust-signals/": [
+    "Authority & Trust Signals in AI Search | Yroc",
+    "The authority and trust signals that make AI systems confident enough to recommend a business, and how to strengthen them."
+  ],
+  "/kb/structured-data-and-ai/": [
+    "Structured Data & Schema for AI Search | Yroc",
+    "How schema markup and structured data reduce ambiguity, confirm identity and help AI systems understand your business."
+  ],
+  "/kb/reviews-and-reputation/": [
+    "Reviews & Reputation in AI Search | Yroc",
+    "How reviews, ratings and public sentiment shape the way ChatGPT, Gemini and Google AI describe and compare your business."
+  ],
+  "/kb/ai-search-glossary/": [
+    "AI Search Glossary: AEO, GEO, Entities & More | Yroc",
+    "Plain-English definitions of AI search terms: AEO, GEO, AI Overviews, AI Mode, entities, Knowledge Graph, schema and more."
+  ],
+  "/entity-optimization/": [
+    "Entity Optimization Services for AI Search | Yroc",
+    "Make AI certain who you are. We align your business data, profiles, schema and knowledge sources so AI can confidently recommend you."
+  ],
+  "/schema-structured-data/": [
+    "Schema Markup & Structured Data Services | Yroc",
+    "Custom JSON-LD schema for your organization, services, locations, reviews and FAQs, built to help search engines and AI understand you."
+  ],
+  "/ai-content-optimization/": [
+    "AI Content Optimization & AEO Services | Yroc",
+    "Answer-first content that ChatGPT, Gemini and Google AI can extract, quote and cite: service pages, FAQs, comparisons and proof."
+  ],
+  "/ai-search-reporting/": [
+    "AI Search Visibility Reporting | Yroc Consulting",
+    "Weekly tracking of where your business appears in ChatGPT, Gemini, AI Overviews, AI Mode, Copilot and Perplexity, with monthly reviews."
+  ],
+  "/book-a-strategy-call/": [
+    "Book a Free AI Search Strategy Call | Yroc",
+    "Request a free 30-minute call with an AI search strategist to see where your business stands and what it takes to be recommended."
+  ],
+  "/privacy-policy/": [
+    "Privacy Policy | Yroc Consulting",
+    "How Yroc Consulting, LLC collects, uses and protects information submitted through yrocconsulting.com."
+  ],
+  "/accessibility-statement/": [
+    "Accessibility Statement | Yroc Consulting",
+    "Yroc Consulting's commitment to an accessible website, the WCAG 2.2 AA features we support, and how to request assistance."
+  ],
+  "/disclaimer/": [
+    "Disclaimer | Yroc Consulting",
+    "Important information about results, case studies, statistics, previews and third-party names on yrocconsulting.com."
+  ],
+  "/terms-and-conditions/": [
+    "Terms and Conditions | Yroc Consulting",
+    "Website terms of use, client service terms and affiliate program terms for Yroc Consulting, LLC."
+  ],
+  "/case-studies/frigiserve-ai-visibility-case-study/": [
+    "FrigiServe Case Study: 90% AI Visibility | Yroc",
+    "How a Fort Worth cold storage company became the provider ChatGPT and Gemini recommend for blast freezing and refrigerated storage in DFW."
+  ]
 }

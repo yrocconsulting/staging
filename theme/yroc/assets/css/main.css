@@ -850,3 +850,11 @@ body:has(.yr-ctaband) .yr-footer__cta { display: none; }
 .yr-signal[aria-pressed="true"] { background: var(--yr-green); border-color: var(--yr-green); color: var(--yr-ink); }
 .yr-signal[aria-pressed="true"]::before { background: var(--yr-ink); }
 @media (max-width: 600px) { .yr-graph__pop { left: 12px !important; right: 12px; top: 12px !important; width: auto; } }
+.yr-todo { margin: 1.5rem 0; padding: 1rem 1.25rem; border-radius: 12px; border: 2px dashed #E3B341; background: #FFF8E1; }
+.yr-todo b { display: block; font: 600 .72rem var(--yr-mono); letter-spacing: .1em; text-transform: uppercase; color: #8A6100; margin-bottom: .3rem; }
+.yr-todo p { margin: 0; color: #5C4300; font-size: .95rem !important; }
+.yr-ptable td, .yr-ptable th { font-size: .9rem; }
+.yr-ptable td.yes { color: var(--yr-green-d); font-weight: 700; text-align: center; }
+.yr-ptable td.no { color: #C2C9D3; text-align: center; }
+.yr-ptable thead th:not(:first-child) { text-align: center; }
+.yr-ptable td:last-child { text-align: center; }
