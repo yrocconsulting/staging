@@ -829,3 +829,24 @@ body:has(.yr-ctaband) .yr-footer__cta { display: none; }
 .yr-lv__note { margin: 12px 4px 0; font-size: .75rem; color: rgba(255, 255, 255, .4); }
 @media (max-width: 980px) { .yr-lv { margin-top: 1rem; } }
 @media (prefers-reduced-motion: reduce) { .yr-hero__bg span, .yr-lv__line { animation: none; } }
+
+/* ---------- Method: signal popups + list ---------- */
+.yr-graph__pop { position: absolute; z-index: 3; width: min(320px, calc(100% - 24px)); padding: 18px 18px 16px; border-radius: 16px; background: #fff; color: var(--yr-text); box-shadow: 0 30px 60px rgba(0, 0, 0, .45); animation: yr-popin .25s var(--yr-ease); }
+.yr-graph__pop[hidden] { display: none; }
+@keyframes yr-popin { from { opacity: 0; transform: translateY(6px) scale(.98); } }
+.yr-graph__pop h3 { margin: 0 0 .4rem; color: var(--yr-ink) !important; font-size: 1.1rem; }
+.yr-graph__pop p { margin: 0; font-size: .9rem; line-height: 1.55; color: var(--yr-text); }
+.yr-graph__pop .yr-graph__phase { margin-bottom: .35rem; font: 600 .68rem var(--yr-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--yr-green-d); }
+.yr-graph__close { position: absolute; top: 8px; right: 8px; width: 30px; height: 30px; border: 0; border-radius: 50%; background: var(--yr-bg); color: var(--yr-ink); font-size: 1.2rem; line-height: 1; cursor: pointer; }
+.yr-graph__close:hover { background: var(--yr-line); }
+.yr-signals { margin-top: 2rem; }
+.yr-signals__h { margin: 0 0 .9rem; font-weight: 600; color: #fff; }
+.yr-signals__h span { display: block; font-weight: 400; font-size: .88rem; color: rgba(255, 255, 255, .55); }
+.yr-signals ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.yr-signal { padding: .45rem .85rem; border-radius: 999px; border: 1px solid rgba(255, 255, 255, .14); background: rgba(255, 255, 255, .04); color: rgba(255, 255, 255, .8); font: 500 .85rem Inter, sans-serif; cursor: pointer; transition: .2s; }
+.yr-signal::before { content: ""; display: inline-block; width: 7px; height: 7px; border-radius: 50%; margin-right: 7px; vertical-align: 1px; background: var(--yr-green); }
+.yr-signal--2::before { background: var(--yr-blue); }
+.yr-signal:hover { border-color: rgba(126, 217, 87, .55); color: #fff; }
+.yr-signal[aria-pressed="true"] { background: var(--yr-green); border-color: var(--yr-green); color: var(--yr-ink); }
+.yr-signal[aria-pressed="true"]::before { background: var(--yr-ink); }
+@media (max-width: 600px) { .yr-graph__pop { left: 12px !important; right: 12px; top: 12px !important; width: auto; } }

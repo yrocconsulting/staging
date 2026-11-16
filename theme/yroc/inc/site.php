@@ -119,6 +119,39 @@ function yroc_case_categories() {
 	return array( 'ai-visibility' => 'AI Visibility', 'reputation' => 'Reputation', 'local' => 'Local & SEO' );
 }
 
+/**
+ * Signals in the Yroc Method entity graph: label => array( phase 0|1|2, why it matters for AI ).
+ * Phase 0 = Identify, 1 = Verify, 2 = Recommend. Labels must match the graph in assets/js/main.js.
+ */
+function yroc_signals() {
+	return array(
+		'Google Business Profile' => array( 0, 'The single most important local source. Google\'s AI Overviews and AI Mode pull your categories, services, hours and reviews straight from it, and other AI tools use it to confirm you are a real, active business.' ),
+		'Website'                 => array( 0, 'Your official source of truth. AI reads it to learn exactly what you do, where and for whom. Clear service pages and answer-first content give it something accurate to repeat.' ),
+		'Schema.org'              => array( 0, 'Structured data labels your business, services, locations and reviews in a language machines read first. It removes guesswork, and less guesswork means more confident recommendations.' ),
+		'Wikidata'                => array( 0, 'A public knowledge base that feeds Google\'s Knowledge Graph and many AI models. An accurate entry helps AI recognize you as a distinct, verified entity.' ),
+		'LinkedIn'                => array( 0, 'Connects your business to real people, leadership and expertise. AI uses these relationships to judge credibility and to tell similar businesses apart.' ),
+		'Bing Places'             => array( 0, 'Microsoft Copilot and ChatGPT search lean heavily on Bing data. A complete Bing Places listing helps you show up in their answers, not just Google\'s.' ),
+		'Apple Maps'              => array( 0, 'Siri, Apple Maps and Apple Intelligence draw on Apple Business Connect. Consistent details here extend your visibility to every iPhone user asking for a recommendation.' ),
+		'Founder bio'             => array( 0, 'AI weighs who is behind a business. A clear bio with credentials and experience links your company to a trusted person, which strengthens both entities.' ),
+		'NAP citations'           => array( 0, 'Your name, address and phone listed identically across directories. Consistency tells AI every mention belongs to the same business; conflicts create doubt.' ),
+		'Google reviews'          => array( 1, 'Volume, rating, recency and what customers actually say all feed AI summaries. Reviews that mention specific services help AI match you to those exact questions.' ),
+		'Yelp'                    => array( 1, 'A major review source for ChatGPT and Apple. Strong, recent Yelp reviews independently confirm your quality outside of Google.' ),
+		'BBB'                     => array( 1, 'An independent trust and accreditation signal. AI treats third-party verification like the Better Business Bureau as evidence you are established and accountable.' ),
+		'Press mention'           => array( 1, 'Coverage in news or industry publications is a strong authority signal. AI gives extra weight to what reputable outside sources say about you.' ),
+		'Podcast'                 => array( 1, 'Interviews show expertise in your own words and create transcripts and show notes that AI can index, quote and associate with your name.' ),
+		'YouTube'                 => array( 1, 'The second-largest search engine. Videos and their transcripts are increasingly used as sources in AI answers, especially for how-to and comparison questions.' ),
+		'Industry directory'      => array( 1, 'Trade associations and niche directories confirm what you do and that peers recognize you, which helps AI place you in the right category.' ),
+		'Case study'              => array( 1, 'Documented results with numbers give AI concrete proof to cite when someone asks who is good at a specific job.' ),
+		'Clutch'                  => array( 1, 'Verified B2B reviews from a respected platform. AI often references Clutch when recommending agencies and professional service firms.' ),
+		'Local news'              => array( 1, 'Local coverage ties your business to your community and location, a strong signal for "near me" and city-specific AI questions.' ),
+		'FAQ answers'             => array( 2, 'Short, direct answers to real customer questions are exactly what AI extracts and quotes. Well-structured FAQs are among the most-cited content on the web.' ),
+		'Knowledge panel'         => array( 2, 'When Google shows a Knowledge Panel for you, it means it has confidently identified your entity. That confidence carries into AI Overviews and AI Mode.' ),
+		'Expert article'          => array( 2, 'In-depth content on your specialty builds topical authority, so AI sees you as a go-to source rather than one name among many.' ),
+		'Comparison page'         => array( 2, 'People ask AI to compare options. Honest comparison content gives AI the context it needs to explain why you are the right choice.' ),
+		'Awards'                  => array( 2, 'Recognition from third parties is a shortcut to trust. AI often mentions awards and "best of" honors when explaining a recommendation.' ),
+	);
+}
+
 /** Where Yroc has spoken / been featured. */
 function yroc_speaking() {
 	return array(

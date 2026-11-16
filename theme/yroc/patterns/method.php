@@ -20,9 +20,24 @@
 			</div>
 			<div class="yr-graph">
 				<canvas data-yr-graph aria-label="Interactive map of the signals AI uses to trust a business"></canvas>
-				<span class="yr-graph__tip">drag the nodes</span>
+				<span class="yr-graph__tip">click a signal to learn why it matters · drag to move</span>
 				<div class="yr-graph__hud"><span>AI confidence</span><span class="yr-meter"><i data-meter></i></span><b data-conf>8%</b></div>
+				<div class="yr-graph__pop" data-yr-pop role="dialog" aria-modal="false" aria-labelledby="yr-pop-h" hidden>
+					<button type="button" class="yr-graph__close" data-yr-pop-close aria-label="Close">×</button>
+					<p class="yr-graph__phase" data-yr-pop-phase></p>
+					<h3 id="yr-pop-h" data-yr-pop-title></h3>
+					<p data-yr-pop-body></p>
+				</div>
 			</div>
+		</div>
+		<div class="yr-signals">
+			<p class="yr-signals__h">Explore the signals AI uses <span>Click any signal, in the graph or below, to see why it matters.</span></p>
+			<?php $phases = array( 'Identify', 'Verify', 'Recommend' ); ?>
+			<ul data-yr-signals>
+				<?php foreach ( yroc_signals() as $label => $sig ) : ?>
+					<li><button type="button" class="yr-signal yr-signal--<?php echo (int) $sig[0]; ?>" data-signal="<?php echo esc_attr( $label ); ?>" data-phase="<?php echo esc_attr( $phases[ $sig[0] ] ); ?>" data-why="<?php echo esc_attr( $sig[1] ); ?>"><?php echo esc_html( $label ); ?></button></li>
+				<?php endforeach; ?>
+			</ul>
 		</div>
 	</div>
 </section>

@@ -203,9 +203,90 @@
 		var size = function () { var r = cv.getBoundingClientRect(); W = r.width; H = r.height; cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); };
 		size(); window.addEventListener('resize', size);
 		var pos = function (e) { var r = cv.getBoundingClientRect(); return { x: e.clientX - r.left, y: e.clientY - r.top }; };
-		cv.addEventListener('pointerdown', function (e) { var p = pos(e), b = null, bd = 28; nodes.forEach(function (n) { var d = Math.hypot(n.x - p.x, n.y - p.y); if (d < bd) { bd = d; b = n; } }); drag = b; if (b) cv.setPointerCapture(e.pointerId); });
-		cv.addEventListener('pointermove', function (e) { var p = pos(e); mouse = p; if (drag) { drag.x = p.x; drag.y = p.y; drag.vx = drag.vy = 0; } });
-		cv.addEventListener('pointerup', function () { drag = null; });
+		ctx.font = '500 11.5px Inter, sans-serif';
+		nodes.forEach(function (n) { n.w = ctx.measureText(n.label).width; });
+		var hit = function (p) {
+			var b = null, bd = 1e9;
+			nodes.forEach(function (n) {
+				var inLabel = p.x >= n.x - 10 && p.x <= n.x + 14 + n.w && Math.abs(p.y - n.y) <= 11;
+				var d = Math.hypot(n.x - p.x, n.y - p.y);
+				if ((inLabel || d < 18) && d < bd) { bd = d; b = n; }
+			});
+			return b;
+		};
+		// Popup explaining why each signal matters (text comes from the signal buttons rendered by PHP).
+		var pop = $('[data-yr-pop]', method), sel = null, down = null, info = {};
+		var placePop = function () {
+			if (!sel || !pop || pop.hidden) return;
+			var pw = pop.offsetWidth, ph = pop.offsetHeight;
+			var x = sel.x + 16, y = sel.y - ph / 2;
+			if (x + pw > W - 12) x = sel.x - pw - 16;
+			x = Math.max(12, Math.min(x, W - pw - 12));
+			y = Math.max(12, Math.min(y, H - ph - 50));
+			pop.style.left = x + 'px';
+			pop.style.top = y + 'px';
+		};
+		var openPop = function (n, fromList) {
+			var d = info[n.label];
+			if (!d || !pop) return;
+			sel = n;
+			$('[data-yr-pop-title]', pop).textContent = n.label;
+			$('[data-yr-pop-phase]', pop).textContent = 'Phase: ' + d.phase;
+			$('[data-yr-pop-body]', pop).textContent = d.why;
+			pop.hidden = false;
+			Object.keys(info).forEach(function (k) { info[k].btn.setAttribute('aria-pressed', k === n.label ? 'true' : 'false'); });
+			placePop();
+			if (fromList) {
+				$('[data-yr-pop-close]', pop).focus({ preventScroll: true });
+				cv.closest('.yr-graph').scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'nearest' });
+			}
+		};
+		var closePop = function () {
+			if (!pop || pop.hidden) return;
+			var last = sel, hadFocus = pop.contains(document.activeElement);
+			pop.hidden = true;
+			sel = null;
+			Object.keys(info).forEach(function (k) { info[k].btn.setAttribute('aria-pressed', 'false'); });
+			if (last && hadFocus && info[last.label]) info[last.label].btn.focus({ preventScroll: true });
+		};
+		$$('[data-signal]', method.closest('section') || document).forEach(function (btn) {
+			var label = btn.getAttribute('data-signal');
+			info[label] = { phase: btn.getAttribute('data-phase'), why: btn.getAttribute('data-why'), btn: btn };
+			btn.setAttribute('aria-pressed', 'false');
+			btn.addEventListener('click', function () {
+				var n = nodes.filter(function (x) { return x.label === label; })[0];
+				if (!n) return;
+				started = true;
+				if (tgt < thr[n.k] + 0.05) tgt = Math.min(0.95, thr[n.k] + 0.1);
+				openPop(n, true);
+			});
+		});
+		if (pop) {
+			$('[data-yr-pop-close]', pop).addEventListener('click', closePop);
+			document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closePop(); });
+			document.addEventListener('pointerdown', function (e) {
+				if (!pop.hidden && !pop.contains(e.target) && e.target !== cv && !e.target.closest('[data-signal]')) closePop();
+			});
+		}
+		cv.addEventListener('pointerdown', function (e) {
+			var p = pos(e), b = hit(p);
+			drag = b;
+			down = { x: p.x, y: p.y, n: b, t: Date.now() };
+			if (b) cv.setPointerCapture(e.pointerId);
+		});
+		cv.addEventListener('pointermove', function (e) {
+			var p = pos(e);
+			mouse = p;
+			if (drag && down && Math.hypot(p.x - down.x, p.y - down.y) > 6) { drag.x = p.x; drag.y = p.y; drag.vx = drag.vy = 0; }
+			cv.style.cursor = drag ? 'grabbing' : (hit(p) ? 'pointer' : 'grab');
+		});
+		cv.addEventListener('pointerup', function (e) {
+			var p = pos(e);
+			if (down && down.n && Math.hypot(p.x - down.x, p.y - down.y) <= 6 && Date.now() - down.t < 600) openPop(down.n, false);
+			else if (down && !down.n) closePop();
+			drag = null;
+			down = null;
+		});
 		cv.addEventListener('pointerleave', function () { mouse = { x: -1e4, y: -1e4 }; });
 		var setPhase = function (p, user) {
 			tgt = [0.3, 0.6, 0.95][p];
@@ -251,6 +332,7 @@
 				ctx.fillStyle = on ? (n.k === 2 ? '#0099FF' : '#7ED957') : 'rgba(84,117,144,.9)';
 				ctx.beginPath(); ctx.arc(n.x, n.y, on ? 4 : 3, 0, 7); ctx.fill();
 				ctx.fillStyle = on ? 'rgba(233,238,245,.88)' : 'rgba(233,238,245,.35)'; ctx.fillText(n.label, n.x + 9, n.y);
+				if (n === sel) { ctx.strokeStyle = '#7ED957'; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(n.x, n.y, 9, 0, 7); ctx.stroke(); ctx.lineWidth = 1; }
 			});
 			var c = connected / nodes.length, core = (14 + c * 26) * (1 + Math.sin(t * 2.4) * 0.04);
 			var g = ctx.createRadialGradient(X, Y, 0, X, Y, core * 4);
@@ -260,6 +342,7 @@
 			ctx.fillStyle = '#0B1220'; ctx.textAlign = 'center'; ctx.font = '700 ' + Math.round(9 + c * 4) + 'px Inter, sans-serif';
 			ctx.fillText(c > 0.95 ? 'RECOMMENDED' : 'YOUR BRAND', X, Y); ctx.textAlign = 'left';
 			var sc = Math.round(8 + c * 88); meter.style.width = sc + '%'; conf.textContent = sc + '%';
+			if (sel) placePop();
 			requestAnimationFrame(frame);
 		};
 	}
