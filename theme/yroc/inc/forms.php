@@ -28,6 +28,22 @@ function yroc_form_defs() {
 				array( 'message', 'Message', 'textarea', true, 'full', '' ),
 			),
 		),
+		'strategy' => array(
+			'title'  => 'Strategy Call Request',
+			'button' => 'Request my strategy call',
+			'thanks' => 'Thanks! A strategist will reach out within one business day to schedule your call.',
+			'fields' => array(
+				array( 'name', 'Full name', 'text', true, 'half', 'name' ),
+				array( 'email', 'Email', 'email', true, 'half', 'email' ),
+				array( 'phone', 'Phone', 'tel', true, 'half', 'tel' ),
+				array( 'business', 'Business name', 'text', true, 'half', 'organization' ),
+				array( 'website', 'Website', 'url', false, 'half', 'url' ),
+				array( 'topic', 'What would you like to talk about?', 'select', false, 'half', '', array( 'Getting recommended by AI', 'AI Visibility Audit results', 'Reputation management', 'A new website', 'White label partnership', 'Something else' ) ),
+				array( 'time', 'Best time to reach you', 'select', false, 'half', '', array( 'Morning (9am to noon CT)', 'Afternoon (noon to 5pm CT)', 'Any time' ) ),
+				array( 'method', 'Preferred meeting type', 'select', false, 'half', '', array( 'Phone call', 'Video call', 'In person in Sherman, TX' ) ),
+				array( 'message', 'Anything we should know before the call?', 'textarea', false, 'full', '' ),
+			),
+		),
 		'audit'   => array(
 			'title'  => 'AI Visibility Audit Request',
 			'button' => 'Request my audit',

@@ -124,7 +124,8 @@ foreach ( $manifest['pages'] ?? array() as $p ) {
 		}
 		$last_import = get_post_meta( $id, '_yroc_db_hash', true );
 		$edited      = $last_import && md5( $existing->post_content ) !== $last_import;
-		if ( ( $edited || ! $last_import ) && ! $force ) {
+		$wp_default  = ! $last_import && 'draft' === $existing->post_status; // e.g. WordPress's sample Privacy Policy draft
+		if ( ( $edited || ( ! $last_import && ! $wp_default ) ) && ! $force ) {
 			WP_CLI::warning( "skipped    /$path/ (edited in WordPress — run with YROC_FORCE=1 to overwrite)" );
 			$ids[ $path ] = $id;
 			continue;

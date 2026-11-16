@@ -268,6 +268,36 @@
       "title": "AI Search Reporting",
       "file": "pages/ai-search-reporting.html",
       "template": "page-landing"
+    },
+    {
+      "slug": "book-a-strategy-call",
+      "title": "Book a Strategy Call",
+      "file": "pages/book-a-strategy-call.html",
+      "template": "page-landing"
+    },
+    {
+      "slug": "privacy-policy",
+      "title": "Privacy Policy",
+      "file": "pages/legal-privacy-policy.html",
+      "template": "page-landing"
+    },
+    {
+      "slug": "accessibility-statement",
+      "title": "Accessibility Statement",
+      "file": "pages/legal-accessibility-statement.html",
+      "template": "page-landing"
+    },
+    {
+      "slug": "disclaimer",
+      "title": "Disclaimer",
+      "file": "pages/legal-disclaimer.html",
+      "template": "page-landing"
+    },
+    {
+      "slug": "terms-and-conditions",
+      "title": "Terms and Conditions",
+      "file": "pages/legal-terms-and-conditions.html",
+      "template": "page-landing"
     }
   ]
 }

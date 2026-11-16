@@ -6,13 +6,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'YROC_VERSION', '2.6.0' );
+define( 'YROC_VERSION', '2.7.0' );
 
 require_once __DIR__ . '/inc/site.php';
 require_once __DIR__ . '/inc/schema.php';
 require_once __DIR__ . '/inc/ai-stats.php';
 require_once __DIR__ . '/inc/forms.php';
 require_once __DIR__ . '/inc/reviews.php';
+require_once __DIR__ . '/inc/redirects.php';
 
 add_action( 'after_setup_theme', function () {
 	add_theme_support( 'wp-block-styles' );
