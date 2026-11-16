@@ -99,6 +99,18 @@ add_shortcode( 'yroc_location', function ( $atts ) {
 					<?php endforeach; ?>
 				</div>
 				<p class="yr-locwins__src">From our weekly AI visibility tracking. Updated every Monday.</p>
+			<?php elseif ( ! empty( $l['cases'] ) ) : ?>
+				<div class="yr-cases yr-loccases">
+					<?php foreach ( yroc_cases() as $c ) : if ( ! in_array( $c[0], $l['cases'], true ) ) { continue; } ?>
+						<a class="yr-casecard" href="<?php echo esc_url( home_url( '/case-studies/' . $c[0] . '/' ) ); ?>">
+							<span class="yr-casecard__tag"><?php echo esc_html( $c[2] ); ?></span>
+							<span class="yr-casecard__m"><?php echo esc_html( $c[4] ); ?><small><?php echo esc_html( $c[5] ); ?></small></span>
+							<span class="yr-casecard__l"><?php echo esc_html( $c[6] ); ?></span>
+							<p><strong><?php echo esc_html( $c[1] ); ?>.</strong> <?php echo esc_html( $c[7] ); ?></p>
+							<span class="yr-casecard__go">Read the case study →</span>
+						</a>
+					<?php endforeach; ?>
+				</div>
 			<?php endif; ?>
 		</div>
 	</section>

@@ -140,6 +140,7 @@ function yroc_locations() {
 				array( 'In-person strategy sessions', 'Prefer to talk face to face? Schedule a meeting at our Teague Drive office to walk through your AI Visibility Audit and roadmap with our team.' ),
 				array( 'Home of the Yroc Method', 'Every engagement, wherever the client is located, is planned and managed from our Sherman office using the same proven system.' ),
 			),
+			'cases' => array( 'frigiserve-ai-visibility-case-study', 'fractional-cfo-reputation-management-case-study' ),
 			'proof' => array( 'Ask AI for an AI search company in Sherman', 'In our own weekly tracking, Yroc Consulting appears in AI answers for "AI search company in Sherman, TX" with 75% visibility across ChatGPT, Google AI Overviews and Gemini. We practice what we sell.' ),
 			'faq' => array(
 				array( 'Can I meet with Yroc in person in Sherman?', 'Yes. Our headquarters is at 1800 Teague Dr. Ste. 416 in Sherman. Book a strategy call and choose "In person in Sherman, TX" as your meeting type.' ),
@@ -161,6 +162,7 @@ function yroc_locations() {
 				array( 'Local wins, measured', 'San Angelo\'s The Bug Guys went from page eight to page one and nearly quadrupled organic traffic in a single month.' ),
 				array( 'Small market, big competition', 'In regional markets, a few businesses capture most of the calls. Being the name AI recommends for "near me" questions makes the difference.' ),
 			),
+			'cases' => array( 'frigiserve-ai-visibility-case-study', 'the-bug-guys' ),
 			'proof' => array( 'From San Angelo to statewide', 'Our San Angelo clients include FrigiServe Cold Storage, now recommended by ChatGPT and Gemini for cold storage across Dallas–Fort Worth with 90% AI visibility.' ),
 			'faq' => array(
 				array( 'Where is Yroc\'s San Angelo office?', 'We\'re downtown at 133 W Concho Ave #301, San Angelo, TX 76903. Call 325.340.4358 to set up a time to meet.' ),
