@@ -33,7 +33,12 @@ $rv  = yroc_reviews();
 		</div>
 		<div class="yr-stage">
 			<p class="yr-hero__cap"><span class="yr-live">On stage</span> Cory Long, founder, at Magnify Your Wealth Summit, eForge &amp; association events</p>
-			<div class="yr-float yr-chip yr-reveal"><span class="yr-live">Live AI tracking</span><b>6 platforms</b><span>ChatGPT · Gemini · Perplexity<br>Copilot · AI Overviews · AI Mode</span></div>
+			<?php $ais = yroc_ai_stats(); ?>
+			<?php if ( $ais['appearances'] > 0 ) : ?>
+				<div class="yr-float yr-chip yr-reveal"><span class="yr-live">Live AI tracking</span><b data-count="<?php echo esc_attr( $ais['appearances'] ); ?>"><?php echo esc_html( number_format( $ais['appearances'] ) ); ?></b><span>client appearances in AI<br>answers this week</span></div>
+			<?php else : ?>
+				<div class="yr-float yr-chip yr-reveal"><span class="yr-live">Live AI tracking</span><b>6 platforms</b><span>ChatGPT · Gemini · Perplexity<br>Copilot · AI Overviews · AI Mode</span></div>
+			<?php endif; ?>
 			<div class="yr-float yr-aicard" data-yr-aicard aria-live="polite">
 				<div class="yr-aicard__top"><span class="yr-aicard__av"></span><span data-src>ChatGPT · answer preview</span></div>
 				<p class="yr-aicard__q" data-q>› Who's the most trusted roofing company in Tulsa?</p>

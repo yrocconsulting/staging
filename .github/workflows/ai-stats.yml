@@ -1,0 +1,55 @@
+name: Weekly AI visibility stats
+
+# ProRankTracker emails a weekly "AI Visibility" PDF to a shared Drive folder every Monday.
+# This job reads the newest report and updates the homepage stats (totals only, no client names).
+on:
+  schedule:
+    - cron: "30 22 * * 1"   # Mondays 22:30 UTC (4:30 pm Central), after the report arrives
+    - cron: "30 14 * * 2"   # Tuesday morning retry
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-staging
+  cancel-in-progress: false
+
+jobs:
+  stats:
+    runs-on: ubuntu-latest
+    env:
+      SSH_HOST: ${{ secrets.SSH_HOST }}
+      SSH_USER: ${{ secrets.SSH_USER }}
+      SSH_PORT: ${{ secrets.SSH_PORT || '18765' }}
+      DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
+      DRIVE_FOLDER: 1HMP4uk0PNoCAT7rU4QUGvRBBDBuDm_ud
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install pdftotext
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq poppler-utils
+
+      - name: Read newest report
+        run: |
+          python3 tools/prt_report.py --drive-folder "$DRIVE_FOLDER" > stats.json
+          cat stats.json
+
+      - name: Set up SSH key
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          SSH_PASSPHRASE: ${{ secrets.SSH_PASSPHRASE }}
+        run: |
+          mkdir -p ~/.ssh && chmod 700 ~/.ssh
+          printf '%s\n' "$SSH_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          if [ -n "$SSH_PASSPHRASE" ]; then ssh-keygen -p -P "$SSH_PASSPHRASE" -N "" -f ~/.ssh/deploy_key >/dev/null; fi
+          ssh-keyscan -p "$SSH_PORT" -H "$SSH_HOST" >> ~/.ssh/known_hosts 2>/dev/null
+          printf 'Host target\n  HostName %s\n  User %s\n  Port %s\n  IdentityFile ~/.ssh/deploy_key\n  IdentitiesOnly yes\n' "$SSH_HOST" "$SSH_USER" "$SSH_PORT" > ~/.ssh/config
+
+      - name: Update site stats
+        run: |
+          ssh target "mkdir -p yroc-deploy"
+          rsync -az deploy/apply_ai_stats.php stats.json "target:yroc-deploy/"
+          ssh target "cd $DEPLOY_PATH && wp eval-file ~/yroc-deploy/apply_ai_stats.php ~/yroc-deploy/stats.json && (wp sg purge 2>/dev/null || true)"
+
+      - name: Clean up key
+        if: always()
+        run: rm -f ~/.ssh/deploy_key

@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'YROC_VERSION', '2.4.0' );
+define( 'YROC_VERSION', '2.4.1' );
 
 require_once __DIR__ . '/inc/site.php';
 require_once __DIR__ . '/inc/schema.php';

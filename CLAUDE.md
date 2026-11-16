@@ -21,6 +21,8 @@ WordPress block theme (`theme/yroc`) + content (`content/`) deployed to SiteGrou
 - Business info, mega menu, departments, speaking list: `theme/yroc/inc/site.php`.
 - Forms: `[yroc_form type="contact|audit"]`, submissions saved under **Leads** (`inc/forms.php`).
 - Reviews: synced daily from Trustindex (`inc/reviews.php`), 5-star only, staff-name filter.
-- Homepage stats + ProRankTracker sync: `inc/ai-stats.php` (key in wp-config: `YROC_PRT_API_KEY`).
+- Homepage stats: `inc/ai-stats.php`. AI numbers come from the weekly ProRankTracker PDF that lands in a
+  shared Drive folder each Monday; `.github/workflows/ai-stats.yml` parses it (`tools/prt_report.py`,
+  totals only, Yroc's own domain excluded, never client names) and applies it via `deploy/apply_ai_stats.php`.
 - Hero video: `theme/yroc/assets/video/hero-speaking.mp4` (720p H.264, keep under ~4 MB).
 - Bump `Version` in `style.css` when adding new pattern files (WordPress caches the pattern list).

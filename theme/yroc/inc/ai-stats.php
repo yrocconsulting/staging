@@ -44,10 +44,20 @@ function yroc_stat_parts( $value ) {
 	return array( '', null, $value, 0 );
 }
 
+/** True when the AI numbers came from an automatic source within the last 8 days (weekly report). */
+function yroc_ai_stats_live( $s ) {
+	return in_array( $s['source'], array( 'proranktracker', 'prt-report' ), true ) && $s['updated'] > time() - 8 * DAY_IN_SECONDS;
+}
+
 function yroc_ai_stats_defaults() {
 	return array(
 		'appearances'   => 0,
 		'prompts'       => 0,
+		'clients'       => 0,
+		'mentions'      => 0,
+		'links'         => 0,
+		'visibility'    => 0,
+		'report_date'   => '',
 		'platforms'     => array_fill_keys( array_keys( yroc_ai_platforms() ), 0 ),
 		'slots'         => yroc_stat_slot_defaults(),
 		'source'        => 'manual',
@@ -132,6 +142,7 @@ function yroc_ai_stats_page() {
 	}
 	if ( isset( $_POST['yroc_stats_nonce'] ) && wp_verify_nonce( sanitize_key( $_POST['yroc_stats_nonce'] ), 'yroc_stats' ) ) {
 		$s = yroc_ai_stats();
+		$before = array( $s['appearances'], $s['prompts'], $s['platforms'] );
 		foreach ( array( 'appearances', 'prompts' ) as $k ) {
 			$s[ $k ] = absint( $_POST[ $k ] ?? 0 );
 		}
@@ -147,8 +158,10 @@ function yroc_ai_stats_page() {
 			$s['platforms'][ $k ] = absint( $_POST['p'][ $k ] ?? 0 );
 		}
 		update_option( 'yroc_hero_image_id', absint( $_POST['hero_image_id'] ?? 0 ) );
-		$s['source']  = 'manual';
-		$s['updated'] = time();
+		if ( array( $s['appearances'], $s['prompts'], $s['platforms'] ) !== $before ) {
+			$s['source']  = 'manual'; // AI numbers were edited by hand
+			$s['updated'] = time();
+		}
 		update_option( YROC_STATS_OPTION, $s, false );
 		if ( function_exists( 'sg_cachepress_purge_cache' ) ) {
 			sg_cachepress_purge_cache();
@@ -185,6 +198,8 @@ function yroc_ai_stats_page() {
 		<p>Numbers shown in the homepage stats bar.
 			<?php if ( $prt ) : ?>
 				A ProRankTracker key is configured; synced values overwrite AI appearances, prompts and platform counts hourly.
+			<?php elseif ( 'prt-report' === $s['source'] ) : ?>
+				AI numbers update automatically every Monday from the ProRankTracker weekly report (report date <?php echo esc_html( $s['report_date'] ); ?>). Editing them here overrides that until the next report.
 			<?php else : ?>
 				No ProRankTracker key yet. Values below are entered manually.
 			<?php endif; ?>
