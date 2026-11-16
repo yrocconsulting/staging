@@ -1,0 +1,88 @@
+name: Deploy to staging
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      force_content:
+        description: "Overwrite pages even if they were edited in WordPress"
+        type: boolean
+        default: false
+
+concurrency:
+  group: deploy-staging
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      SSH_HOST: ${{ secrets.SSH_HOST }}
+      SSH_USER: ${{ secrets.SSH_USER }}
+      SSH_PORT: ${{ secrets.SSH_PORT || '18765' }}
+      DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Lint PHP
+        run: find theme deploy -name '*.php' -print0 | xargs -0 -n1 php -l
+
+      - name: Check required secrets
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        run: |
+          for v in SSH_HOST SSH_USER DEPLOY_PATH SSH_PRIVATE_KEY; do
+            [ -n "${!v}" ] || { echo "::error::Missing repository secret $v"; exit 1; }
+          done
+
+      - name: Set up SSH key
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          SSH_PASSPHRASE: ${{ secrets.SSH_PASSPHRASE }}
+        run: |
+          mkdir -p ~/.ssh && chmod 700 ~/.ssh
+          printf '%s\n' "$SSH_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          if [ -n "$SSH_PASSPHRASE" ]; then
+            # Remove the passphrase from this throwaway copy so ssh/rsync run non-interactively.
+            ssh-keygen -p -P "$SSH_PASSPHRASE" -N "" -f ~/.ssh/deploy_key >/dev/null
+          fi
+          ssh-keyscan -p "$SSH_PORT" -H "$SSH_HOST" >> ~/.ssh/known_hosts 2>/dev/null
+          cat > ~/.ssh/config <<CFG
+          Host target
+            HostName $SSH_HOST
+            User $SSH_USER
+            Port $SSH_PORT
+            IdentityFile ~/.ssh/deploy_key
+            IdentitiesOnly yes
+            ServerAliveInterval 30
+          CFG
+
+      - name: Check server
+        run: |
+          ssh target "cd $DEPLOY_PATH && test -f wp-config.php && wp core version"
+
+      - name: Upload theme
+        run: |
+          rsync -az --delete --exclude '.DS_Store' theme/yroc/ "target:$DEPLOY_PATH/wp-content/themes/yroc/"
+
+      - name: Upload content
+        run: |
+          ssh target "mkdir -p yroc-deploy/content"
+          rsync -az deploy/import.php "target:yroc-deploy/import.php"
+          rsync -az --delete --exclude '.DS_Store' content/ "target:yroc-deploy/content/"
+
+      - name: Activate theme and import content
+        run: |
+          FORCE=${{ github.event.inputs.force_content == 'true' && '1' || '0' }}
+          ssh target "cd $DEPLOY_PATH \
+            && wp theme activate yroc \
+            && wp rewrite structure '/%category%/%postname%/' --hard \
+            && YROC_FORCE=$FORCE wp eval-file ~/yroc-deploy/import.php ~/yroc-deploy/content \
+            && wp cache flush \
+            && (wp sg purge 2>/dev/null || true)"
+
+      - name: Clean up key
+        if: always()
+        run: rm -f ~/.ssh/deploy_key

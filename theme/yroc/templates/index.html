@@ -1,0 +1,42 @@
+<!-- wp:template-part {"slug":"header","tagName":"div","className":"yr-site-header"} /-->
+
+<!-- wp:group {"tagName":"main","className":"yr-page","layout":{"type":"constrained","contentSize":"1200px"}} -->
+<main class="wp-block-group yr-page">
+<!-- wp:group {"align":"full","className":"yr-pagehero","layout":{"type":"constrained","contentSize":"1200px"}} -->
+<div class="wp-block-group alignfull yr-pagehero">
+<!-- wp:heading {"level":1} -->
+<h1 class="wp-block-heading">AI Search Insights</h1>
+<!-- /wp:heading -->
+<!-- wp:paragraph {"className":"yr-lead"} -->
+<p class="yr-lead">Research, playbooks and plain-English guides on getting your business recommended by AI.</p>
+<!-- /wp:paragraph -->
+</div>
+<!-- /wp:group -->
+<!-- wp:query {"queryId":1,"query":{"perPage":12,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","inherit":true},"align":"wide","className":"yr-postgrid"} -->
+<div class="wp-block-query alignwide yr-postgrid">
+<!-- wp:post-template {"layout":{"type":"grid","columnCount":3}} -->
+<!-- wp:group {"className":"yr-card yr-postcard","layout":{"type":"default"}} -->
+<div class="wp-block-group yr-card yr-postcard">
+<!-- wp:post-featured-image {"isLink":true,"aspectRatio":"16/9"} /-->
+<!-- wp:post-terms {"term":"category","className":"yr-eyebrow"} /-->
+<!-- wp:post-title {"level":3,"isLink":true} /-->
+<!-- wp:post-excerpt {"excerptLength":22} /-->
+</div>
+<!-- /wp:group -->
+<!-- /wp:post-template -->
+<!-- wp:query-pagination {"layout":{"type":"flex","justifyContent":"center"}} -->
+<!-- wp:query-pagination-previous /-->
+<!-- wp:query-pagination-numbers /-->
+<!-- wp:query-pagination-next /-->
+<!-- /wp:query-pagination -->
+<!-- wp:query-no-results -->
+<!-- wp:paragraph -->
+<p>Nothing here yet — check back soon.</p>
+<!-- /wp:paragraph -->
+<!-- /wp:query-no-results -->
+</div>
+<!-- /wp:query -->
+</main>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer","tagName":"div"} /-->

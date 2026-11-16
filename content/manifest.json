@@ -1,0 +1,8 @@
+{
+  "front_page": "home",
+  "posts_page": "blog",
+  "pages": [
+    { "slug": "home", "title": "Home", "file": "pages/home.html", "template": "page-landing" },
+    { "slug": "blog", "title": "Blog", "content": "" }
+  ]
+}
