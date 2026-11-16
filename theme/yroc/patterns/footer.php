@@ -60,6 +60,15 @@ $cols = yroc_mega_menu();
 				</ul>
 			</div>
 		</div>
+		<div class="yr-footer__locs">
+			<?php foreach ( yroc_locations() as $slug => $l ) : ?>
+				<div>
+					<b><a href="<?php echo esc_url( home_url( '/locations/' . $slug . '/' ) ); ?>"><?php echo esc_html( $l['city'] . ', ' . $l['region'] ); ?><?php echo $l['main'] ? ' · Headquarters' : ''; ?></a></b>
+					<?php echo $l['street'] ? esc_html( $l['street'] . ', ' . $l['city'] . ', ' . $l['region'] . ' ' . $l['zip'] ) : esc_html( 'Serving ' . $l['region_name'] ); ?><br>
+					<a href="tel:<?php echo esc_attr( $l['tel'] ); ?>"><?php echo esc_html( $l['phone'] ); ?></a>
+				</div>
+			<?php endforeach; ?>
+		</div>
 		<div class="yr-footer__base">
 			<p>&copy; <?php echo esc_html( gmdate( 'Y' ) ); ?> Yroc Consulting. All rights reserved.</p>
 			<p class="yr-footer__legal">

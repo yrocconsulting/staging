@@ -243,7 +243,7 @@ add_action( 'wp_head', function () {
 		}
 
 		// FAQs on the page (from FAQ accordions).
-		$faq = yroc_seo_faqs( $post->post_content );
+		$faq = yroc_seo_faqs( has_shortcode( $post->post_content, 'yroc_location' ) ? do_shortcode( $post->post_content ) : $post->post_content );
 		if ( $faq ) {
 			$graph[] = array(
 				'@type'      => 'FAQPage',

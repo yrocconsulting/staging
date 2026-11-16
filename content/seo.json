@@ -166,5 +166,21 @@
   "/case-studies/frigiserve-ai-visibility-case-study/": [
     "FrigiServe Case Study: 90% AI Visibility | Yroc",
     "How a Fort Worth cold storage company became the provider ChatGPT and Gemini recommend for blast freezing and refrigerated storage in DFW."
+  ],
+  "/locations/": [
+    "Locations: Sherman, San Angelo & Lubbock | Yroc",
+    "Yroc Consulting is headquartered in Sherman, Texas, with an office in San Angelo and a Lubbock service-area team. AI search optimization nationwide."
+  ],
+  "/locations/sherman-tx/": [
+    "AI Search Optimization in Sherman, TX | Yroc",
+    "Yroc Consulting headquarters in Sherman, Texas. AI search optimization, reputation management and websites for Texoma and North Texas businesses."
+  ],
+  "/locations/san-angelo-tx/": [
+    "AI Search Optimization in San Angelo, TX | Yroc",
+    "Yroc Consulting in downtown San Angelo. Helping Concho Valley and West Texas businesses get recommended by ChatGPT, Gemini and Google AI."
+  ],
+  "/locations/lubbock-tx/": [
+    "AI Search Optimization in Lubbock, TX | Yroc",
+    "Yroc serves Lubbock and the South Plains. Local businesses we work with are recommended by ChatGPT, Gemini and Google AI for key questions."
   ]
 }

@@ -306,6 +306,36 @@
       "file": "pages/case-frigiserve-ai-visibility-case-study.html",
       "template": "page-landing",
       "excerpt": "How FrigiServe became the cold storage company ChatGPT and Gemini recommend in Dallas–Fort Worth."
+    },
+    {
+      "slug": "locations",
+      "title": "Locations",
+      "file": "pages/locations.html",
+      "template": "page-landing"
+    },
+    {
+      "slug": "sherman-tx",
+      "title": "AI Search Optimization in Sherman, TX",
+      "parent": "locations",
+      "file": "pages/location-sherman-tx.html",
+      "template": "page-landing",
+      "order": 0
+    },
+    {
+      "slug": "san-angelo-tx",
+      "title": "AI Search Optimization in San Angelo, TX",
+      "parent": "locations",
+      "file": "pages/location-san-angelo-tx.html",
+      "template": "page-landing",
+      "order": 1
+    },
+    {
+      "slug": "lubbock-tx",
+      "title": "AI Search Optimization in Lubbock, TX",
+      "parent": "locations",
+      "file": "pages/location-lubbock-tx.html",
+      "template": "page-landing",
+      "order": 2
     }
   ]
 }
