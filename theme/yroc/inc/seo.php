@@ -196,7 +196,7 @@ add_action( 'wp_head', function () {
 		);
 
 		$page = array(
-			'@type'       => is_page( 'about-us' ) ? 'AboutPage' : ( is_page( array( 'contact', 'book-a-strategy-call' ) ) ? 'ContactPage' : 'WebPage' ),
+			'@type'       => is_page( 'about-us' ) ? 'AboutPage' : ( is_page( array( 'contact', 'book-a-strategy-call' ) ) ? 'ContactPage' : ( ( is_home() || is_page( array( 'case-studies', 'locations', 'kb', 'reviews' ) ) ) ? 'CollectionPage' : 'WebPage' ) ),
 			'@id'         => $url . '#webpage',
 			'url'         => $url,
 			'name'        => wp_get_document_title(),
@@ -230,7 +230,7 @@ add_action( 'wp_head', function () {
 		$services = yroc_seo_services();
 		$path     = trailingslashit( wp_parse_url( $url, PHP_URL_PATH ) );
 		if ( isset( $services[ $path ] ) ) {
-			$graph[] = array(
+			$svc = array(
 				'@type'       => 'Service',
 				'@id'         => $url . '#service',
 				'name'        => $services[ $path ],
@@ -240,6 +240,135 @@ add_action( 'wp_head', function () {
 				'areaServed'  => array( '@type' => 'Country', 'name' => 'United States' ),
 				'url'         => $url,
 			);
+			if ( '/website-packages/' === $path ) {
+				$svc['offers'] = array_map( function ( $o ) use ( $url ) {
+					return array( '@type' => 'Offer', 'name' => $o[0], 'description' => $o[2], 'url' => $url . '#packages', 'priceCurrency' => 'USD', 'price' => $o[1],
+						'priceSpecification' => array( '@type' => 'PriceSpecification', 'price' => $o[1], 'priceCurrency' => 'USD', 'minPrice' => $o[1] ) );
+				}, array(
+					array( 'Essential Website', '4000', 'A professional, AI-ready website with up to 12 pages and AI search optimization included.' ),
+					array( 'Growth Website', '7500', 'Up to 25 pages with advanced UI/UX, lead forms, SEO and AI search optimization.' ),
+					array( 'Enterprise Website', '14500', 'A fully custom platform with 50+ pages, integrations and advanced AI search architecture.' ),
+				) );
+			}
+			if ( 0 === strpos( $path, '/reputation-management/' ) && '/reputation-management/' !== $path ) {
+				$svc['isRelatedTo'] = array( '@id' => home_url( '/reputation-management/' ) . '#service' );
+			}
+			$graph[] = $svc;
+		}
+
+		$parent = $post->post_parent ? get_post_field( 'post_name', $post->post_parent ) : '';
+
+		// Learning Center guides and glossary.
+		if ( 'kb' === $parent ) {
+			if ( 'ai-search-glossary' === $post->post_name ) {
+				preg_match_all( '#<dt>(.*?)</dt><dd>(.*?)</dd>#s', $post->post_content, $gm, PREG_SET_ORDER );
+				$graph[] = array(
+					'@type'          => 'DefinedTermSet',
+					'@id'            => $url . '#glossary',
+					'name'           => 'AI Search Glossary',
+					'url'            => $url,
+					'publisher'      => $org,
+					'hasDefinedTerm' => array_map( function ( $g ) use ( $url ) {
+						$name = yroc_seo_clean( $g[1], 120 );
+						return array( '@type' => 'DefinedTerm', 'name' => $name, 'description' => yroc_seo_clean( $g[2], 400 ), 'url' => $url . '#' . sanitize_title( $name ), 'inDefinedTermSet' => array( '@id' => $url . '#glossary' ) );
+					}, $gm ),
+				);
+			} else {
+				$graph[] = array(
+					'@type'            => 'Article',
+					'@id'              => $url . '#article',
+					'headline'         => wp_strip_all_tags( get_the_title( $post ) ),
+					'description'      => yroc_seo_description(),
+					'datePublished'    => get_the_date( 'c', $post ),
+					'dateModified'     => get_the_modified_date( 'c', $post ),
+					'mainEntityOfPage' => array( '@id' => $url . '#webpage' ),
+					'image'            => $img,
+					'author'           => $org,
+					'publisher'        => $org,
+					'isPartOf'         => array( '@type' => 'CreativeWorkSeries', 'name' => 'AI Search Learning Center', 'url' => home_url( '/kb/' ) ),
+					'learningResourceType' => 'Guide',
+					'audience'         => array( '@type' => 'BusinessAudience', 'audienceType' => 'Business owners and marketers' ),
+				);
+			}
+		}
+
+		// Case studies.
+		if ( 'case-studies' === $parent ) {
+			$client = null;
+			foreach ( yroc_cases() as $c ) {
+				if ( $c[0] === $post->post_name ) {
+					$client = array( '@type' => 'Organization', 'name' => $c[1] );
+					foreach ( yroc_clients() as $domain => $cl ) {
+						if ( $cl['name'] === $c[1] ) {
+							$client['url'] = 'https://' . $domain . '/';
+						}
+					}
+				}
+			}
+			$art = array(
+				'@type'            => 'Article',
+				'@id'              => $url . '#article',
+				'articleSection'   => 'Case Studies',
+				'headline'         => wp_strip_all_tags( get_the_title( $post ) ),
+				'description'      => yroc_seo_description(),
+				'datePublished'    => get_the_date( 'c', $post ),
+				'dateModified'     => get_the_modified_date( 'c', $post ),
+				'mainEntityOfPage' => array( '@id' => $url . '#webpage' ),
+				'image'            => $img,
+				'author'           => $org,
+				'publisher'        => $org,
+			);
+			if ( $client ) {
+				$art['about']    = $client;
+				$art['mentions'] = array( $client );
+			}
+			$graph[] = $art;
+		}
+
+		// Hub pages list what they contain.
+		$list = array();
+		if ( is_page( 'case-studies' ) ) {
+			foreach ( yroc_cases() as $c ) {
+				$list[] = array( $c[1] . ': ' . $c[6], home_url( '/case-studies/' . $c[0] . '/' ) );
+			}
+		} elseif ( is_page( 'locations' ) ) {
+			foreach ( yroc_locations() as $slug => $l ) {
+				$list[] = array( 'Yroc Consulting ' . $l['city'] . ', ' . $l['region'], home_url( '/locations/' . $slug . '/' ) );
+			}
+		} elseif ( is_page( 'kb' ) ) {
+			foreach ( get_pages( array( 'parent' => $post->ID, 'sort_column' => 'menu_order' ) ) as $kp ) {
+				$list[] = array( wp_strip_all_tags( $kp->post_title ), get_permalink( $kp ) );
+			}
+		} elseif ( is_home() ) {
+			foreach ( get_posts( array( 'numberposts' => 10 ) ) as $bp ) {
+				$list[] = array( wp_strip_all_tags( $bp->post_title ), get_permalink( $bp ) );
+			}
+		}
+		if ( $list ) {
+			$graph[] = array(
+				'@type'           => 'ItemList',
+				'@id'             => $url . '#list',
+				'numberOfItems'   => count( $list ),
+				'itemListElement' => array_map( function ( $x, $n ) {
+					return array( '@type' => 'ListItem', 'position' => $n + 1, 'name' => $x[0], 'url' => $x[1] );
+				}, $list, array_keys( $list ) ),
+			);
+			foreach ( $graph as &$g ) {
+				if ( isset( $g['@id'] ) && $g['@id'] === $url . '#webpage' ) {
+					$g['mainEntity'] = array( '@id' => $url . '#list' );
+				}
+			}
+			unset( $g );
+		}
+
+		// About page: the founder.
+		if ( is_page( 'about-us' ) ) {
+			foreach ( $graph as &$g ) {
+				if ( isset( $g['@id'] ) && $g['@id'] === $url . '#webpage' ) {
+					$g['mentions'] = array( '@id' => $home . '#cory-long' );
+				}
+			}
+			unset( $g );
 		}
 
 		// FAQs on the page (from FAQ accordions).
@@ -251,6 +380,32 @@ add_action( 'wp_head', function () {
 				'mainEntity' => $faq,
 			);
 		}
+	} elseif ( is_category() && $url && ! is_wp_error( $url ) ) {
+		$term  = get_queried_object();
+		$blog  = (int) get_option( 'page_for_posts' );
+		$items = array();
+		foreach ( get_posts( array( 'numberposts' => 20, 'category' => $term->term_id ) ) as $bp ) {
+			$items[] = array( '@type' => 'ListItem', 'position' => count( $items ) + 1, 'name' => wp_strip_all_tags( $bp->post_title ), 'url' => get_permalink( $bp ) );
+		}
+		$graph[] = array(
+			'@type'           => 'BreadcrumbList',
+			'@id'             => $url . '#breadcrumb',
+			'itemListElement' => array(
+				array( '@type' => 'ListItem', 'position' => 1, 'name' => 'Home', 'item' => $home ),
+				array( '@type' => 'ListItem', 'position' => 2, 'name' => 'Blog', 'item' => $blog ? get_permalink( $blog ) : home_url( '/blog/' ) ),
+				array( '@type' => 'ListItem', 'position' => 3, 'name' => $term->name, 'item' => $url ),
+			),
+		);
+		$graph[] = array(
+			'@type'       => 'CollectionPage',
+			'@id'         => $url . '#webpage',
+			'url'         => $url,
+			'name'        => wp_get_document_title(),
+			'description' => yroc_seo_description(),
+			'isPartOf'    => array( '@id' => $home . '#website' ),
+			'breadcrumb'  => array( '@id' => $url . '#breadcrumb' ),
+			'mainEntity'  => array( '@type' => 'ItemList', 'itemListElement' => $items ),
+		);
 	}
 
 	echo '<script type="application/ld+json">' . wp_json_encode( array( '@context' => 'https://schema.org', '@graph' => $graph ), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE ) . "</script>\n";
