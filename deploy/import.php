@@ -28,6 +28,48 @@ if ( $admins ) {
 }
 kses_remove_filters();
 
+require_once ABSPATH . 'wp-admin/includes/media.php';
+require_once ABSPATH . 'wp-admin/includes/file.php';
+require_once ABSPATH . 'wp-admin/includes/image.php';
+
+
+// Old-site image URL => attachment ID, so images are only downloaded once.
+$map = get_option( 'yroc_media_map', array() );
+$sideload = function ( $url, $post_id ) use ( &$map ) {
+	if ( ! $url ) {
+		return 0;
+	}
+	if ( ! empty( $map[ $url ] ) && get_post( $map[ $url ] ) ) {
+		return (int) $map[ $url ];
+	}
+	$id = media_sideload_image( $url, $post_id, null, 'id' );
+	usleep( 250000 ); // be gentle with the old site's firewall
+	if ( is_wp_error( $id ) ) {
+		WP_CLI::warning( "image failed $url: " . $id->get_error_message() );
+		return 0;
+	}
+	$map[ $url ] = (int) $id;
+	update_option( 'yroc_media_map', $map, false );
+	return (int) $id;
+};
+
+
+/** Copy old-site images referenced in content into the media library and rewrite the URLs. */
+$localize_images = function ( $content, $post_id ) use ( $sideload ) {
+	$pending = false;
+	if ( preg_match_all( '#https?://(?:www\.)?yrocconsulting\.com/wp-content/uploads/[^"\'\s)]+\.(?:jpe?g|png|gif|webp)#i', $content, $m ) ) {
+		foreach ( array_unique( $m[0] ) as $url ) {
+			$aid = $sideload( $url, $post_id );
+			if ( $aid ) {
+				$content = str_replace( $url, wp_get_attachment_url( $aid ), $content );
+			} else {
+				$pending = true;
+			}
+		}
+	}
+	return array( $content, $pending );
+};
+
 $ids = array();
 
 foreach ( $manifest['pages'] ?? array() as $p ) {
@@ -67,8 +109,17 @@ foreach ( $manifest['pages'] ?? array() as $p ) {
 	if ( $existing ) {
 		$id = $existing->ID;
 		if ( get_post_meta( $id, '_yroc_src_hash', true ) === $src_hash ) {
-			WP_CLI::log( "unchanged  /$path/" );
 			$ids[ $path ] = $id;
+			if ( false !== strpos( $existing->post_content, 'yrocconsulting.com/wp-content/uploads' ) ) {
+				list( $localized ) = $localize_images( $existing->post_content, $id );
+				if ( $localized !== $existing->post_content ) {
+					wp_update_post( array( 'ID' => $id, 'post_content' => wp_slash( $localized ) ) );
+					update_post_meta( $id, '_yroc_db_hash', md5( get_post_field( 'post_content', $id, 'raw' ) ) );
+					WP_CLI::log( "images     /$path/" );
+					continue;
+				}
+			}
+			WP_CLI::log( "unchanged  /$path/" );
 			continue;
 		}
 		$last_import = get_post_meta( $id, '_yroc_db_hash', true );
@@ -90,6 +141,10 @@ foreach ( $manifest['pages'] ?? array() as $p ) {
 		continue;
 	}
 	$id = (int) $r;
+	list( $localized, $img_pending ) = $localize_images( get_post_field( 'post_content', $id, 'raw' ), $id );
+	if ( $localized !== get_post_field( 'post_content', $id, 'raw' ) ) {
+		wp_update_post( array( 'ID' => $id, 'post_content' => wp_slash( $localized ) ) );
+	}
 	update_post_meta( $id, '_wp_page_template', $template ? $template : 'default' );
 	update_post_meta( $id, '_yroc_src_hash', $src_hash );
 	update_post_meta( $id, '_yroc_db_hash', md5( get_post_field( 'post_content', $id, 'raw' ) ) );
@@ -134,38 +189,13 @@ WP_CLI::success( count( $ids ) . ' pages processed.' );
  * Blog posts (content/posts.json)
  * ===================================================================== */
 if ( is_file( "$dir/posts.json" ) ) {
-	require_once ABSPATH . 'wp-admin/includes/media.php';
-	require_once ABSPATH . 'wp-admin/includes/file.php';
-	require_once ABSPATH . 'wp-admin/includes/image.php';
-
 	$blog = json_decode( file_get_contents( "$dir/posts.json" ), true );
-
 	foreach ( $blog['categories'] ?? array() as $c ) {
 		if ( ! term_exists( $c['slug'], 'category' ) ) {
 			wp_insert_term( $c['name'], 'category', array( 'slug' => $c['slug'], 'description' => $c['description'] ) );
 			WP_CLI::log( "category   {$c['slug']}" );
 		}
 	}
-
-	// Old-site image URL => attachment ID, so images are only downloaded once.
-	$map = get_option( 'yroc_media_map', array() );
-	$sideload = function ( $url, $post_id ) use ( &$map ) {
-		if ( ! $url ) {
-			return 0;
-		}
-		if ( ! empty( $map[ $url ] ) && get_post( $map[ $url ] ) ) {
-			return (int) $map[ $url ];
-		}
-		$id = media_sideload_image( $url, $post_id, null, 'id' );
-		usleep( 250000 ); // be gentle with the old site's firewall
-		if ( is_wp_error( $id ) ) {
-			WP_CLI::warning( "image failed $url: " . $id->get_error_message() );
-			return 0;
-		}
-		$map[ $url ] = (int) $id;
-		update_option( 'yroc_media_map', $map, false );
-		return (int) $id;
-	};
 
 	$n = 0;
 	foreach ( $blog['posts'] ?? array() as $p ) {
