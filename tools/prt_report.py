@@ -19,6 +19,16 @@ import tempfile
 import urllib.request
 
 OWN_DOMAINS = {'yrocconsulting.com'}
+CLIENTS_JSON = __import__('os').path.join(__import__('os').path.dirname(__import__('os').path.abspath(__file__)), '..', 'theme', 'yroc', 'data', 'clients.json')
+
+
+def named_clients():
+    """Domains that may be shown by name (white-label clients are never listed)."""
+    try:
+        with open(CLIENTS_JSON) as f:
+            return {k for k in json.load(f) if not k.startswith('_')}
+    except (OSError, ValueError):
+        return set()
 COLS = ['aio', 'ai_mode', 'chatgpt', 'copilot', 'gemini', 'perplexity']
 HEAD = ['AIO', 'AIM', 'ChatGPT', 'Copilot', 'Gemini', 'Perplexity']
 
@@ -126,7 +136,8 @@ def parse_prompts(pdf):
 
 def showcase(rows):
     """Best proof rows for the homepage: client domains only, highest visibility first, one or two per client."""
-    good = sorted((r for r in rows if r['domain'] not in OWN_DOMAINS and r['visibility'] >= 75 and r['platforms']),
+    named = named_clients()
+    good = sorted((r for r in rows if r['domain'] not in OWN_DOMAINS and r['domain'] in named and r['visibility'] >= 75 and r['platforms']),
                   key=lambda r: (-r['visibility'], -len(r['platforms']), -r['appearances']))
     out, per = [], {}
     for r in good:
