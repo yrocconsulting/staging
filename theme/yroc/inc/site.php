@@ -99,6 +99,26 @@ function yroc_departments() {
 	);
 }
 
+/**
+ * Case studies (single source for the homepage grid and the Case Studies page).
+ * slug, card title, tag, category (ai-visibility|reputation|local), metric, metric suffix, metric label, summary.
+ */
+function yroc_cases() {
+	return array(
+		array( 'fractional-cfo-reputation-management-case-study', 'Fractional CFO', 'Reputation Management', 'reputation', '80', '%', 'of negative results suppressed', 'Negative press buried a financial professional\'s brand. Within 90 days he owned page one and controlled his narrative.' ),
+		array( 'blacksmith-roofing-case-study', 'Blacksmith Roofing', 'Roofing · Oklahoma', 'local', '8', '×', 'phone calls in one month', 'A roofing contractor\'s inbound calls octupled within a single month as maps visibility jumped 4,900%.' ),
+		array( 'irs-trouble-solvers-case-study', 'IRS Trouble Solvers', 'Tax Resolution · National', 'local', '604', '%', 'cash-on-cash return', 'A tax firm outranked the IRS on Google, then turned that traffic into high-value leads.' ),
+		array( 'thai-ginger-case-study', 'Thai Ginger', 'Restaurant · Bellevue, WA', 'ai-visibility', '#1', '', 'in ChatGPT & Google AI Overviews', 'An AI SEO strategy made a beloved Seattle-area restaurant the top recommendation in ChatGPT, Google AI Overviews, the map pack and organic search.' ),
+		array( 'the-bug-guys', 'The Bug Guys', 'Pest Control · San Angelo, TX', 'local', '+285', '%', 'organic traffic in one month', 'A newly formed pest control company went from page 8 to page one and nearly quadrupled organic traffic.' ),
+		array( 'medical-weight-loss-case-study', 'Wake Up Skinny', 'Medical Weight Loss', 'local', '+84', '%', 'new users in 30 days', 'A bold SEO strategy doubled new users and produced a steady flow of patients without spending on ads.' ),
+		array( 'hormone-replacement-therapy-clinic-case-study', 'Hormone Clinic', 'Hormone Replacement Therapy', 'local', '$20', 'K', 'new revenue in 60 days', 'SEO, paid social and local marketing drove a 70% traffic surge and $20K in new bookings.' ),
+	);
+}
+
+function yroc_case_categories() {
+	return array( 'ai-visibility' => 'AI Visibility', 'reputation' => 'Reputation', 'local' => 'Local & SEO' );
+}
+
 /** Where Yroc has spoken / been featured. */
 function yroc_speaking() {
 	return array(

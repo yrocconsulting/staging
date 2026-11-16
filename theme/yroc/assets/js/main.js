@@ -245,6 +245,18 @@
 		}, { threshold: 0.5 }).observe(cmp);
 	});
 
+	/* ---------- Case study filter ---------- */
+	$$('[data-yr-filter]').forEach(function (bar) {
+		var btns = $$('button', bar), cards = $$('[data-yr-cases] [data-cat]');
+		var apply = function (cat) {
+			btns.forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-cat') === cat); });
+			cards.forEach(function (c) { c.hidden = cat !== 'all' && c.getAttribute('data-cat') !== cat; if (!c.hidden) c.classList.add('is-visible'); });
+		};
+		btns.forEach(function (b) { b.addEventListener('click', function () { apply(b.getAttribute('data-cat')); }); });
+		var hash = (location.hash || '').replace('#', '');
+		if (hash && $('[data-cat="' + hash + '"]', bar)) apply(hash);
+	});
+
 	/* ---------- Forms ---------- */
 	$$('[data-yr-form]').forEach(function (form) {
 		var msg = $('.yr-form__msg', form), btn = $('button[type="submit"]', form);

@@ -123,7 +123,8 @@ function yroc_render_form( $atts ) {
 					<?php elseif ( 'select' === $ftype ) : ?>
 						<select id="<?php echo esc_attr( $fid ); ?>" name="<?php echo esc_attr( $name ); ?>">
 							<option value="">Choose one…</option>
-							<?php foreach ( $opts as $o ) : ?><option><?php echo esc_html( $o ); ?></option><?php endforeach; ?>
+							<?php $pre = isset( $_GET[ $name ] ) ? sanitize_text_field( wp_unslash( $_GET[ $name ] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification ?>
+							<?php foreach ( $opts as $o ) : ?><option<?php selected( $pre, $o ); ?>><?php echo esc_html( $o ); ?></option><?php endforeach; ?>
 						</select>
 					<?php else : ?>
 						<input id="<?php echo esc_attr( $fid ); ?>" name="<?php echo esc_attr( $name ); ?>" type="<?php echo esc_attr( $ftype ); ?>"<?php echo $ac ? ' autocomplete="' . esc_attr( $ac ) . '"' : ''; ?><?php echo $req ? ' required' : ''; ?> placeholder="<?php echo esc_attr( $ph ); ?>" value="<?php echo esc_attr( isset( $_GET[ $name ] ) ? sanitize_text_field( wp_unslash( $_GET[ $name ] ) ) : '' ); // phpcs:ignore WordPress.Security.NonceVerification ?>">

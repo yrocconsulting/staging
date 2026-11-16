@@ -34,6 +34,126 @@
       "title": "Contact",
       "file": "pages/contact.html",
       "template": "page-landing"
+    },
+    {
+      "slug": "website-packages",
+      "title": "Website Packages",
+      "file": "pages/website-packages.html",
+      "template": "page-landing"
+    },
+    {
+      "slug": "reputation-management",
+      "title": "AI Reputation Management",
+      "file": "pages/reputation-management.html",
+      "template": "page-landing"
+    },
+    {
+      "slug": "negative-search-results",
+      "title": "Negative Search Results",
+      "parent": "reputation-management",
+      "file": "pages/rep-negative-search-results.html",
+      "template": "page-landing",
+      "order": 0
+    },
+    {
+      "slug": "personal-reputation-management",
+      "title": "Personal Reputation Management",
+      "parent": "reputation-management",
+      "file": "pages/rep-personal-reputation-management.html",
+      "template": "page-landing",
+      "order": 1
+    },
+    {
+      "slug": "business-reputation-management",
+      "title": "Business Reputation Management",
+      "parent": "reputation-management",
+      "file": "pages/rep-business-reputation-management.html",
+      "template": "page-landing",
+      "order": 2
+    },
+    {
+      "slug": "knowledge-panel-repair",
+      "title": "Knowledge Panel & Repair",
+      "parent": "reputation-management",
+      "file": "pages/rep-knowledge-panel-repair.html",
+      "template": "page-landing",
+      "order": 3
+    },
+    {
+      "slug": "rebrand-strategy",
+      "title": "Rebrand & Change Strategy",
+      "parent": "reputation-management",
+      "file": "pages/rep-rebrand-strategy.html",
+      "template": "page-landing",
+      "order": 4
+    },
+    {
+      "slug": "about-us",
+      "title": "About Yroc Consulting",
+      "file": "pages/about-us.html",
+      "template": "page-landing"
+    },
+    {
+      "slug": "case-studies",
+      "title": "Case Studies",
+      "file": "pages/case-studies.html",
+      "template": "page-landing"
+    },
+    {
+      "slug": "thai-ginger-case-study",
+      "title": "Thai Ginger: #1 in ChatGPT and Google AI Overviews",
+      "parent": "case-studies",
+      "file": "pages/case-thai-ginger-case-study.html",
+      "template": "page-landing",
+      "excerpt": "An AI SEO strategy took a beloved Seattle-area restaurant to the #1 recommendation in ChatGPT, Google's AI Overview, the local map pack and organic search."
+    },
+    {
+      "slug": "fractional-cfo-reputation-management-case-study",
+      "title": "Fractional CFO: Page One Reclaimed in 90 Days",
+      "parent": "case-studies",
+      "file": "pages/case-fractional-cfo-reputation-management-case-study.html",
+      "template": "page-landing",
+      "excerpt": "Negative press buried a financial professional's brand. Ninety days later, he owned page one and controlled his online narrative."
+    },
+    {
+      "slug": "blacksmith-roofing-case-study",
+      "title": "Blacksmith Roofing: 8× the Phone Calls",
+      "parent": "case-studies",
+      "file": "pages/case-blacksmith-roofing-case-study.html",
+      "template": "page-landing",
+      "excerpt": "An Oklahoma roofing company's phone calls octupled in a single month as its maps and organic visibility took off."
+    },
+    {
+      "slug": "irs-trouble-solvers-case-study",
+      "title": "IRS Trouble Solvers: Outranking the IRS",
+      "parent": "case-studies",
+      "file": "pages/case-irs-trouble-solvers-case-study.html",
+      "template": "page-landing",
+      "excerpt": "A tax resolution firm outranked the IRS on Google and turned that search traffic into a steady stream of high-value leads."
+    },
+    {
+      "slug": "the-bug-guys",
+      "title": "The Bug Guys: +285% Organic Traffic",
+      "parent": "case-studies",
+      "file": "pages/case-the-bug-guys.html",
+      "template": "page-landing",
+      "excerpt": "A locally owned pest control company nearly quadrupled its organic traffic in a single month."
+    },
+    {
+      "slug": "medical-weight-loss-case-study",
+      "title": "Wake Up Skinny: 50–100 Leads a Month",
+      "parent": "case-studies",
+      "file": "pages/case-medical-weight-loss-case-study.html",
+      "template": "page-landing",
+      "excerpt": "A bold SEO strategy doubled new users and produced 50–100 monthly leads without spending on ads."
+    },
+    {
+      "slug": "hormone-replacement-therapy-clinic-case-study",
+      "title": "Hormone Clinic: $20K in 60 Days",
+      "parent": "case-studies",
+      "file": "pages/case-hormone-replacement-therapy-clinic-case-study.html",
+      "template": "page-landing",
+      "excerpt": "SEO, paid social and local marketing drove a 70% traffic surge and $20K in new revenue in 60 days."
     }
   ]
 }
