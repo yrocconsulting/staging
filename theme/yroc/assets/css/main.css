@@ -761,3 +761,4 @@ body:has(.yr-ctaband) .yr-footer__cta { display: none; }
 .yr-kbnav small { display: block; font-weight: 500; color: var(--yr-muted); font-size: .8rem; margin-bottom: .2rem; }
 @media (max-width: 600px) { .yr-kbnav { grid-template-columns: 1fr; } .yr-kbnav a.next { text-align: left; } }
 .yr-kbsearch { margin-left: 0 !important; }
+.yr-trust .yr-stars, .yr-hero--video .yr-trust .yr-stars { color: #F5B301; }

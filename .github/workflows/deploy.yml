@@ -81,6 +81,7 @@ jobs:
             && wp eval 'wp_get_theme()->delete_pattern_cache();' \
             && wp rewrite structure '/%category%/%postname%/' --hard \
             && YROC_FORCE=$FORCE wp eval-file ~/yroc-deploy/import.php ~/yroc-deploy/content \
+            && (wp cron event run yroc_reviews_sync >/dev/null 2>&1 || true) \
             && wp cache flush \
             && (wp sg purge 2>/dev/null || true)"
 

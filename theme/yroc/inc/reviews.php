@@ -26,9 +26,13 @@ function yroc_reviews_parse( $html ) {
 	$reviews = array();
 	$rating  = null;
 	$count   = null;
-	$walk    = function ( $o ) use ( &$walk, &$reviews ) {
+	$walk    = function ( $o ) use ( &$walk, &$reviews, &$rating, &$count ) {
 		if ( ! is_array( $o ) ) {
 			return;
+		}
+		if ( isset( $o['@type'] ) && 'AggregateRating' === $o['@type'] && isset( $o['reviewCount'] ) ) {
+			$rating = (float) $o['ratingValue'];
+			$count  = (int) $o['reviewCount'];
 		}
 		if ( isset( $o['@type'] ) && 'Review' === $o['@type'] ) {
 			$reviews[] = array(
@@ -45,7 +49,7 @@ function yroc_reviews_parse( $html ) {
 	foreach ( $m[1] as $json ) {
 		$d = json_decode( $json, true );
 		$walk( $d );
-		if ( is_array( $d ) && preg_match( '#([\d.]+)/5 from (\d+)#', wp_json_encode( $d ), $a ) ) {
+		if ( ! $count && is_array( $d ) && preg_match( '#([\d.]+)/5 from (\d+)#', wp_json_encode( $d, JSON_UNESCAPED_SLASHES ), $a ) ) {
 			$rating = (float) $a[1];
 			$count  = (int) $a[2];
 		}
@@ -90,9 +94,15 @@ function yroc_reviews() {
 	// Company-focused reviews first, owner-focused (training) reviews after.
 	$about_owner = function ( $r ) { return (int) (bool) preg_match( '/\bcor(e)?y\b/i', $r['body'] ); };
 	usort( $items, function ( $a, $b ) use ( $about_owner ) { return $about_owner( $a ) <=> $about_owner( $b ); } );
+	// Never fall back to counting displayed reviews: use the platform's own totals (or the bundled snapshot's).
+	if ( empty( $data['count'] ) ) {
+		$seed            = json_decode( (string) file_get_contents( get_theme_file_path( 'data/reviews.json' ) ), true );
+		$data['rating']  = $seed['rating'] ?? 4.8;
+		$data['count']   = $seed['count'] ?? count( $items );
+	}
 	return array(
-		'rating' => $data['rating'] ?? 4.8,
-		'count'  => $data['count'] ?? count( $items ),
+		'rating' => $data['rating'] ?: 4.8,
+		'count'  => $data['count'],
 		'items'  => $items,
 	);
 }
