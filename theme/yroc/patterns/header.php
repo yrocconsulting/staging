@@ -44,11 +44,13 @@ $req = isset( $_SERVER['REQUEST_URI'] ) ? strtok( wp_unslash( $_SERVER['REQUEST_
 											</ul>
 										</div>
 									<?php endforeach; ?>
-									<div class="yr-mega__promo">
-										<p class="yr-eyebrow">Free for a limited time</p>
-										<p class="yr-mega__promo-h">How does AI describe your business?</p>
-										<p>Get an AI Visibility Audit and see where you stand on ChatGPT, Gemini, Perplexity and Google AI.</p>
-										<a class="yr-btn yr-btn--sm" href="<?php echo esc_url( home_url( '/ai-visibility-audit/' ) ); ?>">Get my audit <?php echo yroc_icon( 'arrow' ); ?></a>
+
+								</div>
+								<div class="yr-mega__bar">
+									<div class="yr-wrap yr-mega__bar-in">
+										<p><span class="yr-mega__badge">Free</span> <b>AI Visibility Audit</b> See how ChatGPT, Gemini and Google AI describe your business.</p>
+										<a href="<?php echo esc_url( home_url( '/ai-visibility-audit/' ) ); ?>">Get my audit <?php echo yroc_icon( 'arrow' ); ?></a>
+										<a href="<?php echo esc_url( home_url( '/book-a-strategy-call/' ) ); ?>">Book a strategy call <?php echo yroc_icon( 'arrow' ); ?></a>
 									</div>
 								</div>
 							</div>
