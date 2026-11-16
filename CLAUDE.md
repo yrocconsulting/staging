@@ -28,7 +28,7 @@ WordPress block theme (`theme/yroc`) + content (`content/`) deployed to SiteGrou
   Never use testimonials from the old website.
 - Homepage stats: `inc/ai-stats.php`. AI numbers come from the weekly ProRankTracker PDF that lands in a
   shared Drive folder each Monday; `.github/workflows/ai-stats.yml` parses it (`tools/prt_report.py`,
-  totals only, Yroc's own domain excluded, never client names) and applies it via `deploy/apply_ai_stats.php`.
+  totals with Yroc's own domain excluded, plus per-prompt showcase rows) and applies it via `deploy/apply_ai_stats.php`.
 - Redirects for old-site URLs: `theme/yroc/inc/redirects.php` (only fire on 404). Add an entry whenever a
   page is removed or renamed.
 - Legal pages: `tools/gen_legal.py`. Client service + affiliate terms are carried verbatim; don't reword them.
