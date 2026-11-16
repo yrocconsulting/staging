@@ -56,6 +56,27 @@ def clean(fragment):
     for p in s.find_all(['p', 'h2', 'h3', 'h4', 'strong', 'em', 'li']):
         if not p.get_text(strip=True) and not p.find(['img', 'a', 'br']):
             p.decompose()
+    # Group loose top-level text and inline elements into <p> so nothing escapes the page's reading width.
+    BLOCK = {'p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ul', 'ol', 'figure', 'img', 'table', 'blockquote', 'hr', 'iframe'}
+    run = []
+    def close_run(before):
+        if run and ''.join(str(x) for x in run).strip():
+            p_tag = s.new_tag('p')
+            before.insert_before(p_tag) if before is not None else s.append(p_tag)
+            for x in run:
+                p_tag.append(x.extract())
+        run.clear()
+    for node in list(s.contents):
+        if getattr(node, 'name', None) in BLOCK:
+            close_run(node)
+        elif getattr(node, 'name', None) == 'br':
+            close_run(node); node.extract()
+        else:
+            run.append(node)
+    close_run(None)
+    for img in s.find_all('img'):
+        if img.parent is not None and img.parent.name == 'p' and len(img.parent.get_text(strip=True)) == 0:
+            img.parent.name = 'figure'
     o = str(s)
     o = re.sub(r'\[/?(gravityform|contact-form-7|vc_[a-z_]+)[^\]]*\]', '', o)
     o = re.sub(r'href="https?://(?:www\.)?yrocconsulting\.com/(?!wp-content/)', 'href="/', o)

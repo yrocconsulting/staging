@@ -763,3 +763,7 @@ body:has(.yr-ctaband) .yr-footer__cta { display: none; }
 .yr-kbsearch { margin-left: 0 !important; }
 .yr-trust .yr-stars, .yr-hero--video .yr-trust .yr-stars { color: #F5B301; }
 .yr-legal h2 { font-size: 1.35rem; margin-top: 2.25rem; scroll-margin-top: 140px; } .yr-legal ol, .yr-legal ul { padding-left: 1.4rem; } .yr-legal li { margin-bottom: .6rem; }
+.yr-casebody > p:first-child { font-size: 1.2rem; line-height: 1.65; color: var(--yr-ink); }
+.yr-casebody figure { margin: 2rem auto; text-align: center; }
+.yr-casebody figure img, .yr-casebody > p img { display: block; margin-inline: auto; max-width: 100%; height: auto; }
+.yr-casebody p, .yr-casebody li { font-size: 1.05rem; line-height: 1.75; }
