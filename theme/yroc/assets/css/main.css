@@ -560,3 +560,6 @@ body:has(.yr-ctaband) .yr-footer__cta { display: none; }
 .yr-rcard figcaption { margin-top: auto; display: flex; align-items: center; gap: 12px; font-size: .85rem; }
 .yr-rcard figcaption b { display: block; color: #fff; font-size: .95rem; }
 .yr-rcard__av { flex: none; width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; background: linear-gradient(135deg, var(--yr-green), var(--yr-blue)); color: var(--yr-ink); font-weight: 700; }
+.wp-block-post-terms.yr-eyebrow { display: block; line-height: 1.6; }
+.wp-block-post-terms.yr-eyebrow::before { display: none; }
+.wp-block-post-terms.yr-eyebrow a { color: var(--yr-green-d); text-decoration: none; }
