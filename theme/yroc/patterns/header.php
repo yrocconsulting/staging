@@ -39,7 +39,7 @@ $req = isset( $_SERVER['REQUEST_URI'] ) ? strtok( wp_unslash( $_SERVER['REQUEST_
 											<p class="yr-mega__title"><?php echo yroc_icon( $col['icon'] ); ?> <?php echo esc_html( $col['title'] ); ?></p>
 											<ul>
 												<?php foreach ( $col['links'] as $l ) : ?>
-													<li><a href="<?php echo esc_url( home_url( $l[1] ) ); ?>"><strong><?php echo esc_html( $l[0] ); ?></strong><span><?php echo esc_html( $l[2] ); ?></span></a></li>
+													<li><a <?php echo yroc_href( $l[1] ); // phpcs:ignore ?>><strong><?php echo esc_html( $l[0] ); ?><?php echo yroc_is_external( $l[1] ) ? ' <i class="yr-ext" aria-hidden="true">↗</i><span class="yr-sr"> (opens aiauthorityengine.org)</span>' : ''; ?></strong><span><?php echo esc_html( $l[2] ); ?></span></a></li>
 												<?php endforeach; ?>
 											</ul>
 										</div>
@@ -63,7 +63,7 @@ $req = isset( $_SERVER['REQUEST_URI'] ) ? strtok( wp_unslash( $_SERVER['REQUEST_
 							</ul>
 						</li>
 					<?php else : ?>
-						<li class="yr-nav__item"><a class="yr-nav__link<?php echo ( 0 === strpos( $req, $item['url'] ) ) ? ' is-current' : ''; ?>" href="<?php echo esc_url( home_url( $item['url'] ) ); ?>"><?php echo esc_html( $item['label'] ); ?></a></li>
+						<li class="yr-nav__item"><a class="yr-nav__link<?php echo ( ! yroc_is_external( $item['url'] ) && 0 === strpos( $req, $item['url'] ) ) ? ' is-current' : ''; ?>" <?php echo yroc_href( $item['url'] ); // phpcs:ignore ?>><?php echo esc_html( $item['label'] ); ?><?php echo yroc_is_external( $item['url'] ) ? ' <i class="yr-ext" aria-hidden="true">↗</i>' : ''; ?></a></li>
 					<?php endif; ?>
 				<?php endforeach; ?>
 			</ul>

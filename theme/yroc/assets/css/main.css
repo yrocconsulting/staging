@@ -600,3 +600,5 @@ body:has(.yr-ctaband) .yr-footer__cta { display: none; }
 	.yr-hero__cap { text-align: left; left: 0; right: auto; }
 }
 @media (prefers-reduced-motion: reduce) { .yr-hero__media video { display: none; } .yr-hero__media { background: var(--yr-ink) url("../video/hero-speaking-poster.jpg") center / cover; } }
+.yr-ext { font-style: normal; font-size: .8em; color: var(--yr-muted); margin-left: .15em; }
+.yr-nav__link .yr-ext { color: currentColor; opacity: .55; }

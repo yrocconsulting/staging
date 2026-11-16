@@ -41,7 +41,7 @@ $cols = yroc_mega_menu();
 					<p class="yr-footer__h"><?php echo esc_html( $col['title'] ); ?></p>
 					<ul>
 						<?php foreach ( $col['links'] as $l ) : ?>
-							<li><a href="<?php echo esc_url( home_url( $l[1] ) ); ?>"><?php echo esc_html( $l[0] ); ?></a></li>
+							<li><a <?php echo yroc_href( $l[1] ); // phpcs:ignore ?>><?php echo esc_html( $l[0] ); ?><?php echo yroc_is_external( $l[1] ) ? ' ↗' : ''; ?></a></li>
 						<?php endforeach; ?>
 					</ul>
 				</div>

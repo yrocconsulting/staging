@@ -54,11 +54,11 @@ function yroc_mega_menu() {
 			'title' => 'AI Authority Engine',
 			'icon'  => 'engine',
 			'links' => array(
-				array( 'AI Authority Engine Overview', '/ai-authority-engine/', 'Our complete authority system' ),
-				array( 'Local AI Authority', '/ai-authority-engine/local-ai-authority/', 'Own your city in AI answers' ),
-				array( 'Personal Brand Authority', '/ai-authority-engine/personal-brand-authority/', 'For founders, experts & leaders' ),
-				array( 'AI Authority Sprint', '/ai-authority-engine/ai-authority-sprint/', 'A fast, focused authority build' ),
-				array( 'AI Authority Challenge', '/ai-authority-engine/ai-authority-challenge/', 'Learn the system step by step' ),
+				array( 'AI Authority Engine', 'https://aiauthorityengine.org/', 'AI SEO certification & training' ),
+				array( 'AI SEO Certification', 'https://aiauthorityengine.org/ai-seo-certification/', 'Become a Certified AI Authority Specialist' ),
+				array( 'Start an AI SEO Agency', 'https://aiauthorityengine.org/ai-seo-agency-training/', 'Agency training & client delivery' ),
+				array( 'Certified Specialists', 'https://aiauthorityengine.org/certified/', 'Verify a certified professional' ),
+				array( 'AI Visibility Score', 'https://aiauthorityengine.org/ai-visibility-calculator/', 'Free score for your business' ),
 				array( 'Book a Strategy Call', '/book-a-strategy-call/', 'Talk with an AI specialist' ),
 			),
 		),
@@ -115,11 +115,39 @@ function yroc_hero_image() {
 	return $id ? wp_get_attachment_image_url( $id, 'large' ) : '';
 }
 
+/** Absolute or site-relative URL, plus attributes for external links (open in a new tab). */
+function yroc_href( $url ) {
+	if ( preg_match( '#^https?://#', $url ) ) {
+		return 'href="' . esc_url( $url ) . '" target="_blank" rel="noopener"';
+	}
+	return 'href="' . esc_url( home_url( $url ) ) . '"';
+}
+function yroc_is_external( $url ) {
+	return (bool) preg_match( '#^https?://#', $url );
+}
+
+/**
+ * Old AI Authority Engine paths on this site now live on aiauthorityengine.org.
+ * Any request under /ai-authority-engine/ is 301-redirected there.
+ */
+add_action( 'template_redirect', function () {
+	$path = isset( $_SERVER['REQUEST_URI'] ) ? strtok( wp_unslash( $_SERVER['REQUEST_URI'] ), '?' ) : '';
+	if ( 0 !== strpos( $path, '/ai-authority-engine' ) ) {
+		return;
+	}
+	$map = array(
+		'/ai-authority-engine/ai-authority-challenge/' => 'https://aiauthorityengine.org/ai-seo-training/',
+		'/ai-authority-engine/ai-authority-sprint/'    => 'https://aiauthorityengine.org/ai-seo-training/',
+	);
+	wp_redirect( $map[ trailingslashit( $path ) ] ?? 'https://aiauthorityengine.org/', 301 ); // phpcs:ignore WordPress.Security.SafeRedirect
+	exit;
+} );
+
 /** Primary nav (top level). 'mega' => true opens the services panel. */
 function yroc_primary_nav() {
 	return array(
 		array( 'label' => 'Services', 'mega' => true ),
-		array( 'label' => 'AI Authority Engine', 'url' => '/ai-authority-engine/' ),
+		array( 'label' => 'AI Authority Engine', 'url' => 'https://aiauthorityengine.org/' ),
 		array( 'label' => 'Websites', 'url' => '/website-packages/' ),
 		array( 'label' => 'Results', 'url' => '/case-studies/' ),
 		array(

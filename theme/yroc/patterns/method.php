@@ -15,7 +15,7 @@
 		<div class="yr-method" data-yr-method>
 			<div class="yr-msteps" role="tablist" aria-label="The Yroc Method phases">
 				<button class="yr-mstep" type="button" role="tab" aria-selected="true"><span class="yr-mstep__n">01</span><span><h3>Identify</h3><p>Entity optimization and structured data make AI certain who you are: your name, services, locations and leadership.</p></span><i class="yr-bar"></i></button>
-				<button class="yr-mstep" type="button" role="tab" aria-selected="false"><span class="yr-mstep__n">02</span><span><h3>Verify</h3><p>The AI Authority Engine builds reviews, citations, press and expert content that independently confirm you.</p></span><i class="yr-bar"></i></button>
+				<button class="yr-mstep" type="button" role="tab" aria-selected="false"><span class="yr-mstep__n">02</span><span><h3>Verify</h3><p>Using our AI Authority Engine framework, we build the reviews, citations, press and expert content that independently confirm you.</p></span><i class="yr-bar"></i></button>
 				<button class="yr-mstep" type="button" role="tab" aria-selected="false"><span class="yr-mstep__n">03</span><span><h3>Recommend</h3><p>Answer-first content, knowledge panels and reputation work turn a trusted entity into the answer AI gives.</p></span><i class="yr-bar"></i></button>
 			</div>
 			<div class="yr-graph">

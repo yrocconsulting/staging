@@ -10,6 +10,8 @@ WordPress block theme (`theme/yroc`) + content (`content/`) deployed to SiteGrou
 - No client logos until the client provides an approved, current set.
 - Brand: navy/ink #0B1220, Yroc green #7ED957 (dark green #3F8F1C on light backgrounds), steel #547590.
 - Type: Inter (body), Inter Tight (headings), JetBrains Mono (small labels only). Emphasis = color, not italics.
+- AI Authority Engine lives on its own site, https://aiauthorityengine.org (Cory's AI SEO certification &
+  training program). Link there (new tab); /ai-authority-engine/* on this site 301-redirects to it.
 - Tone: established firm (team, office in Sherman TX, track record), not a solo agency.
 
 ## How things work
