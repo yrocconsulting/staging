@@ -17,7 +17,7 @@ $rv  = yroc_reviews();
 	<div class="yr-wrap yr-hero__grid">
 		<div>
 			<p class="yr-eyebrow">AI Search Optimization Firm</p>
-			<h1 id="yr-hero-h">AI is deciding who your customers call. <em>We make sure</em> it <mark class="yr-hl">chooses you.</mark></h1>
+			<h1 id="yr-hero-h">AI is deciding who your customers call. <em>We make sure it chooses you.</em></h1>
 			<p class="yr-lead">Yroc Consulting is a team of strategists, engineers and content specialists helping businesses get recommended by ChatGPT, Gemini, Perplexity and Google AI — backed by more than 15 years of search results.</p>
 			<form class="yr-check" data-yr-check action="<?php echo esc_url( home_url( '/ai-visibility-audit/' ) ); ?>" method="get" autocomplete="off">
 				<label><span>Your business</span><input name="business" placeholder="Your Business Name" aria-label="Your business name"></label>

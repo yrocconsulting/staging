@@ -209,7 +209,7 @@
 				var pp = (t * 0.5 + n.seed) % 1;
 				ctx.fillStyle = 'rgba(126,217,87,' + k + ')'; ctx.beginPath(); ctx.arc(n.x + (X - n.x) * pp, n.y + (Y - n.y) * pp, 1.6, 0, 7); ctx.fill();
 			});
-			ctx.font = '500 11.5px Poppins, sans-serif'; ctx.textBaseline = 'middle';
+			ctx.font = '500 11.5px Inter, sans-serif'; ctx.textBaseline = 'middle';
 			nodes.forEach(function (n) {
 				var on = prog > thr[n.k];
 				ctx.fillStyle = on ? (n.k === 2 ? '#0099FF' : '#7ED957') : 'rgba(84,117,144,.9)';
@@ -221,7 +221,7 @@
 			g.addColorStop(0, 'rgba(126,217,87,' + (0.12 + c * 0.35) + ')'); g.addColorStop(1, 'rgba(126,217,87,0)');
 			ctx.fillStyle = g; ctx.beginPath(); ctx.arc(X, Y, core * 4, 0, 7); ctx.fill();
 			ctx.fillStyle = c > 0.95 ? '#7ED957' : '#E9EEF5'; ctx.beginPath(); ctx.arc(X, Y, core, 0, 7); ctx.fill();
-			ctx.fillStyle = '#0B1220'; ctx.textAlign = 'center'; ctx.font = '700 ' + Math.round(9 + c * 4) + 'px Poppins, sans-serif';
+			ctx.fillStyle = '#0B1220'; ctx.textAlign = 'center'; ctx.font = '700 ' + Math.round(9 + c * 4) + 'px Inter, sans-serif';
 			ctx.fillText(c > 0.95 ? 'RECOMMENDED' : 'YOUR BRAND', X, Y); ctx.textAlign = 'left';
 			var sc = Math.round(8 + c * 88); meter.style.width = sc + '%'; conf.textContent = sc + '%';
 			requestAnimationFrame(frame);
