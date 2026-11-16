@@ -352,3 +352,14 @@ img { max-width: 100%; height: auto; }
 /* Avoid a double CTA when a page already ends with the CTA band. */
 body:has(.yr-ctaband) .yr-footer__cta { display: none; }
 body:has(.yr-ctaband) .yr-footer { padding-top: 0; }
+
+/* ---------- Live AI stat ---------- */
+.yr-stats__grid.has-ai { grid-template-columns: 1.5fr 1fr 1fr 1fr; }
+.yr-stat--ai { background: linear-gradient(160deg, rgba(126, 217, 87, .1), rgba(0, 153, 255, .06)); }
+.yr-stat--ai::before { display: none; }
+.yr-stat__live { display: flex; align-items: center; gap: .45rem; font-size: .72rem !important; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--yr-green-d); margin-bottom: .6rem !important; }
+.yr-stat__dot { width: 8px; height: 8px; border-radius: 50%; background: var(--yr-green); box-shadow: 0 0 0 0 rgba(126, 217, 87, .7); animation: yr-pulse 2s infinite; }
+.yr-stat__plats { list-style: none; display: flex; flex-wrap: wrap; gap: .35rem; margin: .8rem 0 0; padding: 0; }
+.yr-stat__plats li { font-size: .72rem; padding: .2rem .55rem; border-radius: 999px; background: #fff; border: 1px solid var(--yr-line); color: var(--yr-muted); }
+.yr-stat__plats b { color: var(--yr-ink); }
+@media (max-width: 860px) { .yr-stats__grid.has-ai { grid-template-columns: 1fr 1fr; } .yr-stat--ai { grid-column: 1 / -1; border-right: 0; border-bottom: 1px solid var(--yr-line); } .has-ai .yr-stat:nth-child(2) { border-right: 1px solid var(--yr-line); } .has-ai .yr-stat:nth-child(3) { border-right: 0; border-bottom: 1px solid var(--yr-line); } .has-ai .yr-stat:nth-child(4) { grid-column: 1 / -1; } }

@@ -10,6 +10,7 @@ define( 'YROC_VERSION', '1.0.0' );
 
 require_once __DIR__ . '/inc/site.php';
 require_once __DIR__ . '/inc/schema.php';
+require_once __DIR__ . '/inc/ai-stats.php';
 
 add_action( 'after_setup_theme', function () {
 	add_theme_support( 'wp-block-styles' );

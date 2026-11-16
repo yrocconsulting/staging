@@ -1,4 +1,5 @@
 {
+  "options": { "blogname": "Yroc Consulting", "blogdescription": "AI Search Optimization Agency" },
   "front_page": "home",
   "posts_page": "blog",
   "pages": [

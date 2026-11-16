@@ -97,6 +97,11 @@ foreach ( $manifest['pages'] ?? array() as $p ) {
 	WP_CLI::log( "$verb /$path/" );
 }
 
+// Site options.
+foreach ( $manifest['options'] ?? array() as $opt => $val ) {
+	update_option( $opt, $val );
+}
+
 // Reading settings.
 if ( ! empty( $manifest['front_page'] ) && isset( $ids[ $manifest['front_page'] ] ) ) {
 	update_option( 'show_on_front', 'page' );
