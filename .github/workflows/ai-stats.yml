@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: deploy-staging
+  group: ai-stats
   cancel-in-progress: false
 
 jobs:
