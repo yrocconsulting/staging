@@ -103,6 +103,28 @@
 		});
 	});
 
+	/* ---------- Hero video ---------- */
+	var vid = $('[data-yr-video]'), pauseBtn = $('[data-yr-pause]');
+	if (vid) {
+		if (reduce) { vid.pause(); vid.removeAttribute('autoplay'); }
+		if (pauseBtn) {
+			if (reduce) pauseBtn.setAttribute('aria-pressed', 'true');
+			pauseBtn.addEventListener('click', function () {
+				var paused = pauseBtn.getAttribute('aria-pressed') === 'true';
+				if (paused) { vid.play(); } else { vid.pause(); }
+				pauseBtn.setAttribute('aria-pressed', paused ? 'false' : 'true');
+				$('.yr-sr', pauseBtn).textContent = paused ? 'Pause background video' : 'Play background video';
+			});
+		}
+		// Save battery/data: pause when the hero is off screen.
+		if ('IntersectionObserver' in window) {
+			new IntersectionObserver(function (en) {
+				if (pauseBtn && pauseBtn.getAttribute('aria-pressed') === 'true') return;
+				if (en[0].isIntersecting) { var p = vid.play(); if (p && p.catch) p.catch(function () {}); } else { vid.pause(); }
+			}).observe(vid);
+		}
+	}
+
 	/* ---------- Hero: "See what AI says" ---------- */
 	var check = $('[data-yr-check]'), card = $('[data-yr-aicard]');
 	if (check && card) {

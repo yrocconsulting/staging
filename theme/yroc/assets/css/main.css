@@ -563,3 +563,39 @@ body:has(.yr-ctaband) .yr-footer__cta { display: none; }
 .wp-block-post-terms.yr-eyebrow { display: block; line-height: 1.6; }
 .wp-block-post-terms.yr-eyebrow::before { display: none; }
 .wp-block-post-terms.yr-eyebrow a { color: var(--yr-green-d); text-decoration: none; }
+
+/* ---------- Hero with speaking montage ---------- */
+.yr-hero--video { background: var(--yr-ink); color: rgba(255, 255, 255, .78); padding-block: clamp(4rem, 9vw, 8rem) clamp(4.5rem, 9vw, 8rem); }
+.yr-hero--video::before { display: none; }
+.yr-hero__media { position: absolute !important; inset: 0; z-index: 0; overflow: hidden; }
+.yr-hero__media video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.yr-hero__media::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(11, 18, 32, .94) 0%, rgba(11, 18, 32, .82) 42%, rgba(11, 18, 32, .45) 75%, rgba(11, 18, 32, .35) 100%), linear-gradient(0deg, rgba(11, 18, 32, .85), transparent 35%); }
+.yr-hero--video .yr-wrap { position: relative; z-index: 1; }
+.yr-hero--video h1 { color: #fff !important; }
+.yr-hero--video h1 em { color: var(--yr-green); }
+.yr-hero--video h1 mark.yr-hl { background: linear-gradient(transparent 64%, rgba(126, 217, 87, .45) 64%); color: #fff; }
+.yr-hero--video .yr-eyebrow { color: var(--yr-green); }
+.yr-hero--video .yr-lead { color: rgba(255, 255, 255, .78); }
+.yr-hero--video .yr-check { box-shadow: 0 30px 60px rgba(0, 0, 0, .35); }
+.yr-hero--video .yr-check__note { color: rgba(255, 255, 255, .6); }
+.yr-hero--video .yr-trust { border-top-color: rgba(255, 255, 255, .14); }
+.yr-hero--video .yr-trust b { color: #fff; }
+.yr-hero--video .yr-trust span { color: rgba(255, 255, 255, .62); }
+.yr-hero--video .yr-stage { min-height: 520px; }
+.yr-hero--video .yr-aicard { left: auto; right: 0; bottom: 70px; }
+.yr-hero--video .yr-chip { right: 0; left: auto; top: 0; }
+.yr-hero__cap { position: absolute; right: 0; bottom: 0; margin: 0; max-width: 360px; text-align: right; font-size: .8rem; color: rgba(255, 255, 255, .7); }
+.yr-hero__cap .yr-live { color: var(--yr-green); margin-right: .35rem; }
+.yr-hero__pause { position: absolute; right: var(--yr-gut); bottom: 18px; z-index: 2; width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, .3); background: rgba(11, 18, 32, .5); cursor: pointer; }
+.yr-hero__pause::before, .yr-hero__pause::after { content: ""; position: absolute; top: 11px; width: 3px; height: 12px; background: #fff; border-radius: 1px; }
+.yr-hero__pause::before { left: 13px; } .yr-hero__pause::after { right: 13px; }
+.yr-hero__pause[aria-pressed="true"]::before { left: 14px; top: 10px; width: 0; height: 0; background: none; border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+.yr-hero__pause[aria-pressed="true"]::after { display: none; }
+@media (max-width: 980px) {
+	.yr-hero__media::after { background: linear-gradient(180deg, rgba(11, 18, 32, .78), rgba(11, 18, 32, .9)); }
+	.yr-hero--video .yr-stage { min-height: 420px; }
+	.yr-hero--video .yr-aicard { right: auto; left: 0; bottom: 50px; }
+	.yr-hero--video .yr-chip { left: auto; right: 0; top: 0; }
+	.yr-hero__cap { text-align: left; left: 0; right: auto; }
+}
+@media (prefers-reduced-motion: reduce) { .yr-hero__media video { display: none; } .yr-hero__media { background: var(--yr-ink) url("../video/hero-speaking-poster.jpg") center / cover; } }
