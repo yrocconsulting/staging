@@ -154,6 +154,12 @@
       "file": "pages/case-hormone-replacement-therapy-clinic-case-study.html",
       "template": "page-landing",
       "excerpt": "SEO, paid social and local marketing drove a 70% traffic surge and $20K in new revenue in 60 days."
+    },
+    {
+      "slug": "white-label-services",
+      "title": "White Label Partners",
+      "file": "pages/white-label-services.html",
+      "template": "page-landing"
     }
   ]
 }
