@@ -166,6 +166,84 @@
       "title": "Client Reviews",
       "file": "pages/reviews.html",
       "template": "page-landing"
+    },
+    {
+      "slug": "kb",
+      "title": "AI Search Learning Center",
+      "file": "pages/kb.html",
+      "template": "page-landing"
+    },
+    {
+      "slug": "what-is-ai-search-optimization",
+      "title": "What is AI search optimization?",
+      "parent": "kb",
+      "file": "pages/kb-what-is-ai-search-optimization.html",
+      "template": "page-landing",
+      "order": 0,
+      "excerpt": "The plain-English definition, and why AI recommends some businesses and ignores others."
+    },
+    {
+      "slug": "how-ai-understands-entities",
+      "title": "How AI understands entities",
+      "parent": "kb",
+      "file": "pages/kb-how-ai-understands-entities.html",
+      "template": "page-landing",
+      "order": 1,
+      "excerpt": "AI doesn't search for pages. It searches for entities it can identify and trust."
+    },
+    {
+      "slug": "how-ai-decides-what-to-recommend",
+      "title": "How AI decides what to recommend",
+      "parent": "kb",
+      "file": "pages/kb-how-ai-decides-what-to-recommend.html",
+      "template": "page-landing",
+      "order": 2,
+      "excerpt": "The step-by-step evaluation an AI system runs before it names a business."
+    },
+    {
+      "slug": "ai-search-vs-traditional-seo",
+      "title": "AI search vs. traditional SEO",
+      "parent": "kb",
+      "file": "pages/kb-ai-search-vs-traditional-seo.html",
+      "template": "page-landing",
+      "order": 3,
+      "excerpt": "What changes when search returns an answer instead of a list of links."
+    },
+    {
+      "slug": "authority-and-trust-signals",
+      "title": "Authority & trust signals",
+      "parent": "kb",
+      "file": "pages/kb-authority-and-trust-signals.html",
+      "template": "page-landing",
+      "order": 4,
+      "excerpt": "The signals that make AI confident enough to recommend you."
+    },
+    {
+      "slug": "structured-data-and-ai",
+      "title": "The role of structured data",
+      "parent": "kb",
+      "file": "pages/kb-structured-data-and-ai.html",
+      "template": "page-landing",
+      "order": 5,
+      "excerpt": "How schema markup reduces ambiguity and confirms who you are."
+    },
+    {
+      "slug": "reviews-and-reputation",
+      "title": "Reviews & reputation in AI search",
+      "parent": "kb",
+      "file": "pages/kb-reviews-and-reputation.html",
+      "template": "page-landing",
+      "order": 6,
+      "excerpt": "How reviews and public sentiment shape the way AI describes you."
+    },
+    {
+      "slug": "ai-search-glossary",
+      "title": "AI Search Glossary",
+      "parent": "kb",
+      "file": "pages/kb-ai-search-glossary.html",
+      "template": "page-landing",
+      "order": 50,
+      "excerpt": "AI search terms explained in plain English."
     }
   ]
 }

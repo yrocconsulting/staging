@@ -55,7 +55,7 @@ $cols = yroc_mega_menu();
 					<li><a href="<?php echo esc_url( home_url( '/case-studies/' ) ); ?>">Case Studies</a></li>
 					<li><a href="<?php echo esc_url( home_url( '/reviews/' ) ); ?>">Reviews</a></li>
 					<li><a href="<?php echo esc_url( home_url( '/blog/' ) ); ?>">Blog</a></li>
-					<li><a href="<?php echo esc_url( home_url( '/kb/' ) ); ?>">Knowledge Base</a></li>
+					<li><a href="<?php echo esc_url( home_url( '/kb/' ) ); ?>">AI Learning Center</a></li>
 					<li><a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">Contact</a></li>
 				</ul>
 			</div>

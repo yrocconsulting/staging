@@ -174,7 +174,7 @@ function yroc_primary_nav() {
 			'label' => 'Resources',
 			'children' => array(
 				array( 'Blog', '/blog/' ),
-				array( 'Knowledge Base', '/kb/' ),
+				array( 'AI Learning Center', '/kb/' ),
 				array( 'Podcast', '/podcasts/how-ai-is-changing-marketing/' ),
 				array( 'Speaking', '/about-us/#speaking' ),
 			),

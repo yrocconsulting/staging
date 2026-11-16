@@ -257,6 +257,20 @@
 		if (hash && $('[data-cat="' + hash + '"]', bar)) apply(hash);
 	});
 
+	/* ---------- Learning Center filters ---------- */
+	var kbFilter = function (input, selector, attr) {
+		input.addEventListener('input', function () {
+			var q = input.value.trim().toLowerCase();
+			$$(selector).forEach(function (el) {
+				var hay = ((el.getAttribute(attr) || '') + ' ' + el.textContent).toLowerCase();
+				el.hidden = !!q && hay.indexOf(q) === -1;
+				if (!el.hidden) el.classList.add('is-visible');
+			});
+		});
+	};
+	$$('[data-yr-kb-filter]').forEach(function (i) { kbFilter(i, '.yr-kbcard', 'data-kb'); });
+	$$('[data-yr-gloss-filter]').forEach(function (i) { kbFilter(i, '.yr-gloss__item', 'data-term'); });
+
 	/* ---------- Forms ---------- */
 	$$('[data-yr-form]').forEach(function (form) {
 		var msg = $('.yr-form__msg', form), btn = $('button[type="submit"]', form);
