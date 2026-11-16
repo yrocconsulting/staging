@@ -158,6 +158,27 @@ foreach ( $manifest['options'] ?? array() as $opt => $val ) {
 	update_option( $opt, $val );
 }
 
+// SEO titles and descriptions (content/seo.json, keyed by URL path). Meta only; never touches content.
+if ( is_file( "$dir/seo.json" ) ) {
+	$seo = json_decode( file_get_contents( "$dir/seo.json" ), true );
+	$n   = 0;
+	foreach ( (array) $seo as $path => $vals ) {
+		$id = '/' === $path ? ( $ids['home'] ?? 0 ) : ( $ids[ trim( $path, '/' ) ] ?? 0 );
+		if ( ! $id ) {
+			$pg = get_page_by_path( trim( $path, '/' ), OBJECT, 'page' );
+			$id = $pg ? $pg->ID : 0;
+		}
+		if ( ! $id ) {
+			WP_CLI::warning( "seo: no page for $path" );
+			continue;
+		}
+		update_post_meta( $id, '_yroc_seo_title', sanitize_text_field( $vals[0] ) );
+		update_post_meta( $id, '_yroc_seo_desc', sanitize_text_field( $vals[1] ) );
+		$n++;
+	}
+	WP_CLI::log( "seo        $n pages" );
+}
+
 // Reading settings.
 if ( ! empty( $manifest['front_page'] ) && isset( $ids[ $manifest['front_page'] ] ) ) {
 	update_option( 'show_on_front', 'page' );

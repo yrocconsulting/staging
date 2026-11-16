@@ -30,5 +30,8 @@ WordPress block theme (`theme/yroc`) + content (`content/`) deployed to SiteGrou
 - Redirects for old-site URLs: `theme/yroc/inc/redirects.php` (only fire on 404). Add an entry whenever a
   page is removed or renamed.
 - Legal pages: `tools/gen_legal.py`. Client service + affiliate terms are carried verbatim; don't reword them.
+- SEO: `theme/yroc/inc/seo.php` (titles, descriptions, OG/Twitter, page schema incl. FAQPage/Service/
+  BreadcrumbList, core sitemap at /wp-sitemap.xml). Per-page title/description live in `content/seo.json`;
+  add an entry for every new page (title under 60 chars, description 110 to 160, no em dashes).
 - Hero video: `theme/yroc/assets/video/hero-speaking.mp4` (720p H.264, keep under ~4 MB).
 - Bump `Version` in `style.css` when adding new pattern files (WordPress caches the pattern list).
