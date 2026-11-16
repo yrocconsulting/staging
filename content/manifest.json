@@ -1,9 +1,39 @@
 {
-  "options": { "blogname": "Yroc Consulting", "blogdescription": "AI Search Optimization Agency" },
+  "options": {
+    "blogname": "Yroc Consulting",
+    "blogdescription": "AI Search Optimization Agency"
+  },
   "front_page": "home",
   "posts_page": "blog",
   "pages": [
-    { "slug": "home", "title": "Home", "file": "pages/home.html", "template": "page-landing" },
-    { "slug": "blog", "title": "Blog", "content": "" }
+    {
+      "slug": "home",
+      "title": "Home",
+      "file": "pages/home.html",
+      "template": "page-landing"
+    },
+    {
+      "slug": "blog",
+      "title": "Blog",
+      "content": ""
+    },
+    {
+      "slug": "ai-search-optimization",
+      "title": "AI Search Optimization",
+      "file": "pages/ai-search-optimization.html",
+      "template": "page-landing"
+    },
+    {
+      "slug": "ai-visibility-audit",
+      "title": "AI Visibility Audit",
+      "file": "pages/ai-visibility-audit.html",
+      "template": "page-landing"
+    },
+    {
+      "slug": "contact",
+      "title": "Contact",
+      "file": "pages/contact.html",
+      "template": "page-landing"
+    }
   ]
 }

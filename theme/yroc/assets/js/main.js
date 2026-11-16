@@ -193,6 +193,42 @@
 		boxes.forEach(function (b) { b.addEventListener('change', update); });
 	}
 
+	/* ---------- Forms ---------- */
+	$$('[data-yr-form]').forEach(function (form) {
+		var msg = $('.yr-form__msg', form), btn = $('button[type="submit"]', form);
+		var emailRe = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+		var setErr = function (name, text) {
+			var el = form.elements[name]; if (!el) return;
+			var field = el.closest('.yr-field'); field.classList.toggle('has-error', !!text);
+			$('.yr-field__err', field).textContent = text || '';
+			el.setAttribute('aria-invalid', text ? 'true' : 'false');
+		};
+		form.addEventListener('submit', function (e) {
+			e.preventDefault();
+			var bad = null;
+			$$('[required]', form).forEach(function (el) {
+				var v = el.value.trim(), err = '';
+				if (!v) err = 'This field is required.';
+				else if (el.type === 'email' && !emailRe.test(v)) err = 'Please enter a valid email.';
+				setErr(el.name, err);
+				if (err && !bad) bad = el;
+			});
+			if (bad) { bad.focus(); return; }
+			btn.disabled = true; form.classList.add('is-sending');
+			fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' }, credentials: 'same-origin' })
+				.then(function (r) { return r.json().catch(function () { return { ok: false, message: 'Something went wrong. Please call 903.300.LEADS.' }; }); })
+				.then(function (res) {
+					if (res.errors) Object.keys(res.errors).forEach(function (k) { setErr(k, res.errors[k]); });
+					msg.hidden = false; msg.textContent = res.message || '';
+					msg.classList.toggle('is-error', !res.ok);
+					if (res.ok) { form.classList.add('is-sent'); form.reset(); }
+				})
+				.catch(function () { msg.hidden = false; msg.classList.add('is-error'); msg.textContent = 'Network error. Please try again or call 903.300.LEADS.'; })
+				.then(function () { btn.disabled = false; form.classList.remove('is-sending'); });
+		});
+		$$('input, textarea', form).forEach(function (el) { el.addEventListener('input', function () { if (el.closest('.has-error')) setErr(el.name, ''); }); });
+	});
+
 	/* ---------- Hero entity network ---------- */
 	var cv = $('[data-yr-net]');
 	if (cv && cv.getContext && !reduce) {

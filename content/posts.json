@@ -1,0 +1,892 @@
+{
+ "categories": [
+  {
+   "slug": "ai-business-growth-tools",
+   "name": "AI Business Growth Tools",
+   "description": ""
+  },
+  {
+   "slug": "backlinks",
+   "name": "Backlinks",
+   "description": ""
+  },
+  {
+   "slug": "content",
+   "name": "Content",
+   "description": ""
+  },
+  {
+   "slug": "local-seo",
+   "name": "Hyper-Local SEO",
+   "description": ""
+  },
+  {
+   "slug": "internet-marketing",
+   "name": "Internet Marketing Tips & How-tos",
+   "description": ""
+  },
+  {
+   "slug": "just-for-fun",
+   "name": "Just For Fun",
+   "description": ""
+  },
+  {
+   "slug": "kingdom-impact",
+   "name": "Kingdom Impact",
+   "description": ""
+  },
+  {
+   "slug": "lead-generation",
+   "name": "Lead Generation",
+   "description": ""
+  },
+  {
+   "slug": "podcasts",
+   "name": "Podcasts",
+   "description": ""
+  },
+  {
+   "slug": "reputation-management",
+   "name": "Reputation Management",
+   "description": ""
+  },
+  {
+   "slug": "seo-tips",
+   "name": "Search Engine Optimization",
+   "description": ""
+  },
+  {
+   "slug": "social-media-marketing",
+   "name": "Social Media Marketing",
+   "description": ""
+  },
+  {
+   "slug": "web-design",
+   "name": "Web Design & Development",
+   "description": ""
+  },
+  {
+   "slug": "free-site-audits",
+   "name": "Website and SEO Audits",
+   "description": ""
+  }
+ ],
+ "posts": [
+  {
+   "slug": "red-flags-in-your-seo-audit-part-1",
+   "title": "Red Flags in your SEO Audit – Part 1",
+   "date": "2020-01-11T18:59:45",
+   "modified": "2024-01-17T03:40:23",
+   "categories": [
+    "free-site-audits"
+   ],
+   "tags": [
+    "audits",
+    "backlinks",
+    "EMDs",
+    "malware",
+    "seo",
+    "web design"
+   ],
+   "excerpt": "",
+   "featured": "https://yrocconsulting.com/wp-content/uploads/2020/06/seo-red-flags-01.png",
+   "file": "posts/red-flags-in-your-seo-audit-part-1.html"
+  },
+  {
+   "slug": "red-flags-in-your-seo-audit-part-2",
+   "title": "Red Flags in your SEO Audit – Part 2",
+   "date": "2020-02-08T09:55:53",
+   "modified": "2024-01-16T16:06:11",
+   "categories": [
+    "free-site-audits"
+   ],
+   "tags": [
+    "keywords",
+    "Mobile",
+    "permalinks",
+    "reviews",
+    "seo",
+    "seo audit"
+   ],
+   "excerpt": "",
+   "featured": "https://yrocconsulting.com/wp-content/uploads/2020/06/seo-red-flags-01.png",
+   "file": "posts/red-flags-in-your-seo-audit-part-2.html"
+  },
+  {
+   "slug": "how-to-perform-an-seo-audit-like-a-pro",
+   "title": "How To Perform an SEO Audit Like a Pro",
+   "date": "2020-03-14T14:01:16",
+   "modified": "2024-01-16T11:15:35",
+   "categories": [
+    "free-site-audits"
+   ],
+   "tags": [
+    "backlinks",
+    "content",
+    "local",
+    "nap",
+    "ranking",
+    "seo",
+    "social media"
+   ],
+   "excerpt": "",
+   "featured": "https://yrocconsulting.com/wp-content/uploads/2020/05/seo-audit2.png",
+   "file": "posts/how-to-perform-an-seo-audit-like-a-pro.html"
+  },
+  {
+   "slug": "how-does-google-rank-a-website",
+   "title": "How Does Google Rank A Website?",
+   "date": "2020-04-11T14:31:52",
+   "modified": "2024-01-17T03:39:59",
+   "categories": [
+    "seo-tips"
+   ],
+   "tags": [
+    "2020",
+    "anchor",
+    "backlinks",
+    "content",
+    "google",
+    "ranking",
+    "seo",
+    "social"
+   ],
+   "excerpt": "",
+   "featured": "https://yrocconsulting.com/wp-content/uploads/2020/05/google-ranking3.png",
+   "file": "posts/how-does-google-rank-a-website.html"
+  },
+  {
+   "slug": "our-headline-formula-list-you-cant-write-without",
+   "title": "Our Headline Formula List You Can’t Write Without",
+   "date": "2020-05-09T20:32:50",
+   "modified": "2024-01-16T10:14:02",
+   "categories": [
+    "seo-tips"
+   ],
+   "tags": [
+    "content",
+    "EAT SEO"
+   ],
+   "excerpt": "",
+   "featured": "https://yrocconsulting.com/wp-content/uploads/2020/06/Our-Headline-Formula-List-You-Can’t-Write-Without.jpg",
+   "file": "posts/our-headline-formula-list-you-cant-write-without.html"
+  },
+  {
+   "slug": "super-simple-blog-ping-trick-for-wordpress",
+   "title": "Super Simple Blog Ping Trick for WordPress",
+   "date": "2020-06-13T15:36:38",
+   "modified": "2024-01-17T03:40:21",
+   "categories": [
+    "seo-tips"
+   ],
+   "tags": [
+    "content",
+    "google",
+    "seo",
+    "serp"
+   ],
+   "excerpt": "",
+   "featured": "https://yrocconsulting.com/wp-content/uploads/2020/06/Super-Simple-Blog-Ping-Trick-for-Wordpress.jpg",
+   "file": "posts/super-simple-blog-ping-trick-for-wordpress.html"
+  },
+  {
+   "slug": "7-pillars-to-a-successful-lead-generation-campaign",
+   "title": "7 Pillars to a Successful Lead Generation Campaign",
+   "date": "2020-07-11T16:09:07",
+   "modified": "2024-01-22T08:11:44",
+   "categories": [
+    "lead-generation"
+   ],
+   "tags": [],
+   "excerpt": "",
+   "featured": "https://yrocconsulting.com/wp-content/uploads/2020/07/7-Pillars-to-a-Successful-Lead-Generation-Campaign.png",
+   "file": "posts/7-pillars-to-a-successful-lead-generation-campaign.html"
+  },
+  {
+   "slug": "5-quick-idea-generators-the-best-inspiration-for-your-headlines",
+   "title": "5 Quick Idea Generators: The Best Inspiration for your Headlines",
+   "date": "2020-08-08T16:13:10",
+   "modified": "2024-01-16T10:14:00",
+   "categories": [
+    "internet-marketing",
+    "lead-generation"
+   ],
+   "tags": [
+    "content is king",
+    "headlines",
+    "lead gen"
+   ],
+   "excerpt": "",
+   "featured": "https://yrocconsulting.com/wp-content/uploads/2020/08/5-Quick-Idea-Generators-The-Best-Inspiration-for-your-Headlines.jpg",
+   "file": "posts/5-quick-idea-generators-the-best-inspiration-for-your-headlines.html"
+  },
+  {
+   "slug": "increase-your-ctr-by-38-new-research",
+   "title": "Increase Your CTR by 38% [New Research]",
+   "date": "2020-09-12T17:04:01",
+   "modified": "2024-01-16T10:13:59",
+   "categories": [
+    "content",
+    "internet-marketing",
+    "lead-generation"
+   ],
+   "tags": [
+    "click through rate",
+    "ctr",
+    "headlines",
+    "ranking"
+   ],
+   "excerpt": "",
+   "featured": "https://yrocconsulting.com/wp-content/uploads/2020/10/crt-attention.jpg",
+   "file": "posts/increase-your-ctr-by-38-new-research.html"
+  },
+  {
+   "slug": "how-to-leverage-google-drive-for-your-site-authority-stack",
+   "title": "How To Leverage Google Drive for Your Site (Authority Stack)",
+   "date": "2020-10-10T13:05:23",
+   "modified": "2024-01-17T03:41:11",
+   "categories": [
+    "backlinks",
+    "local-seo"
+   ],
+   "tags": [
+    "backlinks",
+    "google",
+    "google authority",
+    "google stack"
+   ],
+   "excerpt": "",
+   "featured": "https://yrocconsulting.com/wp-content/uploads/2020/11/google-authority-stack.jpg",
+   "file": "posts/how-to-leverage-google-drive-for-your-site-authority-stack.html"
+  },
+  {
+   "slug": "help-your-website-move-toward-ada-compliance",
+   "title": "Help Your Website Move Toward ADA Compliance",
+   "date": "2020-11-14T11:21:57",
+   "modified": "2024-01-17T15:31:57",
+   "categories": [
+    "web-design"
+   ],
+   "tags": [
+    "accessibility",
+    "ada compliance",
+    "web design"
+   ],
+   "excerpt": "",
+   "featured": "https://yrocconsulting.com/wp-content/uploads/2020/11/ada-compliance.jpg",
+   "file": "posts/help-your-website-move-toward-ada-compliance.html"
+  },
+  {
+   "slug": "2021-google-ranking-factors-core-web-vitals",
+   "title": "2021 Google Ranking Factors: Core Web Vitals",
+   "date": "2020-12-12T11:03:11",
+   "modified": "2024-01-16T11:14:44",
+   "categories": [
+    "internet-marketing",
+    "seo-tips"
+   ],
+   "tags": [
+    "google algorithm",
+    "mobile seo",
+    "UX"
+   ],
+   "excerpt": "",
+   "featured": "https://yrocconsulting.com/wp-content/uploads/2020/12/core-web-vitals.jpg",
+   "file": "posts/2021-google-ranking-factors-core-web-vitals.html"
+  },
+  {
+   "slug": "new-to-seo-updated-2021",
+   "title": "New To SEO? [Updated 2021]",
+   "date": "2021-01-09T19:24:46",
+   "modified": "2024-01-16T10:15:15",
+   "categories": [
+    "local-seo",
+    "seo-tips"
+   ],
+   "tags": [
+    "EAT SEO",
+    "google",
+    "google algorithm",
+    "ranking",
+    "seo",
+    "serp"
+   ],
+   "excerpt": "",
+   "featured": "https://yrocconsulting.com/wp-content/uploads/2021/01/seo.jpg",
+   "file": "posts/new-to-seo-updated-2021.html"
+  },
+  {
+   "slug": "how-to-get-google-to-instantly-index-your-new-digital-storefront",
+   "title": "How to Get Google to Instantly Index your new Digital Storefront",
+   "date": "2021-02-13T10:32:50",
+   "modified": "2024-01-16T11:14:44",
+   "categories": [
+    "internet-marketing"
+   ],
+   "tags": [
+    "backlinks",
+    "google",
+    "indexing",
+    "sitemap",
+    "social media"
+   ],
+   "excerpt": "",
+   "featured": "https://yrocconsulting.com/wp-content/uploads/2021/02/google-indexing.jpg",
+   "file": "posts/how-to-get-google-to-instantly-index-your-new-digital-storefront.html"
+  },
+  {
+   "slug": "the-best-wordpress-popup-plugins-2021",
+   "title": "The Best WordPress Popup Plugins [2021]",
+   "date": "2021-03-13T14:07:54",
+   "modified": "2024-01-16T11:14:43",
+   "categories": [
+    "lead-generation",
+    "web-design"
+   ],
+   "tags": [
+    "click through rate",
+    "ctr",
+    "UX",
+    "WordPress"
+   ],
+   "excerpt": "",
+   "featured": "https://yrocconsulting.com/wp-content/uploads/2021/03/wordpress-popup-plugins.png",
+   "file": "posts/the-best-wordpress-popup-plugins-2021.html"
+  },
+  {
+   "slug": "beginners-guide-understanding-seo-keywords",
+   "title": "A Beginner’s Guide to Understanding SEO Keywords",
+   "date": "2021-04-10T13:43:31",
+   "modified": "2024-01-16T11:14:43",
+   "categories": [
+    "seo-tips"
+   ],
+   "tags": [
+    "geotarget",
+    "keyword research",
+    "keywords",
+    "longtail keywords"
+   ],
+   "excerpt": "",
+   "featured": "https://yrocconsulting.com/wp-content/uploads/2021/04/Understanding-SEO-Keywords-101.jpg",
+   "file": "posts/beginners-guide-understanding-seo-keywords.html"
+  },
+  {
+   "slug": "the-essential-seo-content-writing-checklist-12-points",
+   "title": "The Essential SEO Content Writing Checklist [12-Points]",
+   "date": "2021-09-11T11:37:38",
+   "modified": "2024-01-16T10:15:15",
+   "categories": [
+    "content"
+   ],
+   "tags": [
+    "content",
+    "content is king",
+    "EAT SEO",
+    "keywords",
+    "longtail keywords"
+   ],
+   "excerpt": "",
+   "featured": "https://yrocconsulting.com/wp-content/uploads/2021/09/The-Essential-SEO-Content-Writing-Checklist2.jpg",
+   "file": "posts/the-essential-seo-content-writing-checklist-12-points.html"
+  },
+  {
+   "slug": "best-marketing-books-you-need-to-read",
+   "title": "Best Marketing Books You Need To Read",
+   "date": "2021-10-09T14:48:29",
+   "modified": "2024-01-16T11:14:42",
+   "categories": [
+    "internet-marketing",
+    "seo-tips"
+   ],
+   "tags": [
+    "books",
+    "click through rate",
+    "content",
+    "ranking",
+    "seo",
+    "UX",
+    "web design"
+   ],
+   "excerpt": "",
+   "featured": "https://yrocconsulting.com/wp-content/uploads/2021/10/Best-Marketing-Books-You-Need-To-Read.jpg",
+   "file": "posts/best-marketing-books-you-need-to-read.html"
+  },
+  {
+   "slug": "25-google-my-business-hacks-for-better-ranking",
+   "title": "25 Google My Business Hacks for Better Ranking",
+   "date": "2021-11-13T13:54:34",
+   "modified": "2024-01-16T10:18:28",
+   "categories": [
+    "local-seo",
+    "internet-marketing"
+   ],
+   "tags": [
+    "geotarget",
+    "GMB",
+    "google",
+    "indexing",
+    "nap"
+   ],
+   "excerpt": "",
+   "featured": "https://yrocconsulting.com/wp-content/uploads/2021/11/google-my-business.jpg",
+   "file": "posts/25-google-my-business-hacks-for-better-ranking.html"
+  },
+  {
+   "slug": "local-search-results-are-recalibrated-by-google-algorithm-update",
+   "title": "Local Search Results are Recalibrated by Google Algorithm Update",
+   "date": "2022-01-11T14:22:21",
+   "modified": "2024-01-24T10:56:40",
+   "categories": [
+    "local-seo"
+   ],
+   "tags": [
+    "GMB",
+    "google algorithm"
+   ],
+   "excerpt": "",
+   "featured": "https://yrocconsulting.com/wp-content/uploads/2022/01/google-algo-update.jpg",
+   "file": "posts/local-search-results-are-recalibrated-by-google-algorithm-update.html"
+  },
+  {
+   "slug": "google-passage-indexing",
+   "title": "New for ’22: Passage Indexing",
+   "date": "2022-02-17T10:34:23",
+   "modified": "2024-01-16T11:14:40",
+   "categories": [
+    "content",
+    "seo-tips"
+   ],
+   "tags": [
+    "content",
+    "content is king",
+    "new22"
+   ],
+   "excerpt": "",
+   "featured": "https://yrocconsulting.com/wp-content/uploads/2022/02/passage-indexing.jpg",
+   "file": "posts/google-passage-indexing.html"
+  },
+  {
+   "slug": "user-behavior-search-intent",
+   "title": "New For ’22: User Behavior + Search Intent",
+   "date": "2022-03-12T16:15:01",
+   "modified": "2024-01-16T10:14:36",
+   "categories": [
+    "content",
+    "seo-tips"
+   ],
+   "tags": [
+    "new22"
+   ],
+   "excerpt": "",
+   "featured": "https://yrocconsulting.com/wp-content/uploads/2022/04/search-intent.jpg",
+   "file": "posts/user-behavior-search-intent.html"
+  },
+  {
+   "slug": "googles-ctrs-by-ranking-position",
+   "title": "New for ’22: Google’s CTRs by Ranking Position",
+   "date": "2022-04-09T15:32:18",
+   "modified": "2024-01-16T10:14:36",
+   "categories": [
+    "local-seo",
+    "seo-tips"
+   ],
+   "tags": [
+    "click through rate",
+    "ctr",
+    "keywords",
+    "serp"
+   ],
+   "excerpt": "",
+   "featured": "https://yrocconsulting.com/wp-content/uploads/2022/04/CTR-ranking-positions.png",
+   "file": "posts/googles-ctrs-by-ranking-position.html"
+  },
+  {
+   "slug": "everything-you-need-to-know-about-evaluating-your-competitors-backlinks",
+   "title": "Everything You Need to Know About Evaluating Your Competitors’ Backlinks",
+   "date": "2022-07-09T15:02:38",
+   "modified": "2024-01-16T10:14:35",
+   "categories": [
+    "backlinks",
+    "free-site-audits"
+   ],
+   "tags": [
+    "audits",
+    "backlinks"
+   ],
+   "excerpt": "",
+   "featured": "https://yrocconsulting.com/wp-content/uploads/2022/07/competitor-backlinkis.jpg",
+   "file": "posts/everything-you-need-to-know-about-evaluating-your-competitors-backlinks.html"
+  },
+  {
+   "slug": "help-me-write-content-20-options",
+   "title": "Help Me Write Content: 20 Options",
+   "date": "2022-09-17T11:13:47",
+   "modified": "2024-01-16T10:14:34",
+   "categories": [
+    "content"
+   ],
+   "tags": [
+    "content",
+    "content is king",
+    "EAT SEO",
+    "google",
+    "keywords"
+   ],
+   "excerpt": "",
+   "featured": "https://yrocconsulting.com/wp-content/uploads/2022/09/content-types.jpg",
+   "file": "posts/help-me-write-content-20-options.html"
+  },
+  {
+   "slug": "your-content-is-pathetic",
+   "title": "Your Content Is Pathetic [At least 90% of you]",
+   "date": "2023-02-04T13:19:06",
+   "modified": "2024-01-16T10:14:33",
+   "categories": [
+    "content"
+   ],
+   "tags": [
+    "click through rate",
+    "content",
+    "content is king",
+    "ctr",
+    "EAT SEO"
+   ],
+   "excerpt": "",
+   "featured": "https://yrocconsulting.com/wp-content/uploads/2023/02/your-content-is-pathetic.jpg",
+   "file": "posts/your-content-is-pathetic.html"
+  },
+  {
+   "slug": "this-non-obvious-addition-to-your-headline-will-make-it-trustworthy-enough-to-click",
+   "title": "This Non-Obvious Addition To Your Headline Will Make It Trustworthy Enough To Click",
+   "date": "2023-08-12T13:27:30",
+   "modified": "2024-01-16T19:57:50",
+   "categories": [
+    "content",
+    "internet-marketing"
+   ],
+   "tags": [
+    "content",
+    "ctr",
+    "EAT SEO",
+    "headlines",
+    "seo"
+   ],
+   "excerpt": "",
+   "featured": "https://yrocconsulting.com/wp-content/uploads/2024/01/headlines.png",
+   "file": "posts/this-non-obvious-addition-to-your-headline-will-make-it-trustworthy-enough-to-click.html"
+  },
+  {
+   "slug": "cable-chaos-to-crafty-creations-7-diy-wonders-with-old-wires",
+   "title": "Cable Chaos to Crafty Creations: 7 DIY Wonders with Old Wires!",
+   "date": "2023-09-15T14:35:04",
+   "modified": "2024-01-16T10:14:32",
+   "categories": [
+    "just-for-fun"
+   ],
+   "tags": [],
+   "excerpt": "",
+   "featured": "https://yrocconsulting.com/wp-content/uploads/2023/09/wires-blog2.jpg",
+   "file": "posts/cable-chaos-to-crafty-creations-7-diy-wonders-with-old-wires.html"
+  },
+  {
+   "slug": "bad-reviews-unpacked-turning-bumps-in-the-road-into-stepping-stones",
+   "title": "Bad Reviews Unpacked: Turning Bumps in the Road into Stepping Stones",
+   "date": "2023-10-03T11:28:53",
+   "modified": "2024-01-16T10:14:31",
+   "categories": [
+    "social-media-marketing"
+   ],
+   "tags": [
+    "reviews",
+    "social",
+    "social media"
+   ],
+   "excerpt": "",
+   "featured": "https://yrocconsulting.com/wp-content/uploads/2023/10/bad_reviews.png",
+   "file": "posts/bad-reviews-unpacked-turning-bumps-in-the-road-into-stepping-stones.html"
+  },
+  {
+   "slug": "how-to-get-wikipedia-backlinks",
+   "title": "How To Get Wikipedia Backlinks",
+   "date": "2023-11-13T16:08:19",
+   "modified": "2024-01-16T19:57:28",
+   "categories": [
+    "backlinks"
+   ],
+   "tags": [
+    "backlinks",
+    "EAT SEO",
+    "wiki"
+   ],
+   "excerpt": "",
+   "featured": "https://yrocconsulting.com/wp-content/uploads/2023/11/wikipedia_backlinks.jpg",
+   "file": "posts/how-to-get-wikipedia-backlinks.html"
+  },
+  {
+   "slug": "the-art-of-primary-keyword-selection-for-your-website",
+   "title": "The Art of Primary Keyword Selection for Your Website",
+   "date": "2023-12-16T09:26:27",
+   "modified": "2024-01-16T10:13:56",
+   "categories": [
+    "internet-marketing"
+   ],
+   "tags": [
+    "content",
+    "keyword research",
+    "keywords",
+    "longtail keywords",
+    "seo"
+   ],
+   "excerpt": "",
+   "featured": "https://yrocconsulting.com/wp-content/uploads/2023/12/primary-keyword-research4.jpg",
+   "file": "posts/the-art-of-primary-keyword-selection-for-your-website.html"
+  },
+  {
+   "slug": "the-role-of-truth-and-transparency-in-online-marketing",
+   "title": "The Role of Truth and Transparency in Online Marketing",
+   "date": "2024-01-13T10:13:54",
+   "modified": "2024-01-18T10:22:41",
+   "categories": [
+    "kingdom-impact"
+   ],
+   "tags": [
+    "authenticity",
+    "EAT SEO",
+    "kingdom"
+   ],
+   "excerpt": "",
+   "featured": "https://yrocconsulting.com/wp-content/uploads/2024/01/truth_transparency.png",
+   "file": "posts/the-role-of-truth-and-transparency-in-online-marketing.html"
+  },
+  {
+   "slug": "understanding-e-e-a-t-in-seo",
+   "title": "Understanding E-E-A-T in SEO: A Casual Guide to Boosting Your Google Rankings in 2024",
+   "date": "2024-03-09T13:44:36",
+   "modified": "2024-06-28T15:41:38",
+   "categories": [
+    "seo-tips"
+   ],
+   "tags": [
+    "authenticity",
+    "content",
+    "E-E-A-T",
+    "EAT SEO",
+    "google",
+    "seo",
+    "YMYL"
+   ],
+   "excerpt": "",
+   "featured": "https://yrocconsulting.com/wp-content/uploads/2021/01/seo.jpg",
+   "file": "posts/understanding-e-e-a-t-in-seo.html"
+  },
+  {
+   "slug": "why-ai-optimization-isnt-optional-anymore-and-why-you-shouldnt-wait",
+   "title": "Why AI Optimization Isn’t Optional Anymore (And Why You Shouldn’t Wait)",
+   "date": "2025-05-21T14:54:25",
+   "modified": "2025-06-12T14:40:38",
+   "categories": [
+    "seo-tips"
+   ],
+   "tags": [
+    "AI"
+   ],
+   "excerpt": "",
+   "featured": "https://yrocconsulting.com/wp-content/uploads/2025/05/pexels-photo-15863044.webp",
+   "file": "posts/why-ai-optimization-isnt-optional-anymore-and-why-you-shouldnt-wait.html"
+  },
+  {
+   "slug": "your-brands-vip-pass-to-online-authority",
+   "title": "Your Brand’s VIP Pass to Online Authority",
+   "date": "2025-06-12T14:48:19",
+   "modified": "2025-06-12T15:09:22",
+   "categories": [
+    "internet-marketing",
+    "reputation-management"
+   ],
+   "tags": [
+    "google",
+    "google authority",
+    "knowledge graph",
+    "knowledge panel",
+    "reputation management"
+   ],
+   "excerpt": "",
+   "featured": "https://yrocconsulting.com/wp-content/uploads/2025/06/cory-kp2.png",
+   "file": "posts/your-brands-vip-pass-to-online-authority.html"
+  },
+  {
+   "slug": "entity-seo",
+   "title": "Entity SEO: The Future of Brand Visibility in AI Search",
+   "date": "2025-09-15T21:46:38",
+   "modified": "2025-11-06T22:22:51",
+   "categories": [
+    "ai-business-growth-tools"
+   ],
+   "tags": [
+    "AI"
+   ],
+   "excerpt": "",
+   "featured": "https://yrocconsulting.com/wp-content/uploads/2025/09/Entity-SEO.png",
+   "file": "posts/entity-seo.html"
+  },
+  {
+   "slug": "llm-seeding",
+   "title": "LLM Seeding: How To Earn Mentions From AI Systems And Stay Visible In 2025",
+   "date": "2025-11-01T22:05:11",
+   "modified": "2025-11-18T14:47:35",
+   "categories": [
+    "ai-business-growth-tools"
+   ],
+   "tags": [
+    "AI",
+    "google authority"
+   ],
+   "excerpt": "",
+   "featured": "https://yrocconsulting.com/wp-content/uploads/2025/11/LLM.jpg",
+   "file": "posts/llm-seeding.html"
+  },
+  {
+   "slug": "understanding-ai-terms",
+   "title": "Understanding AI Terms",
+   "date": "2025-11-17T11:24:06",
+   "modified": "2025-11-17T11:38:51",
+   "categories": [
+    "ai-business-growth-tools",
+    "seo-tips"
+   ],
+   "tags": [
+    "AI",
+    "AI SEO"
+   ],
+   "excerpt": "",
+   "featured": "https://yrocconsulting.com/wp-content/uploads/2025/11/ai-terms.png",
+   "file": "posts/understanding-ai-terms.html"
+  },
+  {
+   "slug": "the-ai-visibility-crisis-what-25-ai-brand-audits-revealed-about-businesses",
+   "title": "The AI Visibility Crisis: What 25+ AI Brand Audits Revealed About Businesses in 2025",
+   "date": "2025-11-20T17:23:27",
+   "modified": "2025-11-20T18:07:03",
+   "categories": [
+    "ai-business-growth-tools",
+    "internet-marketing",
+    "free-site-audits"
+   ],
+   "tags": [
+    "AI",
+    "AI SEO",
+    "audits"
+   ],
+   "excerpt": "",
+   "featured": "https://yrocconsulting.com/wp-content/uploads/2025/11/ai-audits.png",
+   "file": "posts/the-ai-visibility-crisis-what-25-ai-brand-audits-revealed-about-businesses.html"
+  },
+  {
+   "slug": "zero-click-search",
+   "title": "Zero-Click Search Is Here to Stay: How Businesses Can Win in 2026 (AI-Optimized Guide)",
+   "date": "2025-12-09T13:37:17",
+   "modified": "2025-12-09T14:11:03",
+   "categories": [
+    "ai-business-growth-tools",
+    "internet-marketing"
+   ],
+   "tags": [
+    "AI",
+    "AI SEO",
+    "audits"
+   ],
+   "excerpt": "",
+   "featured": "https://yrocconsulting.com/wp-content/uploads/2025/12/zero-click-e1765311022935.png",
+   "file": "posts/zero-click-search.html"
+  },
+  {
+   "slug": "ai-surfaces-vs-content-types",
+   "title": "AI Surfaces vs Content Types: Why Ranking in One AI Result Isn’t Enough Anymore",
+   "date": "2025-12-22T12:31:09",
+   "modified": "2025-12-22T12:42:47",
+   "categories": [
+    "ai-business-growth-tools",
+    "internet-marketing"
+   ],
+   "tags": [
+    "AI",
+    "AI SEO",
+    "audits"
+   ],
+   "excerpt": "",
+   "featured": "https://yrocconsulting.com/wp-content/uploads/2025/12/ai-surfaces-vs-contnet-types-e1766428538123.png",
+   "file": "posts/ai-surfaces-vs-content-types.html"
+  },
+  {
+   "slug": "yroc-consulting-helps-small-businesses-grow-with-ai-driven-marketing-strategies",
+   "title": "Yroc Consulting Helps Small Businesses Grow With AI-Driven Marketing Strategies",
+   "date": "2026-01-05T12:03:31",
+   "modified": "2026-01-13T10:05:00",
+   "categories": [
+    "ai-business-growth-tools",
+    "internet-marketing"
+   ],
+   "tags": [
+    "AI",
+    "AI SEO",
+    "audits"
+   ],
+   "excerpt": "",
+   "featured": "https://yrocconsulting.com/wp-content/uploads/2026/01/small-business-grow-with-ai-driven-marketing-strategies-e1767636177653.png",
+   "file": "posts/yroc-consulting-helps-small-businesses-grow-with-ai-driven-marketing-strategies.html"
+  },
+  {
+   "slug": "googles-ai-overviews-are-quietly-replacing-the-local-pack",
+   "title": "Google’s AI Overviews Are Quietly Replacing the Local Pack (And Most Businesses Haven’t Noticed Yet)",
+   "date": "2026-01-29T12:50:21",
+   "modified": "2026-01-29T14:32:14",
+   "categories": [
+    "ai-business-growth-tools",
+    "local-seo"
+   ],
+   "tags": [
+    "AI",
+    "AI SEO",
+    "google ai overviews"
+   ],
+   "excerpt": "",
+   "featured": "https://yrocconsulting.com/wp-content/uploads/2026/01/local-listing-AI.png",
+   "file": "posts/googles-ai-overviews-are-quietly-replacing-the-local-pack.html"
+  },
+  {
+   "slug": "how-to-earn-brand-mentions-in-ai-search",
+   "title": "How to Earn Brand Mentions in AI Search",
+   "date": "2026-02-12T11:33:35",
+   "modified": "2026-02-12T16:45:39",
+   "categories": [
+    "ai-business-growth-tools"
+   ],
+   "tags": [
+    "AI",
+    "AI SEO"
+   ],
+   "excerpt": "",
+   "featured": "https://yrocconsulting.com/wp-content/uploads/2026/02/How-to-Earn-Brand-Mentions-in-AI-Search-e1770932249771.png",
+   "file": "posts/how-to-earn-brand-mentions-in-ai-search.html"
+  },
+  {
+   "slug": "how-ai-is-changing-marketing",
+   "title": "How AI Is Changing Marketing",
+   "date": "2026-04-28T14:19:02",
+   "modified": "2026-04-28T14:42:48",
+   "categories": [
+    "ai-business-growth-tools",
+    "podcasts"
+   ],
+   "tags": [
+    "AI",
+    "AI SEO",
+    "Podcast"
+   ],
+   "excerpt": "",
+   "featured": "https://yrocconsulting.com/wp-content/uploads/2026/02/How-to-Earn-Brand-Mentions-in-AI-Search-e1770932249771.png",
+   "file": "posts/how-ai-is-changing-marketing.html"
+  }
+ ]
+}

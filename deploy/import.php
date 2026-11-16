@@ -129,3 +129,117 @@ if ( false !== strpos( home_url(), 'staging' ) || false !== strpos( home_url(), 
 }
 
 WP_CLI::success( count( $ids ) . ' pages processed.' );
+
+/* =====================================================================
+ * Blog posts (content/posts.json)
+ * ===================================================================== */
+if ( is_file( "$dir/posts.json" ) ) {
+	require_once ABSPATH . 'wp-admin/includes/media.php';
+	require_once ABSPATH . 'wp-admin/includes/file.php';
+	require_once ABSPATH . 'wp-admin/includes/image.php';
+
+	$blog = json_decode( file_get_contents( "$dir/posts.json" ), true );
+
+	foreach ( $blog['categories'] ?? array() as $c ) {
+		if ( ! term_exists( $c['slug'], 'category' ) ) {
+			wp_insert_term( $c['name'], 'category', array( 'slug' => $c['slug'], 'description' => $c['description'] ) );
+			WP_CLI::log( "category   {$c['slug']}" );
+		}
+	}
+
+	// Old-site image URL => attachment ID, so images are only downloaded once.
+	$map = get_option( 'yroc_media_map', array() );
+	$sideload = function ( $url, $post_id ) use ( &$map ) {
+		if ( ! $url ) {
+			return 0;
+		}
+		if ( ! empty( $map[ $url ] ) && get_post( $map[ $url ] ) ) {
+			return (int) $map[ $url ];
+		}
+		$id = media_sideload_image( $url, $post_id, null, 'id' );
+		usleep( 250000 ); // be gentle with the old site's firewall
+		if ( is_wp_error( $id ) ) {
+			WP_CLI::warning( "image failed $url: " . $id->get_error_message() );
+			return 0;
+		}
+		$map[ $url ] = (int) $id;
+		update_option( 'yroc_media_map', $map, false );
+		return (int) $id;
+	};
+
+	$n = 0;
+	foreach ( $blog['posts'] ?? array() as $p ) {
+		$content  = trim( (string) file_get_contents( "$dir/{$p['file']}" ) );
+		$src_hash = md5( $content . '|' . $p['title'] . '|' . implode( ',', $p['categories'] ) . '|' . implode( ',', $p['tags'] ) . '|' . $p['featured'] );
+		$found    = get_posts( array( 'name' => $p['slug'], 'post_type' => 'post', 'post_status' => 'any', 'numberposts' => 1 ) );
+		$existing = $found ? $found[0] : null;
+
+		if ( $existing ) {
+			if ( get_post_meta( $existing->ID, '_yroc_src_hash', true ) === $src_hash && ! get_post_meta( $existing->ID, '_yroc_media_pending', true ) ) {
+				continue;
+			}
+			$last = get_post_meta( $existing->ID, '_yroc_db_hash', true );
+			if ( $last && md5( $existing->post_content ) !== $last && ! $force ) {
+				WP_CLI::warning( "skipped    post {$p['slug']} (edited in WordPress)" );
+				continue;
+			}
+		}
+
+		$cat_ids = array();
+		foreach ( $p['categories'] as $cs ) {
+			$t = get_term_by( 'slug', $cs, 'category' );
+			if ( $t ) {
+				$cat_ids[] = (int) $t->term_id;
+			}
+		}
+		$arr = array(
+			'post_type'     => 'post',
+			'post_status'   => 'publish',
+			'post_title'    => $p['title'],
+			'post_name'     => $p['slug'],
+			'post_date'     => str_replace( 'T', ' ', $p['date'] ),
+			'post_content'  => wp_slash( $content ),
+			'post_excerpt'  => wp_slash( $p['excerpt'] ),
+			'post_category' => $cat_ids,
+			'tags_input'    => $p['tags'],
+		);
+		if ( $existing ) {
+			$arr['ID'] = $existing->ID;
+		}
+		$id = wp_insert_post( $arr, true );
+		if ( is_wp_error( $id ) ) {
+			WP_CLI::warning( "failed     post {$p['slug']}: " . $id->get_error_message() );
+			continue;
+		}
+
+		// Featured image.
+		$pending = false;
+		if ( $p['featured'] ) {
+			$fid = $sideload( $p['featured'], $id );
+			$fid ? set_post_thumbnail( $id, $fid ) : ( $pending = true );
+		}
+
+		// Inline images: download and point at the new media library copy.
+		if ( preg_match_all( '#https?://(?:www\.)?yrocconsulting\.com/wp-content/uploads/[^"\'\s)]+\.(?:jpe?g|png|gif|webp)#i', $content, $m ) ) {
+			$new = $content;
+			foreach ( array_unique( $m[0] ) as $url ) {
+				$aid = $sideload( $url, $id );
+				if ( $aid ) {
+					$new = str_replace( $url, wp_get_attachment_url( $aid ), $new );
+				} else {
+					$pending = true;
+				}
+			}
+			if ( $new !== $content ) {
+				wp_update_post( array( 'ID' => $id, 'post_content' => wp_slash( $new ) ) );
+			}
+		}
+
+		update_post_meta( $id, '_yroc_src_hash', $src_hash );
+		update_post_meta( $id, '_yroc_db_hash', md5( get_post_field( 'post_content', $id, 'raw' ) ) );
+		$pending ? update_post_meta( $id, '_yroc_media_pending', 1 ) : delete_post_meta( $id, '_yroc_media_pending' );
+		WP_CLI::log( ( $existing ? 'updated    ' : 'created    ' ) . "post {$p['slug']}" . ( $pending ? ' (some images pending)' : '' ) );
+		$n++;
+	}
+	WP_CLI::success( "$n posts imported/updated." );
+}
