@@ -15,29 +15,14 @@
     "industry": "BBQ & catering",
     "city": "Lubbock, TX"
   },
-  "btacinc.com": {
-    "name": "BTAC",
-    "industry": "Plumbing, heating & air",
-    "city": "Lubbock, TX"
-  },
   "agmoving.com": {
     "name": "AG Moving",
     "industry": "Moving company",
     "city": "McKinney, TX"
   },
-  "droddyroofing.com": {
-    "name": "Droddy Roofing",
-    "industry": "Roofing",
-    "city": "Port Neches, TX"
-  },
   "atlasrealestateinspections.com": {
     "name": "Atlas Real Estate Inspections",
     "industry": "Home inspections",
-    "city": "Texas"
-  },
-  "classactinterpreting.com": {
-    "name": "Class Act Interpreting",
-    "industry": "ASL interpreting",
     "city": "Texas"
   }
 }

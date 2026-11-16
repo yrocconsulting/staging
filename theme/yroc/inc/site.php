@@ -184,7 +184,7 @@ function yroc_locations() {
 				array( 'Training Lubbock professionals', 'Our founder Cory Long has taught AI visibility to Lubbock real estate teams through Keller Williams, helping agents become the names AI recommends in West Texas.' ),
 				array( 'We come to you', 'As a service-area team we meet at your business or by video, so you get the same strategy and support as our office clients.' ),
 			),
-			'proof' => array( 'Lubbock results', 'Lubbock clients like BTAC, Bigham\'s Smokehouse and The Scott Toman Team are recommended in AI answers for their most valuable local questions, tracked every week.' ),
+			'proof' => array( 'Lubbock results', 'Lubbock clients like Bigham\'s Smokehouse and The Scott Toman Team are recommended in AI answers for their most valuable local questions, tracked every week.' ),
 			'faq' => array(
 				array( 'Does Yroc have an office in Lubbock?', 'We serve Lubbock as a service-area business. Our team meets clients at their location or by video. Call 806.808.0619 to set up a meeting.' ),
 				array( 'Which Lubbock businesses do you work with?', 'Home services, restaurants, real estate teams, professional services and more. If your customers ask AI who to call in Lubbock, we can help you be the answer.' ),
