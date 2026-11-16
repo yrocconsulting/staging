@@ -858,3 +858,4 @@ body:has(.yr-ctaband) .yr-footer__cta { display: none; }
 .yr-ptable td.no { color: #C2C9D3; text-align: center; }
 .yr-ptable thead th:not(:first-child) { text-align: center; }
 .yr-ptable td:last-child { text-align: center; }
+.yr-todo { box-sizing: border-box; }
