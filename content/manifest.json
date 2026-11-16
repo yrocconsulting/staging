@@ -244,6 +244,30 @@
       "template": "page-landing",
       "order": 50,
       "excerpt": "AI search terms explained in plain English."
+    },
+    {
+      "slug": "entity-optimization",
+      "title": "Entity Optimization",
+      "file": "pages/entity-optimization.html",
+      "template": "page-landing"
+    },
+    {
+      "slug": "schema-structured-data",
+      "title": "Schema & Structured Data",
+      "file": "pages/schema-structured-data.html",
+      "template": "page-landing"
+    },
+    {
+      "slug": "ai-content-optimization",
+      "title": "AI Content Optimization",
+      "file": "pages/ai-content-optimization.html",
+      "template": "page-landing"
+    },
+    {
+      "slug": "ai-search-reporting",
+      "title": "AI Search Reporting",
+      "file": "pages/ai-search-reporting.html",
+      "template": "page-landing"
     }
   ]
 }
