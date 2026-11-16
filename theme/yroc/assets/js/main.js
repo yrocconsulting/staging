@@ -1,4 +1,4 @@
-/* Yroc theme interactions — no dependencies. */
+/* Yroc theme interactions. No dependencies. */
 (function () {
 	'use strict';
 	var doc = document.documentElement;

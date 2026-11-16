@@ -1,6 +1,6 @@
 <?php
 /**
- * Organization / ProfessionalService JSON-LD — the entity foundation we sell, on our own site.
+ * Organization / ProfessionalService JSON-LD: the entity foundation we sell, on our own site.
  */
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;

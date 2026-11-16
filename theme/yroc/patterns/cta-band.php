@@ -1,6 +1,6 @@
 <?php
 /**
- * Title: CTA Band — AI Visibility Audit
+ * Title: CTA Band: AI Visibility Audit
  * Slug: yroc/cta-band
  * Categories: yroc, call-to-action
  */
@@ -11,7 +11,7 @@
 <p class="yr-eyebrow">Free AI Visibility Audit</p>
 <!-- /wp:paragraph -->
 <!-- wp:heading -->
-<h2 class="wp-block-heading">Find out what AI says about your business — <em>before your customers do.</em></h2>
+<h2 class="wp-block-heading">Find out what AI says about your business <em>before your customers do.</em></h2>
 <!-- /wp:heading -->
 <!-- wp:paragraph {"className":"yr-lead"} -->
 <p class="yr-lead">We'll show you where you're mentioned, where competitors are recommended instead, and the exact signals holding you back.</p>

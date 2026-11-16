@@ -10,7 +10,7 @@
 	<div class="yr-wrap">
 		<div class="yr-sechead">
 			<div><p class="yr-eyebrow">Our team</p><h2>A full team. <em>A real office.</em> Accountable for your results.</h2></div>
-			<p class="yr-lead">You won't be handed off to a call center or a freelancer. Every client is supported by specialists in our Sherman, Texas office — strategy, technology, design, content, reputation and account management under one roof.</p>
+			<p class="yr-lead">You won't be handed off to a call center or a freelancer. Every client is supported by specialists in our Sherman, Texas office: strategy, technology, design, content, reputation and account management under one roof.</p>
 		</div>
 		<div class="yr-depts-grid">
 			<?php foreach ( yroc_departments() as $d ) : ?>

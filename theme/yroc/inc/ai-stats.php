@@ -67,6 +67,29 @@ add_action( 'yroc_prt_sync', function () {
 } );
 
 /**
+ * Low-level ProRankTracker API v3 request (auth: X-TOKEN header).
+ * Returns decoded JSON array, or WP_Error.
+ */
+function yroc_prt_request( $path, $args = array() ) {
+	$url = 'https://api.proranktracker.com/v3/' . ltrim( $path, '/' );
+	if ( $args ) {
+		$url = add_query_arg( $args, $url );
+	}
+	$r = wp_remote_get( $url, array(
+		'timeout' => 20,
+		'headers' => array( 'X-TOKEN' => YROC_PRT_API_KEY, 'Accept' => 'application/json' ),
+	) );
+	if ( is_wp_error( $r ) ) {
+		return $r;
+	}
+	$data = json_decode( wp_remote_retrieve_body( $r ), true );
+	if ( 200 !== wp_remote_retrieve_response_code( $r ) || ! is_array( $data ) || ( isset( $data['success'] ) && ! $data['success'] ) ) {
+		return new WP_Error( 'prt_error', 'ProRankTracker API error: ' . wp_remote_retrieve_body( $r ) );
+	}
+	return $data;
+}
+
+/**
  * Fetch AI visibility totals from ProRankTracker.
  * Must return array( 'appearances' => int, 'prompts' => int, 'platforms' => array( key => int ) ) or null.
  * TODO: implement once PRT sends the AI Tracking API docs (endpoints, auth, field names).
@@ -134,7 +157,7 @@ function yroc_ai_stats_page() {
 			<?php if ( $prt ) : ?>
 				A ProRankTracker key is configured; synced values overwrite AI appearances, prompts and platform counts hourly.
 			<?php else : ?>
-				No ProRankTracker key yet — values below are entered manually.
+				No ProRankTracker key yet. Values below are entered manually.
 			<?php endif; ?>
 			Last updated: <?php echo $s['updated'] ? esc_html( human_time_diff( $s['updated'] ) . ' ago (' . $s['source'] . ')' ) : 'never'; ?>.
 		</p>

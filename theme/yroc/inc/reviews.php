@@ -92,6 +92,7 @@ function yroc_reviews() {
 			continue;
 		}
 		$seen[ $key ] = true;
+		$rv['body']   = preg_replace( '/\s*\x{2014}\s*/u', ', ', $rv['body'] ); // site style: no em dashes
 		$items[]      = $rv + array( 'org' => 'Verified review' );
 	}
 	foreach ( yroc_review_extras() as $x ) {

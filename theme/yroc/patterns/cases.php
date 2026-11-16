@@ -6,9 +6,9 @@
  */
 $cases = array(
 	array( 'Roofing · Oklahoma', '8', '×', 'phone calls in one month', 'A roofing contractor\'s inbound calls octupled within a single month.', '/case-studies/blacksmith-roofing-case-study/' ),
-	array( 'Tax Resolution · National', '604', '%', 'return on investment', 'We helped a tax firm outrank the IRS on Google — then turned that traffic into high-value leads.', '/case-studies/irs-trouble-solvers-case-study/' ),
+	array( 'Tax Resolution · National', '604', '%', 'return on investment', 'We helped a tax firm outrank the IRS on Google, then turned that traffic into high-value leads.', '/case-studies/irs-trouble-solvers-case-study/' ),
 	array( 'Pest Control · Local', '+285', '%', 'organic traffic in one month', 'A locally owned pest control company nearly quadrupled its organic traffic in 30 days.', '/case-studies/the-bug-guys/' ),
-	array( 'Weight Loss Clinic', '50–100', '', 'qualified leads every month', 'A bold SEO strategy doubled new users and produced steady leads — without spending on ads.', '/case-studies/medical-weight-loss-case-study/' ),
+	array( 'Weight Loss Clinic', '50–100', '', 'qualified leads every month', 'A bold SEO strategy doubled new users and produced steady leads without spending on ads.', '/case-studies/medical-weight-loss-case-study/' ),
 	array( 'Hormone Clinic', '$20', 'K', 'new revenue in 60 days', 'SEO, paid social and local marketing drove a 70% traffic surge and $20K in new bookings.', '/case-studies/hormone-replacement-therapy-clinic-case-study/' ),
 	array( 'Reputation Management', '90', ' days', 'to own page one', 'Negative press buried a brand. Ninety days later, the client controlled their search narrative.', '/case-studies/fractional-cfo-reputation-management-case-study/' ),
 );

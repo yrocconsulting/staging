@@ -18,7 +18,7 @@ function yroc_form_defs() {
 		'contact' => array(
 			'title'  => 'Contact',
 			'button' => 'Send message',
-			'thanks' => 'Thanks! Your message is on its way — we usually reply within one business day.',
+			'thanks' => 'Thanks! Your message is on its way. We usually reply within one business day.',
 			'fields' => array(
 				array( 'name', 'Full name', 'text', true, 'half', 'name' ),
 				array( 'email', 'Email', 'email', true, 'half', 'email' ),
@@ -179,7 +179,7 @@ function yroc_handle_form() {
 	$key = 'yroc_rl_' . md5( $ip );
 	$hits = (int) get_transient( $key );
 	if ( $hits >= 5 ) {
-		$fail( 'Too many submissions — please try again in an hour or call us at 903.300.LEADS.', array(), 429 );
+		$fail( 'Too many submissions. Please try again in an hour or call us at 903.300.LEADS.', array(), 429 );
 	}
 
 	$data   = array();
@@ -203,7 +203,7 @@ function yroc_handle_form() {
 	}
 	set_transient( $key, $hits + 1, HOUR_IN_SECONDS );
 
-	$who   = $data['name'][1] . ( ! empty( $data['business'][1] ) ? ' — ' . $data['business'][1] : ( ! empty( $data['company'][1] ) ? ' — ' . $data['company'][1] : '' ) );
+	$who   = $data['name'][1] . ( ! empty( $data['business'][1] ) ? ' | ' . $data['business'][1] : ( ! empty( $data['company'][1] ) ? ' | ' . $data['company'][1] : '' ) );
 	$lines = array();
 	foreach ( $data as $d ) {
 		if ( '' !== $d[1] ) {
@@ -226,11 +226,11 @@ function yroc_handle_form() {
 	}
 
 	$to = defined( 'YROC_FORMS_TO' ) ? YROC_FORMS_TO : get_option( 'admin_email' );
-	wp_mail( $to, '[Website] ' . $def['title'] . ' — ' . $who, $body . "\n\nView in WordPress: " . admin_url( 'edit.php?post_type=yroc_lead' ), array( 'Reply-To: ' . $data['name'][1] . ' <' . $data['email'][1] . '>' ) );
+	wp_mail( $to, '[Website] ' . $def['title'] . ': ' . $who, $body . "\n\nView in WordPress: " . admin_url( 'edit.php?post_type=yroc_lead' ), array( 'Reply-To: ' . $data['name'][1] . ' <' . $data['email'][1] . '>' ) );
 	wp_mail(
 		$data['email'][1],
-		'We got your request — Yroc Consulting',
-		"Hi {$data['name'][1]},\n\n{$def['thanks']}\n\nIf it's urgent, call us at 903.300.LEADS (903.300.5323).\n\n— The Yroc Consulting team\nhttps://yrocconsulting.com"
+		'We got your request | Yroc Consulting',
+		"Hi {$data['name'][1]},\n\n{$def['thanks']}\n\nIf it's urgent, call us at 903.300.LEADS (903.300.5323).\n\nThe Yroc Consulting team\nhttps://yrocconsulting.com"
 	);
 
 	if ( $ajax ) {
