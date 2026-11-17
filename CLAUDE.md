@@ -16,7 +16,7 @@ WordPress block theme (`theme/yroc`) + content (`content/`) deployed to SiteGrou
 - AI tracking clients may be named (client approved). Display names: `theme/yroc/data/clients.json`;
   a domain not listed there is never shown.
   White-label clients (Lovewell & Water Works, Cash Out On My Home, BTAC, Droddy Roofing, Class Act
-  Interpreting) are never named or used as case
+  Interpreting, Atlas Real Estate Inspections, J3KL Roof Rejuvenation, Riker Roofing) are never named or used as case
   studies; they count in aggregate totals only.
 - Tone: established firm (team, office in Sherman TX, track record), not a solo agency.
 
