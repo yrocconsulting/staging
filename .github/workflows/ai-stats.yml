@@ -53,7 +53,7 @@ jobs:
       # Full per-client results for the Yroc Portal (staff only). Skipped until both settings exist.
       - name: Send results to the portal
         env:
-          PORTAL_URL: ${{ vars.PORTAL_URL || 'https://portal-six-phi-59.vercel.app' }}
+          PORTAL_URL: ${{ vars.PORTAL_URL || 'https://portal.yrocconsulting.com' }}
           PORTAL_INGEST_SECRET: ${{ secrets.PORTAL_INGEST_SECRET }}
         run: |
           if [ -z "$PORTAL_INGEST_SECRET" ]; then echo "::notice::PORTAL_INGEST_SECRET not set; skipping portal update."; exit 0; fi
