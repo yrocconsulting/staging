@@ -29,7 +29,7 @@ jobs:
 
       - name: Read newest report
         run: |
-          python3 tools/prt_report.py --drive-folder "$DRIVE_FOLDER" > stats.json
+          python3 tools/prt_report.py --drive-folder "$DRIVE_FOLDER" --portal-out portal.json > stats.json
           cat stats.json
 
       - name: Set up SSH key
@@ -49,6 +49,17 @@ jobs:
           ssh target "mkdir -p yroc-deploy"
           rsync -az deploy/apply_ai_stats.php stats.json "target:yroc-deploy/"
           ssh target "cd $DEPLOY_PATH && wp eval-file ~/yroc-deploy/apply_ai_stats.php ~/yroc-deploy/stats.json && (wp sg purge 2>/dev/null || true)"
+
+      # Full per-client results for the Yroc Portal (staff only). Skipped until both settings exist.
+      - name: Send results to the portal
+        env:
+          PORTAL_URL: ${{ vars.PORTAL_URL || 'https://portal-six-phi-59.vercel.app' }}
+          PORTAL_INGEST_SECRET: ${{ secrets.PORTAL_INGEST_SECRET }}
+        run: |
+          if [ -z "$PORTAL_INGEST_SECRET" ]; then echo "::notice::PORTAL_INGEST_SECRET not set; skipping portal update."; exit 0; fi
+          curl -sS --fail-with-body -X POST "$PORTAL_URL/api/prt/ingest" \
+            -H "Authorization: Bearer $PORTAL_INGEST_SECRET" -H "Content-Type: application/json" \
+            --data-binary @portal.json
 
       - name: Clean up key
         if: always()

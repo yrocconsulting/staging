@@ -176,6 +176,7 @@ if __name__ == '__main__':
     ap.add_argument('--pdf')
     ap.add_argument('--drive-folder')
     ap.add_argument('--date', default='')
+    ap.add_argument('--portal-out', help='also write full per-client results (every domain and prompt) for the Yroc Portal')
     a = ap.parse_args()
     if a.drive_folder:
         pdf, date = newest_report(a.drive_folder)
@@ -184,4 +185,10 @@ if __name__ == '__main__':
     out = summarize(parse(pdf), date)
     out['showcase'] = showcase(parse_prompts(pdf))
     out['sites'] = {x['domain']: {k: x[k] for k in ('appearances', 'mentions', 'links', 'visibility', 'prompts')} for x in parse(pdf) if x['domain'] not in OWN_DOMAINS}
+    if a.portal_out:
+        # Internal use only (the portal is staff-only): every tracked domain and prompt, white label included.
+        sites = [x for x in parse(pdf) if x['domain'] not in OWN_DOMAINS]
+        with open(a.portal_out, 'w') as f:
+            json.dump({'report_date': date, 'sites': sites,
+                       'prompts': [r for r in parse_prompts(pdf) if r['domain'] not in OWN_DOMAINS]}, f)
     print(json.dumps(out))
