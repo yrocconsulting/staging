@@ -98,16 +98,18 @@ def parse_prompts(pdf):
                 if 'check_circle' in line or re.search(r'\bcancel\b', line):
                     row = line
             if row and words:
-                plats = []
+                plats, counts = [], {}
                 for mm in re.finditer(r'check_circle\s+(\d+)', row):
                     center = mm.start() + len(mm.group(0)) // 2
-                    plats.append(COLS[min(range(len(cols)), key=lambda i: abs(cols[i] - center))])
+                    col = COLS[min(range(len(cols)), key=lambda i: abs(cols[i] - center))]
+                    plats.append(col)
+                    counts[col] = counts.get(col, 0) + int(mm.group(1))
                 vm = re.search(r'(\d+)\s+(\d+)%\s*\S*\s*$', row.rstrip())
                 prompt = re.sub(r'\s+', ' ', ' '.join(words)).strip()
                 prompt = re.sub(r'^\d+\.\s*', '', prompt)
                 if not prompt.endswith('?'):
                     prompt += '?'
-                rows.append({'domain': domain, 'prompt': prompt[0].upper() + prompt[1:], 'platforms': plats,
+                rows.append({'domain': domain, 'prompt': prompt[0].upper() + prompt[1:], 'platforms': plats, 'counts': counts,
                              'appearances': int(vm.group(1)) if vm else 0, 'visibility': int(vm.group(2)) if vm else 0})
         block = []
 
