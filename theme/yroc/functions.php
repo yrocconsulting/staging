@@ -16,6 +16,7 @@ require_once __DIR__ . '/inc/reviews.php';
 require_once __DIR__ . '/inc/redirects.php';
 require_once __DIR__ . '/inc/seo.php';
 require_once __DIR__ . '/inc/locations.php';
+require_once __DIR__ . '/inc/quarterly.php';
 
 add_action( 'after_setup_theme', function () {
 	add_theme_support( 'wp-block-styles' );

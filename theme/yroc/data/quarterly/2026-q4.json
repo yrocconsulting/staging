@@ -1,0 +1,334 @@
+{
+  "slug": "2026-q4",
+  "title": "The Yroc Quarterly",
+  "issue": "Q4 2026",
+  "date": "January 2027",
+  "status": "draft",
+  "_note": "Draft. Research through Nov 20, 2026; re-check news and add the Q4 trend from the portal's weekly history in late December. No em dashes. Totals only for Yroc data, never client counts. Spotlight needs the client's approval and is never a white-label client.",
+  "cover": {
+    "kicker": "AI search, Q4 2026",
+    "headline": "ChatGPT just opened its <b>front desk.</b>",
+    "dek": "Businesses can now claim a profile inside ChatGPT. Here's what that means, plus the rest of a quarter that changed how customers find local businesses.",
+    "lines": [
+      "The eight biggest moves in AI search",
+      "By the numbers: 1.2 billion weekly ChatGPT users",
+      "Where our clients are showing up in AI",
+      "Your five-step playbook for Q1",
+      "The 60-second AI visibility check"
+    ]
+  },
+  "about": "The Yroc Quarterly is a free briefing for our clients and friends on how AI is changing the way customers find businesses. Every stat is sourced: tap a source to read it.",
+  "letter": {
+    "title": "The front desk moved.",
+    "body": [
+      "For twenty years, being found meant showing up on Google. This quarter, that changed in a way you can actually see: ChatGPT now lets businesses claim a profile, Google's AI Mode reads more of the web than before, and Google Maps will even call a business to book an appointment for a customer.",
+      "None of this replaces the basics. It raises the stakes on them. AI tools recommend businesses they can clearly identify, verify and trust, which means accurate profiles, real reviews and pages that answer the questions customers actually ask.",
+      "In this issue we've pulled together what changed, why it matters to a business like yours, and what we'd do about it this quarter. If something here raises a question, bring it to your next call. That's what we're here for."
+    ],
+    "sign": "Cory Long",
+    "role": "Founder, Yroc Consulting"
+  },
+  "news_title": "Eight moves that changed how customers find you",
+  "news": [
+    {
+      "tag": "ChatGPT",
+      "headline": "ChatGPT now has its own business profiles",
+      "what": "OpenAI launched Businesses in ChatGPT on November 10. Owners can claim a profile, edit hours, services and products, and see how often ChatGPT mentions them.",
+      "why": "It's the first official way to shape how ChatGPT describes your business, and ChatGPT reaches 1.2 billion people a week. Claiming is free. Make it match your Google profile exactly.",
+      "source": "OpenAI",
+      "url": "https://openai.com/index/introducing-businesses-chatgpt/",
+      "date": "Nov 10, 2026"
+    },
+    {
+      "tag": "Google AI Mode",
+      "headline": "A smarter AI Mode that links to more sites",
+      "what": "Google made its new Gemini model the default in AI Mode worldwide on November 12, and says answers now connect people to a broader range of websites, with more tables and comparisons.",
+      "why": "AI Mode breaks each question into smaller ones. Pages that answer specific questions about price, service area, process and timing get more chances to be cited.",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/11/12/googles-latest-search-upgrade-promises-better-answers-to-your-most-complicated-questions/",
+      "date": "Nov 12, 2026"
+    },
+    {
+      "tag": "Google Maps",
+      "headline": "Google's AI will call businesses to book appointments",
+      "what": "Ask Maps can now check availability and phone local businesses for the customer, starting in the US with beauty, pet care, auto and home repair.",
+      "why": "Accurate hours, online booking and staff ready for an automated call now decide whether the AI sends you the customer or the shop down the street.",
+      "source": "PPC Land, citing Google",
+      "url": "https://ppc.land/google-maps-ai-now-calls-us-salons-groomers-and-garages-to-find-open-slots/",
+      "date": "Nov 16, 2026"
+    },
+    {
+      "tag": "Google Search",
+      "headline": "The November core update is rolling out",
+      "what": "Google began its third core update of 2026 on November 10. Google said it may take up to two weeks to finish.",
+      "why": "Rankings can swing during a rollout. Judge the results in December, once it has settled, not in the middle of it.",
+      "source": "Google Search Status",
+      "url": "https://status.search.google.com/incidents/WLxcJyC6jMWMfryxsKMc",
+      "date": "Nov 10, 2026"
+    },
+    {
+      "tag": "Google Business Profile",
+      "headline": "An AI agent that answers your customers' messages",
+      "what": "Google is giving more businesses early access to AI messaging: customers text from Search and Maps, an AI answers routine questions, and harder ones go to the owner.",
+      "why": "Whatever your profile says becomes the script the AI works from. Outdated hours or services mean wrong answers in your name.",
+      "source": "Search Engine Roundtable",
+      "url": "https://www.seroundtable.com/google-business-profiles-ai-powered-messaging-42419.html",
+      "date": "Oct 29, 2026"
+    },
+    {
+      "tag": "Google",
+      "headline": "Ads are moving into AI answers",
+      "what": "On its October earnings call, Google said it is scaling ads within AI Overviews and AI Mode, and that AI Mode questions are on average three times longer than traditional searches.",
+      "why": "Paid slots will sit beside the businesses AI recommends for free. Being the one it recommends on its own is worth more every quarter.",
+      "source": "Alphabet Q3 2026 earnings call",
+      "url": "https://www.fool.com/earnings/call-transcripts/2026/10/29/alphabet-googl-q3-2026-earnings-call-transcript/",
+      "date": "Oct 29, 2026"
+    },
+    {
+      "tag": "ChatGPT",
+      "headline": "ChatGPT ads reach 89 countries",
+      "what": "OpenAI says more than 100,000 advertisers have run ChatGPT ads. Separately, NPR found ChatGPT citing look-alike local news sites that were really political ads.",
+      "why": "ChatGPT is becoming a paid channel too, and it can be fooled about sources. A real, consistent presence across trusted sites is what protects your reputation in AI answers.",
+      "source": "OpenAI",
+      "url": "https://openai.com/ads/blog/chatgpt-ads-increases-its-market-presence/",
+      "date": "Nov 2026"
+    },
+    {
+      "tag": "Google AI Mode",
+      "headline": "Private chats that skip personalization",
+      "what": "AI Mode added temporary threads that stay out of search history and don't use past searches to shape answers.",
+      "why": "In those chats, everyone gets the same answer, so a business has to earn the recommendation on its own signals, not on a customer's history.",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/11/18/googles-ai-feature-in-search-gets-its-own-incognito-mode/",
+      "date": "Nov 18, 2026"
+    }
+  ],
+  "numbers_title": "The new math of being found",
+  "numbers": [
+    {
+      "value": "1.2B",
+      "label": "People who use ChatGPT every week",
+      "source": "OpenAI, Nov 2026",
+      "url": "https://openai.com/index/introducing-businesses-chatgpt/"
+    },
+    {
+      "value": "45%",
+      "label": "US consumers who used AI to find a local business, up from 6% a year earlier",
+      "source": "BrightLocal, Feb 2026",
+      "url": "https://www.brightlocal.com/research/local-consumer-review-survey/"
+    },
+    {
+      "value": "42%",
+      "label": "Share of local AI citations that point to business websites (Google profiles: 28.6%)",
+      "source": "BrightLocal, Sept 2026",
+      "url": "https://www.brightlocal.com/research/local-ai-visibility-study/"
+    },
+    {
+      "value": "58%",
+      "label": "Drop in clicks to the top Google result when an AI Overview appears",
+      "source": "Ahrefs, Feb 2026",
+      "url": "https://ahrefs.com/blog/ai-overviews-reduce-clicks-update/"
+    },
+    {
+      "value": "68%",
+      "label": "US Google searches that end without a click",
+      "source": "SparkToro and Similarweb, June 2026",
+      "url": "https://sparktoro.com/blog/in-2026-less-than-one-third-of-google-searches-still-send-a-click/"
+    },
+    {
+      "value": "3x",
+      "label": "How much longer AI Mode questions are than traditional searches",
+      "source": "Alphabet, Oct 2026",
+      "url": "https://www.fool.com/earnings/call-transcripts/2026/10/29/alphabet-googl-q3-2026-earnings-call-transcript/"
+    }
+  ],
+  "seeing": {
+    "title": "Where our clients are showing up",
+    "dek": "One week of AI answers across every prompt we track for our clients, on six AI platforms.",
+    "facts": [
+      {
+        "value": "77%",
+        "label": "of the prompts we track named a client at least once"
+      },
+      {
+        "value": "35%",
+        "label": "of prompts show a client in 75% or more of AI answers"
+      },
+      {
+        "value": "43%",
+        "label": "of client mentions came with a link to their website"
+      }
+    ],
+    "platforms": {
+      "chatgpt": 123,
+      "aio": 53,
+      "gemini": 34,
+      "ai_mode": 32,
+      "perplexity": 0,
+      "copilot": 0
+    },
+    "takeaway": "ChatGPT produces half of every mention we see, so its new business profiles are a priority this quarter. Perplexity and Copilot rarely name local businesses yet. We'll tell you when that changes.",
+    "source": "Source: Yroc Consulting AI tracking (ProRankTracker), week of November 16, 2026."
+  },
+  "spotlight": {
+    "placeholder": true,
+    "title": "Client spotlight",
+    "note": "<b>Draft placeholder.</b> Choose the spotlight client. Their results, what AI says about them and a screenshot go here once they approve. Never a white-label client."
+  },
+  "playbook_title": "Five moves for the first quarter of 2027",
+  "playbook": [
+    {
+      "title": "Claim your ChatGPT business profile.",
+      "body": "At chatgpt.com/business-hub. Match your Google profile word for word."
+    },
+    {
+      "title": "Treat your Google profile as AI's script.",
+      "body": "Exact hours, services and booking. Tell staff an AI may call about availability."
+    },
+    {
+      "title": "Answer the long questions on your site.",
+      "body": "Give each service, price range and service area its own clear answer."
+    },
+    {
+      "title": "Grow reviews beyond Google.",
+      "body": "Yelp, industry directories and other trusted sites all feed what AI says about you."
+    },
+    {
+      "title": "Measure mentions, not just clicks.",
+      "body": "Track whether AI names you, and compare results before and after the November update."
+    }
+  ],
+  "quiz": {
+    "title": "How visible is your business to AI?",
+    "dek": "Five quick questions. Tap an answer for each and get your score.",
+    "questions": [
+      {
+        "q": "Have you claimed your business profile in ChatGPT?",
+        "answers": [
+          [
+            "Yes",
+            2
+          ],
+          [
+            "Not sure",
+            1
+          ],
+          [
+            "No",
+            0
+          ]
+        ]
+      },
+      {
+        "q": "Do your hours, services and phone number match everywhere online?",
+        "answers": [
+          [
+            "Yes",
+            2
+          ],
+          [
+            "Mostly",
+            1
+          ],
+          [
+            "No",
+            0
+          ]
+        ]
+      },
+      {
+        "q": "Does your website have its own page for each service?",
+        "answers": [
+          [
+            "Yes",
+            2
+          ],
+          [
+            "Some",
+            1
+          ],
+          [
+            "No",
+            0
+          ]
+        ]
+      },
+      {
+        "q": "Do you get new Google reviews every month?",
+        "answers": [
+          [
+            "Yes",
+            2
+          ],
+          [
+            "Sometimes",
+            1
+          ],
+          [
+            "No",
+            0
+          ]
+        ]
+      },
+      {
+        "q": "Do you know what ChatGPT says when asked for a business like yours?",
+        "answers": [
+          [
+            "Yes",
+            2
+          ],
+          [
+            "Roughly",
+            1
+          ],
+          [
+            "No idea",
+            0
+          ]
+        ]
+      }
+    ],
+    "results": [
+      {
+        "min": 0,
+        "title": "AI can't see you clearly yet",
+        "text": "The good news: the fixes are well known, and early movers win. An audit shows exactly where to start."
+      },
+      {
+        "min": 40,
+        "title": "You're on the map, with gaps",
+        "text": "AI knows you exist but may not recommend you. A few targeted fixes usually move the needle fast."
+      },
+      {
+        "min": 80,
+        "title": "You're ahead of most businesses",
+        "text": "Keep it that way: the platforms change every quarter. Tracking what AI says about you each week keeps you ahead."
+      }
+    ],
+    "cta": "Get a free AI visibility audit",
+    "cta_url": "/ai-visibility-audit/"
+  },
+  "edge_title": "What we're building at Yroc",
+  "edge": [
+    {
+      "title": "Weekly AI visibility tracking",
+      "body": "We track our clients' most important prompts across six AI platforms every week, so changes like this quarter's AI Mode upgrade show up in the data right away."
+    },
+    {
+      "title": "Reports that quote the AI",
+      "body": "Monthly reports now show what AI actually says about each client, word for word, along with the client's pages it cites as sources."
+    },
+    {
+      "title": "AI Authority Engine",
+      "body": "Cory's AI SEO certification and training program teaches marketers and agencies the methods behind our client work.",
+      "url": "https://aiauthorityengine.org/",
+      "label": "Visit AI Authority Engine"
+    }
+  ],
+  "back": {
+    "headline": "Want to know what AI says about <b>you?</b>",
+    "dek": "We'll check how ChatGPT, Gemini and Google's AI describe your business, and show you what to fix first.",
+    "cta": "Book a free AI visibility audit",
+    "cta_url": "/ai-visibility-audit/"
+  }
+}

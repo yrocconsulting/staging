@@ -336,6 +336,19 @@
       "file": "pages/location-lubbock-tx.html",
       "template": "page-landing",
       "order": 2
+    },
+    {
+      "slug": "quarterly",
+      "title": "The Yroc Quarterly",
+      "file": "pages/quarterly.html",
+      "template": "page-landing"
+    },
+    {
+      "slug": "2026-q4",
+      "parent": "quarterly",
+      "title": "Q4 2026 Issue",
+      "file": "pages/quarterly-2026-q4.html",
+      "template": "page-landing"
     }
   ]
 }

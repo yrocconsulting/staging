@@ -182,5 +182,13 @@
   "/locations/lubbock-tx/": [
     "AI Search Optimization in Lubbock, TX | Yroc",
     "Yroc serves Lubbock and the South Plains. Local businesses we work with are recommended by ChatGPT, Gemini and Google AI for key questions."
+  ],
+  "/quarterly/": [
+    "The Yroc Quarterly | AI Search News for Business",
+    "A free quarterly briefing on AI search: the biggest news, the numbers behind it, what we see across the prompts we track, and what to do next."
+  ],
+  "/quarterly/2026-q4/": [
+    "AI Search in Q4 2026 | The Yroc Quarterly",
+    "ChatGPT business profiles, a smarter Google AI Mode, AI that books appointments and more: the quarter in AI search and a playbook for Q1 2027."
   ]
 }
