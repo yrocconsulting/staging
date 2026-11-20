@@ -102,7 +102,7 @@ add_shortcode( 'yroc_quarterly', function ( $atts ) {
 		$issue,
 		0,
 		'yq-cover yq-dark',
-		'<div class="yq-mast"><span class="yq-mast-name">' . esc_html( $issue['title'] ) . '</span><span class="yq-mast-issue">' . esc_html( $issue['issue'] ) . '</span></div>'
+		'<div class="yq-mast"><span><span class="yq-mast-name">' . esc_html( $issue['title'] ) . '</span><span class="yq-mast-by">by Yroc Consulting</span></span><span class="yq-mast-issue">' . esc_html( $issue['issue'] ) . '</span></div>'
 		. '<div class="yq-orbit" aria-hidden="true"><i></i><i></i><i></i><b></b></div>'
 		. '<p class="yq-kicker">' . esc_html( $c['kicker'] ) . '</p>'
 		. '<h1 class="yq-cover-h">' . yroc_q_text( $c['headline'] ) . '</h1>'
@@ -261,6 +261,7 @@ add_shortcode( 'yroc_quarterly', function ( $atts ) {
 
 	$pdf = ! empty( $issue['pdf'] ) ? get_theme_file_uri( 'assets/quarterly/' . $issue['pdf'] ) : '';
 	return '<div class="yq" data-issue="' . esc_attr( $issue['slug'] ) . '">'
+		. '<div class="yq-top"><a class="yq-home" href="' . esc_url( home_url( '/' ) ) . '"><img src="' . esc_url( get_theme_file_uri( 'assets/img/logo-white.png' ) ) . '" alt="Yroc Consulting" width="128" height="32"></a><a class="yq-all" href="' . esc_url( home_url( '/quarterly/' ) ) . '">All issues</a></div>'
 		. '<div class="yq-stage"><div class="yq-book">' . implode( '', $pages ) . '</div></div>'
 		. '<nav class="yq-nav" aria-label="Magazine pages">'
 		. '<button type="button" class="yq-prev" aria-label="Previous page">&larr;</button>'

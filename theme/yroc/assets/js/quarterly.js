@@ -61,8 +61,8 @@
 		root.classList.add('yq-flip');
 		// Fit the spread to the window height so the controls stay on screen.
 		var header = document.querySelector('.yr-site-header');
-		var top = header ? header.getBoundingClientRect().height : 0;
-		var ph = Math.max(414, Math.min(856, window.innerHeight - top - 150));
+		var top = (header ? header.getBoundingClientRect().height : 0) + root.querySelector('.yq-top').getBoundingClientRect().height;
+		var ph = Math.max(414, Math.min(856, window.innerHeight - top - 140));
 		var pw = Math.floor((ph * 550) / 760);
 		root.querySelector('.yq-stage').style.maxWidth = 2 * pw + 'px';
 		flip = new window.St.PageFlip(book, {

@@ -339,16 +339,16 @@
     },
     {
       "slug": "quarterly",
-      "title": "The Yroc Quarterly",
+      "title": "Signal",
       "file": "pages/quarterly.html",
       "template": "page-landing"
     },
     {
       "slug": "2026-q4",
       "parent": "quarterly",
-      "title": "Q4 2026 Issue",
+      "title": "Signal, Q4 2026",
       "file": "pages/quarterly-2026-q4.html",
-      "template": "page-landing"
+      "template": "page-magazine"
     }
   ]
 }

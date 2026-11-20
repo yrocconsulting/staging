@@ -2,7 +2,11 @@
    Type scales with page width (container query units), so pages look the same at any size. */
 
 .yq { --yq-ink: var(--yr-ink); --yq-green: var(--yr-green); --yq-green-d: var(--yr-green-d); --yq-steel: var(--yr-steel); --yq-paper: #fbfaf7; --yq-line: #e6e2d9;
-	padding: clamp(24px, 4vw, 56px) var(--yr-gut) 40px; background: radial-gradient(120% 80% at 50% 0%, #1b2a44 0%, var(--yr-ink) 60%); color: #fff; }
+	min-height: 100vh; box-sizing: border-box; padding: 16px var(--yr-gut) 32px; background: radial-gradient(120% 80% at 50% 0%, #1b2a44 0%, var(--yr-ink) 60%); color: #fff; }
+.yq-top { width: min(1240px, 100%); margin: 0 auto 18px; display: flex; align-items: center; justify-content: space-between; }
+.yq-home img { display: block; height: 30px; width: auto; opacity: .9; }
+.yq-all { color: #b8c2d1; font-size: .85rem; font-weight: 600; text-decoration: none; }
+.yq-all:hover, .yq-home:hover img { color: #fff; opacity: 1; }
 .yq-stage { width: min(1180px, 100%); margin: 0 auto; }
 .yq-book { margin: 0 auto; }
 
@@ -35,7 +39,8 @@
 .yq-cover .yq-in { padding-bottom: 7cqi; }
 .yq-cover { background: radial-gradient(110% 70% at 85% 10%, #1d3a2a 0%, rgba(11, 18, 32, 0) 55%), radial-gradient(90% 60% at 0% 100%, #1a2b47 0%, rgba(11, 18, 32, 0) 60%), var(--yq-ink); }
 .yq-mast { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid rgba(255, 255, 255, .15); padding-bottom: 3cqi; margin-bottom: auto; }
-.yq-mast-name { font-family: var(--yr-head); font-weight: 800; font-size: 5.2cqi; letter-spacing: -.02em; color: #fff; }
+.yq-mast-name { display: block; font-family: var(--yr-head); font-weight: 800; font-size: 7cqi; line-height: 1; letter-spacing: -.02em; color: #fff; }
+.yq-mast-by { display: block; margin-top: .8cqi; font-family: var(--yr-mono); font-size: 1.8cqi; letter-spacing: .14em; text-transform: uppercase; color: #8d99ab; }
 .yq-mast-issue { font-family: var(--yr-mono); font-size: 2.2cqi; letter-spacing: .16em; color: var(--yq-green); text-transform: uppercase; }
 .yq-cover-h { font-size: 11cqi !important; line-height: .98 !important; font-weight: 800; margin: 1cqi 0 3.5cqi !important; text-wrap: balance; }
 .yq-cover-h b, .yq-page h2 b, .yq-card-h b { color: var(--yq-green); font-weight: inherit; }
@@ -194,7 +199,7 @@
 	.yq-book { display: block !important; max-width: none !important; }
 	.yq-page { width: 100%; height: 100vh; break-after: page; border-radius: 0 !important; box-shadow: none !important; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
 	.yq-in { position: absolute !important; min-height: 0 !important; }
-	.yq-nav, .yq-hint, .yr-site-header, .yr-footer, footer.wp-block-template-part { display: none !important; }
+	.yq-nav, .yq-hint, .yq-top, .yr-site-header, .yr-footer, footer.wp-block-template-part { display: none !important; }
 	.yq-why p[hidden] { display: block !important; }
 	.yq-bar-t i { width: var(--w) !important; }
 }

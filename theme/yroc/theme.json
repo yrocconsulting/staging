@@ -346,6 +346,13 @@
    "postTypes": [
     "page"
    ]
+  },
+  {
+   "name": "page-magazine",
+   "title": "Magazine (no site header or footer)",
+   "postTypes": [
+    "page"
+   ]
   }
  ]
 }
