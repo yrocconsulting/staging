@@ -956,3 +956,21 @@ body:has(.yr-ctaband) .yr-footer__cta { display: none; }
 @media (max-width: 1140px) { .yr-nav { box-sizing: border-box; } }
 @media (max-width: 1140px) { .yr-mega__grid { grid-template-columns: 1fr; gap: 1.25rem; padding-block: 1rem; } .yr-mega__title { margin-bottom: .2rem; } }
 .yr-loccases { grid-template-columns: repeat(2, 1fr); } @media (max-width: 760px) { .yr-loccases { grid-template-columns: 1fr; } }
+/* Header: keep every label on one line; make room as the screen narrows (phone is also in the top bar). */
+@media (min-width: 1141px) {
+	.yr-nav__link, .yr-header__cta { white-space: nowrap; }
+}
+@media (min-width: 1141px) and (max-width: 1500px) {
+	.yr-header__phone { display: none; }
+	.yr-header__in { gap: 1.25rem; }
+}
+@media (min-width: 1141px) and (max-width: 1340px) {
+	.yr-nav { gap: .75rem; }
+	.yr-nav__link { padding: .55rem .5rem; font-size: .9rem; }
+	.yr-header__cta { padding: .7rem .95rem; font-size: .88rem; }
+}
+/* Industry pages: case study cards keep a card width instead of stretching when there are only one or two. */
+@media (min-width: 782px) {
+	.yr-proof .wp-block-columns { justify-content: flex-start; }
+	.yr-proof .wp-block-column { flex-grow: 0 !important; flex-basis: min(380px, 100%) !important; }
+}

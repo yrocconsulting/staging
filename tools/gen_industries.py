@@ -54,7 +54,7 @@ def industry_page(slug, d):
         ]))], 'yr-section yr-bg', 900),
     ]
     if d.get('cases'):
-        parts.append(group(head('Results', 'Proof from the field.', d.get('cases_lead')) + rows([('★',) + CASES[c] for c in d['cases']]), 'yr-section'))
+        parts.append(group(head('Results', 'Proof from the field.') + rows([('CASE',) + CASES[c] for c in d['cases']]), 'yr-section yr-proof'))
     parts += [
         faq(d['faq'], f'AI search for {d["noun"]}: FAQs'),
         group([p('Start with the facts', 'yr-eyebrow'), h(d['cta_h']),
