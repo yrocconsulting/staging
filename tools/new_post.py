@@ -34,7 +34,7 @@ def slugify(s):
 
 def check_rules(label, text):
     problems = []
-    if '—' in text:
+    if '\u2014' in text:
         problems.append(f'{label}: contains an em dash (use a comma, colon or period)')
     if re.search(r'\b(Bradley|Brad)\b', text):
         problems.append(f'{label}: names an employee (only Cory Long may be named)')
