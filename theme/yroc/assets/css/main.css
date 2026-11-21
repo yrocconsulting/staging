@@ -976,5 +976,5 @@ body:has(.yr-ctaband) .yr-footer__cta { display: none; }
 }
 /* Link card rows: a lone card on the last row keeps the same width as a card in a full row of three. */
 @media (min-width: 782px) {
-	.yr-link-cards > .wp-block-column:only-child { flex-grow: 0 !important; flex-basis: calc((100% - 2 * 17.6px) / 3) !important; }
+	.yr-link-cards > .wp-block-column:only-child { box-sizing: border-box; flex-grow: 0 !important; flex-basis: calc((100% - 2 * 17.6px) / 3) !important; }
 }
