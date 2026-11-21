@@ -64,9 +64,18 @@ def industry_page(slug, d):
     return '\n\n'.join(parts) + '\n'
 
 
+GROUPS = [
+    ('home', 'Home & Construction', 'Contractors and home services.'),
+    ('health', 'Health & Wellness', 'Clinics, practices and care providers.'),
+    ('legal', 'Legal & Financial', 'Firms people trust with serious decisions.'),
+    ('property', 'Real Estate & Property', 'Agents, managers and communities.'),
+    ('retail', 'Restaurants & Automotive', 'Local favorites and the shops people rely on.'),
+    ('b2b', 'B2B & Agencies', 'Providers other businesses choose.'),
+]
+AGENCY_CARD = ('AG', 'Marketing Agencies', 'Offer AI search optimization under your own brand with our white label program, training and reporting.', ('Explore white label', '/white-label-services/'))
+
+
 def hub_page(pages):
-    items = [(d['icon'], d['name'], d['card'], ('See how AI search helps', f'/industries/{slug}/')) for slug, d in pages.items()]
-    items.append(('AG', 'Marketing Agencies', 'Offer AI search optimization under your own brand with our white label program, training and reporting.', ('Explore white label', '/white-label-services/')))
     parts = [
         hero('Industries', 'AI search optimization <em>built for your industry.</em>',
              'Every industry gets asked different questions, judged on different signals and found on different platforms. We tailor AI search optimization to how customers in your field actually choose who to call.',
@@ -74,13 +83,17 @@ def hub_page(pages):
              [glass([p('Why industry matters', 'yr-eyebrow'), h('AI weighs different proof for different businesses.', 3),
                      ul(['Licenses and certifications for contractors', 'Credentials and patient reviews for clinics', 'Bar status and practice areas for attorneys',
                          'Menus, hours and reviews for restaurants', 'Specialties and track record for professional firms'], 'yr-checks')])]),
-        group(head('Industries we serve', 'Find your industry.', 'Choose your industry to see the questions your customers ask AI, the signals AI uses to decide, and how we help you become the answer.')
-              + rows(items), 'yr-section'),
-        group([p('Not listed?', 'yr-eyebrow'), h('Every business is <em>being described by AI.</em>'),
-               p('We help businesses in many other fields too. A free AI Visibility Audit shows what AI says about you today, whatever you do.', 'yr-lead'),
-               buttons(('Get my free AI Visibility Audit', '/ai-visibility-audit/'), ('Call 903.300.LEADS', 'tel:+19033005323', True))], 'yr-ctaband', 960),
     ]
+    for i, (key, label, tagline) in enumerate(GROUPS):
+        items = [(d['icon'], d['name'], d['card'], ('See how AI search helps', f'/industries/{slug}/')) for slug, d in pages.items() if d['group'] == key]
+        if key == 'b2b':
+            items.append(AGENCY_CARD)
+        parts.append(group(head(label, tagline) + rows(items), 'yr-section' + (' yr-bg' if i % 2 else ''), anchor=key))
+    parts.append(group([p('Not listed?', 'yr-eyebrow'), h('Every business is <em>being described by AI.</em>'),
+                        p('We help businesses in many other fields too. A free AI Visibility Audit shows what AI says about you today, whatever you do.', 'yr-lead'),
+                        buttons(('Get my free AI Visibility Audit', '/ai-visibility-audit/'), ('Call 903.300.LEADS', 'tel:+19033005323', True))], 'yr-ctaband', 960))
     return '\n\n'.join(parts) + '\n'
+
 
 
 PAGES = {
@@ -405,6 +418,16 @@ PAGES = {
 }
 
 
+# Hub sections for the first batch; the second batch sets 'group' itself.
+for _slug, _g in {'roofing-construction': 'home', 'home-services': 'home', 'pest-control': 'home', 'medical-wellness': 'health',
+                  'med-spas': 'health', 'law-firms': 'legal', 'tax-resolution': 'legal', 'professional-services': 'legal',
+                  'real-estate': 'property', 'restaurants': 'retail'}.items():
+    PAGES[_slug]['group'] = _g
+
+from industries_batch2 import PAGES2  # noqa: E402
+PAGES.update(PAGES2)
+
+
 def main():
     m = json.load(open('content/manifest.json'))
     seo = json.load(open('content/seo.json'))
@@ -412,7 +435,7 @@ def main():
     for slug, d in PAGES.items():
         files['industry-' + slug] = industry_page(slug, d)
     for name, html in files.items():
-        assert '—' not in html, name
+        assert '\u2014' not in html, name
         open(f'{OUT}{name}.html', 'w').write(html)
 
     def upsert(entry):
@@ -424,7 +447,7 @@ def main():
 
     upsert({'slug': 'industries', 'title': 'Industries', 'file': 'pages/industries.html', 'template': 'page-landing'})
     seo['/industries/'] = ['AI Search Optimization by Industry | Yroc Consulting',
-                           'AI search optimization tailored to your industry: roofing, law, medical, med spas, home services, real estate, restaurants and more.']
+                           'AI search optimization tailored to your industry: contractors, clinics, law and financial firms, real estate, restaurants, auto and more.']
     for order, (slug, d) in enumerate(PAGES.items()):
         upsert({'slug': slug, 'title': d['title'], 'parent': 'industries', 'file': f'pages/industry-{slug}.html', 'template': 'page-landing', 'order': order})
         seo[f'/industries/{slug}/'] = list(d['seo'])
@@ -432,7 +455,7 @@ def main():
         if path.startswith('/industries/'):
             assert len(t) <= 60, (path, len(t))
             assert 110 <= len(desc) <= 160, (path, len(desc))
-            assert '—' not in t + desc, path
+            assert '\u2014' not in t + desc, path
     for path, data in (('content/manifest.json', m), ('content/seo.json', seo)):
         with open(path, 'w') as f:
             f.write(json.dumps(data, indent=2, ensure_ascii=False) + '\n')

@@ -193,7 +193,7 @@
   ],
   "/industries/": [
     "AI Search Optimization by Industry | Yroc Consulting",
-    "AI search optimization tailored to your industry: roofing, law, medical, med spas, home services, real estate, restaurants and more."
+    "AI search optimization tailored to your industry: contractors, clinics, law and financial firms, real estate, restaurants, auto and more."
   ],
   "/industries/roofing-construction/": [
     "AI Search Optimization for Roofers | Yroc Consulting",
@@ -234,5 +234,85 @@
   "/industries/restaurants/": [
     "AI Search Optimization for Restaurants | Yroc Consulting",
     "Get your restaurant or catering business recommended by ChatGPT, Gemini and Google AI when diners ask where to eat tonight."
+  ],
+  "/industries/hvac/": [
+    "AI Search Optimization for HVAC | Yroc Consulting",
+    "Get your HVAC company recommended by ChatGPT, Gemini and Google AI when homeowners need AC repair, a new furnace or a maintenance plan."
+  ],
+  "/industries/plumbing/": [
+    "AI Search Optimization for Plumbers | Yroc Consulting",
+    "Get your plumbing company recommended by ChatGPT, Gemini and Google AI when homeowners have a leak, clog or water heater problem."
+  ],
+  "/industries/electricians/": [
+    "AI Search Optimization for Electricians | Yroc Consulting",
+    "Get your electrical company recommended by ChatGPT, Gemini and Google AI for panel upgrades, EV chargers, generators and repairs."
+  ],
+  "/industries/landscaping/": [
+    "AI Search Optimization for Landscapers | Yroc Consulting",
+    "Get your landscaping or lawn care company recommended by ChatGPT, Gemini and Google AI for maintenance, design and outdoor projects."
+  ],
+  "/industries/cleaning-services/": [
+    "AI Search for Cleaning Companies | Yroc Consulting",
+    "Get your residential or commercial cleaning company recommended by ChatGPT, Gemini and Google AI when people need a cleaner they can trust."
+  ],
+  "/industries/moving-companies/": [
+    "AI Search Optimization for Movers | Yroc Consulting",
+    "Get your moving company recommended by ChatGPT, Gemini and Google AI when people research reliable local and long-distance movers."
+  ],
+  "/industries/home-builders/": [
+    "AI Search Optimization for Home Builders | Yroc Consulting",
+    "Get your custom or production home building company recommended by ChatGPT, Gemini and Google AI when buyers research builders."
+  ],
+  "/industries/dentists/": [
+    "AI Search Optimization for Dentists | Yroc Consulting",
+    "Get your dental practice recommended by ChatGPT, Gemini and Google AI when patients look for a new dentist, implants or cosmetic care."
+  ],
+  "/industries/chiropractors/": [
+    "AI Search Optimization for Chiropractors | Yroc Consulting",
+    "Get your chiropractic practice recommended by ChatGPT, Gemini and Google AI when people look for back pain, injury or wellness care."
+  ],
+  "/industries/physical-therapy/": [
+    "AI Search for Physical Therapy Clinics | Yroc Consulting",
+    "Get your physical therapy clinic recommended by ChatGPT, Gemini and Google AI for injury recovery, post-surgery rehab and sports care."
+  ],
+  "/industries/veterinarians/": [
+    "AI Search Optimization for Veterinarians | Yroc Consulting",
+    "Get your veterinary clinic recommended by ChatGPT, Gemini and Google AI when pet owners look for a vet, urgent care or specialty services."
+  ],
+  "/industries/accountants/": [
+    "AI Search Optimization for CPAs | Yroc Consulting",
+    "Get your CPA or accounting firm recommended by ChatGPT, Gemini and Google AI when businesses and families look for tax and advisory help."
+  ],
+  "/industries/financial-advisors/": [
+    "AI Search for Financial Advisors | Yroc Consulting",
+    "Get your advisory practice recommended by ChatGPT, Gemini and Google AI when people look for a trustworthy financial planner."
+  ],
+  "/industries/insurance-agencies/": [
+    "AI Search for Insurance Agencies | Yroc Consulting",
+    "Get your independent or captive insurance agency recommended by ChatGPT, Gemini and Google AI when people shop for coverage."
+  ],
+  "/industries/mortgage-lenders/": [
+    "AI Search for Mortgage Lenders | Yroc Consulting",
+    "Get your mortgage company or loan officers recommended by ChatGPT, Gemini and Google AI when buyers research home loans."
+  ],
+  "/industries/property-management/": [
+    "AI Search for Property Managers | Yroc Consulting",
+    "Get your property management company recommended by ChatGPT, Gemini and Google AI when owners look for a manager they can trust."
+  ],
+  "/industries/apartment-communities/": [
+    "AI Search Optimization for Apartments | Yroc Consulting",
+    "Get your apartment communities recommended by ChatGPT, Gemini and Google AI when renters ask where to live and what each place is like."
+  ],
+  "/industries/auto-repair/": [
+    "AI Search Optimization for Auto Repair | Yroc Consulting",
+    "Get your auto repair or body shop recommended by ChatGPT, Gemini and Google AI when drivers need an honest mechanic they can trust."
+  ],
+  "/industries/car-dealerships/": [
+    "AI Search Optimization for Car Dealerships | Yroc Consulting",
+    "Get your dealership recommended by ChatGPT, Gemini and Google AI when shoppers research which dealer to buy from and service with."
+  ],
+  "/industries/cold-storage-logistics/": [
+    "AI Search Optimization for Logistics | Yroc Consulting",
+    "Get your cold storage, warehousing or logistics company recommended by ChatGPT, Gemini and Google AI when buyers research providers."
   ]
 }
