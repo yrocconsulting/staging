@@ -1,6 +1,6 @@
 ---
 name: ai-news-post
-description: Research, write and publish the twice-weekly "AI News & Tips" blog post for yrocconsulting.com (staging first, then production). Use when a scheduled run or the user asks for a new AI news post.
+description: Research, write and publish the twice-weekly "AI News & Tips" blog post for yrocconsulting.com (pushed to main; staging deploys at once and production picks it up automatically). Use when a scheduled run or the user asks for a new AI news post.
 ---
 
 # AI News & Tips post
@@ -73,13 +73,14 @@ If the push is rejected because `main` moved, fetch, rebase and push again. Push
 staging automatically (`.github/workflows/deploy.yml`); wait for that run to succeed and check the post
 loads at `https://yrocstaging.yroc.host/ai-news/<slug>/`.
 
-## 5. Publish to production
+## 5. Production
 
-Run the **Deploy to production** workflow in `yrocconsulting/yroc-wp` (`deploy-production.yml`,
-input `source_ref: main`) with the GitHub tools, wait for it to finish, and confirm
-`https://yrocconsulting.com/ai-news/<slug>/?v=<anything>` returns 200 and shows the title.
-If either deploy fails, read the job log, fix the cause and retry once; if it still fails, stop and
-report what failed. Never use force options and never touch other pages or posts.
+You do not deploy production yourself. The **Publish new blog posts** workflow in `yrocconsulting/yroc-wp`
+runs every 30 minutes and puts blog-only changes from `main` live automatically. After the staging check,
+poll `https://yrocconsulting.com/ai-news/<slug>/?v=<anything>` every few minutes (up to about 45 minutes)
+until it returns 200 and shows the title. If it never appears, say so in the report (a non-blog change
+waiting on `main` blocks auto-publishing until someone runs **Deploy to production**).
+Never touch other pages, posts or theme files.
 
 ## 6. Report
 
