@@ -349,6 +349,92 @@
       "title": "Signal, Q4 2026",
       "file": "pages/quarterly-2026-q4.html",
       "template": "page-magazine"
+    },
+    {
+      "slug": "industries",
+      "title": "Industries",
+      "file": "pages/industries.html",
+      "template": "page-landing"
+    },
+    {
+      "slug": "roofing-construction",
+      "title": "AI Search Optimization for Roofing & Construction",
+      "parent": "industries",
+      "file": "pages/industry-roofing-construction.html",
+      "template": "page-landing",
+      "order": 0
+    },
+    {
+      "slug": "tax-resolution",
+      "title": "AI Search Optimization for Tax Resolution Firms",
+      "parent": "industries",
+      "file": "pages/industry-tax-resolution.html",
+      "template": "page-landing",
+      "order": 1
+    },
+    {
+      "slug": "medical-wellness",
+      "title": "AI Search Optimization for Medical & Wellness Practices",
+      "parent": "industries",
+      "file": "pages/industry-medical-wellness.html",
+      "template": "page-landing",
+      "order": 2
+    },
+    {
+      "slug": "med-spas",
+      "title": "AI Search Optimization for Med Spas",
+      "parent": "industries",
+      "file": "pages/industry-med-spas.html",
+      "template": "page-landing",
+      "order": 3
+    },
+    {
+      "slug": "pest-control",
+      "title": "AI Search Optimization for Pest Control Companies",
+      "parent": "industries",
+      "file": "pages/industry-pest-control.html",
+      "template": "page-landing",
+      "order": 4
+    },
+    {
+      "slug": "law-firms",
+      "title": "AI Search Optimization for Law Firms",
+      "parent": "industries",
+      "file": "pages/industry-law-firms.html",
+      "template": "page-landing",
+      "order": 5
+    },
+    {
+      "slug": "home-services",
+      "title": "AI Search Optimization for Home Service Companies",
+      "parent": "industries",
+      "file": "pages/industry-home-services.html",
+      "template": "page-landing",
+      "order": 6
+    },
+    {
+      "slug": "real-estate",
+      "title": "AI Search Optimization for Real Estate Agents",
+      "parent": "industries",
+      "file": "pages/industry-real-estate.html",
+      "template": "page-landing",
+      "order": 7
+    },
+    {
+      "slug": "professional-services",
+      "title": "AI Search Optimization for Professional Services Firms",
+      "parent": "industries",
+      "file": "pages/industry-professional-services.html",
+      "template": "page-landing",
+      "order": 8
+    },
+    {
+      "slug": "restaurants",
+      "title": "AI Search Optimization for Restaurants",
+      "parent": "industries",
+      "file": "pages/industry-restaurants.html",
+      "template": "page-landing",
+      "order": 9
     }
   ]
 }

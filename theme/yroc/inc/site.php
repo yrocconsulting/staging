@@ -275,6 +275,22 @@ add_action( 'template_redirect', function () {
 function yroc_primary_nav() {
 	return array(
 		array( 'label' => 'Services', 'mega' => true ),
+		array(
+			'label' => 'Industries',
+			'children' => array(
+				array( 'All Industries', '/industries/' ),
+				array( 'Roofing & Construction', '/industries/roofing-construction/' ),
+				array( 'Home Services', '/industries/home-services/' ),
+				array( 'Pest Control', '/industries/pest-control/' ),
+				array( 'Medical & Wellness', '/industries/medical-wellness/' ),
+				array( 'Med Spas', '/industries/med-spas/' ),
+				array( 'Law Firms', '/industries/law-firms/' ),
+				array( 'Tax Resolution', '/industries/tax-resolution/' ),
+				array( 'Real Estate', '/industries/real-estate/' ),
+				array( 'Professional Services', '/industries/professional-services/' ),
+				array( 'Restaurants', '/industries/restaurants/' ),
+			),
+		),
 		array( 'label' => 'AI Authority Engine', 'url' => 'https://aiauthorityengine.org/' ),
 		array( 'label' => 'Websites', 'url' => '/website-packages/' ),
 		array( 'label' => 'Results', 'url' => '/case-studies/' ),
