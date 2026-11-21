@@ -63,7 +63,7 @@ $cols = yroc_mega_menu();
 		<div class="yr-footer__locs">
 			<?php foreach ( yroc_locations() as $slug => $l ) : ?>
 				<div>
-					<b><a href="<?php echo esc_url( home_url( '/locations/' . $slug . '/' ) ); ?>"><?php echo esc_html( $l['city'] . ', ' . $l['region'] ); ?><?php echo $l['main'] ? ' · Headquarters' : ''; ?></a></b>
+					<b><a href="<?php echo esc_url( home_url( '/locations/' . $slug . '/' ) ); ?>"><?php echo esc_html( $l['city'] . ', ' . $l['region'] ); ?></a></b>
 					<?php echo $l['street'] ? esc_html( $l['street'] . ', ' . $l['city'] . ', ' . $l['region'] . ' ' . $l['zip'] ) : esc_html( 'Serving ' . $l['region_name'] ); ?><br>
 					<a href="tel:<?php echo esc_attr( $l['tel'] ); ?>"><?php echo esc_html( $l['phone'] ); ?></a>
 				</div>
