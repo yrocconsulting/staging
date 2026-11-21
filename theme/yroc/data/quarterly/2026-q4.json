@@ -144,7 +144,7 @@
   ],
   "seeing": {
     "title": "Where our clients are showing up",
-    "dek": "One week of AI answers across every prompt we track for our clients, on six AI platforms.",
+    "dek": "One week of AI answers across every prompt we track for our clients, on ChatGPT, Gemini, Google AI Overviews and Google AI Mode.",
     "facts": [
       {
         "value": "77%",
@@ -163,11 +163,9 @@
       "chatgpt": 123,
       "aio": 53,
       "gemini": 34,
-      "ai_mode": 32,
-      "perplexity": 0,
-      "copilot": 0
+      "ai_mode": 32
     },
-    "takeaway": "ChatGPT produces half of every mention we see, so its new business profiles are a priority this quarter. Perplexity and Copilot rarely name local businesses yet. We'll tell you when that changes.",
+    "takeaway": "ChatGPT produces half of every mention we see, so its new business profiles are a priority this quarter. Google's AI Overviews and AI Mode together add another third.",
     "source": "Source: Yroc Consulting AI tracking (ProRankTracker), week of November 16, 2026."
   },
   "spotlight": {
@@ -312,7 +310,7 @@
   "edge": [
     {
       "title": "Weekly AI visibility tracking",
-      "body": "We track our clients' most important prompts across six AI platforms every week, so changes like this quarter's AI Mode upgrade show up in the data right away."
+      "body": "We track our clients' most important prompts across ChatGPT, Gemini and Google's AI every week, so changes like this quarter's AI Mode upgrade show up in the data right away."
     },
     {
       "title": "Reports that quote the AI",

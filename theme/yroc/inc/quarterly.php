@@ -162,6 +162,9 @@ add_shortcode( 'yroc_quarterly', function ( $atts ) {
 	$names = yroc_ai_platforms();
 	arsort( $w['platforms'] );
 	foreach ( $w['platforms'] as $k => $v ) {
+		if ( $v <= 0 ) {
+			continue; // Only platforms that actually show up.
+		}
 		$pct   = round( 100 * $v / $total );
 		$bars .= '<div class="yq-bar"><span class="yq-bar-l">' . esc_html( $names[ $k ] ?? $k ) . '</span><span class="yq-bar-t"><i style="--w:' . esc_attr( $pct ) . '%"></i></span><span class="yq-bar-n">' . esc_html( $pct ) . '%</span></div>';
 	}
