@@ -909,6 +909,23 @@
    "excerpt": "OpenAI now lets businesses claim a profile in ChatGPT, see mentions and clicks, and build an AI agent. Here is who qualifies and what to do this week.",
    "featured": "https://raw.githubusercontent.com/yrocconsulting/staging/main/content/blog-images/chatgpt-business-hub-how-to-claim-your-business-profile.png",
    "file": "posts/chatgpt-business-hub-how-to-claim-your-business-profile.html"
+  },
+  {
+   "slug": "fbi-warning-hacked-websites-are-hiding-in-google-search-results",
+   "title": "FBI Warning: Hacked Websites Are Hiding in Google Search Results",
+   "date": "2026-11-23T08:12:29",
+   "modified": "2026-11-23T08:12:29",
+   "categories": [
+    "ai-news"
+   ],
+   "tags": [
+    "Website Security",
+    "Google Search",
+    "WordPress"
+   ],
+   "excerpt": "The FBI says criminals hacked 1,000+ WordPress sites to trick Google searchers into downloading ransomware. Here is how to protect your business this week.",
+   "featured": "https://raw.githubusercontent.com/yrocconsulting/staging/main/content/blog-images/fbi-warning-hacked-websites-are-hiding-in-google-search-results.png",
+   "file": "posts/fbi-warning-hacked-websites-are-hiding-in-google-search-results.html"
   }
  ]
 }
