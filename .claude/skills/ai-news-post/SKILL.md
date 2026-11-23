@@ -1,19 +1,19 @@
 ---
 name: ai-news-post
-description: Research, write and publish the twice-weekly "AI News & Tips" blog post for yrocconsulting.com (pushed to main; staging deploys at once and production picks it up automatically). Use when a scheduled run or the user asks for a new AI news post.
+description: Research, write and publish the three-times-weekly "AI News & Tips" blog post for yrocconsulting.com (pushed to main; staging deploys at once and production picks it up automatically). Use when a scheduled run or the user asks for a new AI news post.
 ---
 
 # AI News & Tips post
 
-Twice a week (Tuesday and Friday mornings, US Central) the site publishes one post in the
+Three times a week (Monday, Wednesday and Friday mornings, US Central) the site publishes one post in the
 **AI News & Tips** category (`ai-news`). Posts go live automatically: there is no human review,
 so every check below matters.
 
 ## 1. Pick the topic
 
 1. Read the titles of the last 10 posts in `content/posts.json` so you never repeat a topic or angle.
-2. Search the web for what happened in AI in the **last 3 to 4 days** (Friday's post covers Tuesday onward,
-   Tuesday's covers the weekend and Monday). Good sources: official blogs and changelogs (Google Search Central,
+2. Search the web for what happened in AI in the **last 2 to 3 days** (Monday's post covers Friday and the weekend,
+   Wednesday's covers Monday and Tuesday, Friday's covers Wednesday and Thursday). Good sources: official blogs and changelogs (Google Search Central,
    Google Keyword/Ads blogs, OpenAI, Anthropic, Microsoft, Perplexity, Meta), Search Engine Land,
    Search Engine Roundtable, The Verge, TechCrunch, Ars Technica, reputable newsrooms.
 3. Choose the one thing a **small or mid-size business owner or marketer** would most want to know.

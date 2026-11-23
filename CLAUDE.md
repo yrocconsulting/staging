@@ -43,7 +43,7 @@ WordPress block theme (`theme/yroc`) + content (`content/`) deployed to SiteGrou
 - Homepage hero: live AI results window cycling real prompts from the weekly report (`showcase` in
   `tools/prt_report.py`, prompts at 75%+ visibility, max two per client). No conference footage in the hero.
 - Bump `Version` in `style.css` when adding new pattern files (WordPress caches the pattern list).
-- Blog: an automated routine publishes an **AI News & Tips** post (category `ai-news`) every Tuesday and Friday
+- Blog: an automated routine publishes an **AI News & Tips** post (category `ai-news`) every Monday, Wednesday and Friday
   morning: pushed to `main` (staging deploys), and yroc-wp's "Publish new blog posts" job puts blog-only changes
   live within about 30 minutes. Playbook: `.claude/skills/ai-news-post/SKILL.md`; posts are added with
   `tools/new_post.py` (writes the post, posts.json entry and a branded featured image in `content/blog-images/`).
