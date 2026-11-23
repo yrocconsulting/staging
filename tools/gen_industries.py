@@ -46,7 +46,7 @@ def industry_page(slug, d):
               + [cards(d['help'][:3], 'yr-cards', 'yr-card yr-card--glow'), cards(d['help'][3:], 'yr-cards', 'yr-card yr-card--glow')],
               'yr-section yr-dark yr-services'),
         group(head('Our process', 'From invisible to recommended.') + [steps(d.get('process', [
-            ('AI Visibility Audit', f'We ask ChatGPT, Gemini, Perplexity, Copilot and Google AI the questions your customers ask, and record who gets recommended for {d["noun"]} in your market.'),
+            ('AI Visibility Audit', f'We ask ChatGPT, Gemini and Google's AI Overviews and AI Mode the questions your customers ask, and record who gets recommended for {d["noun"]} in your market.'),
             ('Entity and reputation fixes', 'We make your business details, services and credentials consistent everywhere AI looks, and close the review and directory gaps holding you back.'),
             ('Answer-ready content', f'We build and refine pages that answer the specific questions people ask about {d["topic"]}, with the schema AI reads first.'),
             ('Authority building', 'We earn the mentions, citations and listings that give AI independent confirmation that you are a trusted choice.'),

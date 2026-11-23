@@ -13,7 +13,7 @@ $names = yroc_ai_platforms();
 $show  = yroc_ai_showcase();
 $big   = max( (int) $ais['total'], (int) $ais['appearances'] );
 $asof  = $ais['report_date'] ? date_i18n( 'F j', strtotime( $ais['report_date'] ) ) : '';
-$plats = array( 'chatgpt' => 'ChatGPT', 'aio' => 'AI Overviews', 'ai_mode' => 'AI Mode', 'gemini' => 'Gemini', 'perplexity' => 'Perplexity', 'copilot' => 'Copilot' );
+$plats = array( 'chatgpt' => 'ChatGPT', 'aio' => 'AI Overviews', 'ai_mode' => 'AI Mode', 'gemini' => 'Gemini' ); // the four platforms we track
 $data  = array_map( function ( $r ) {
 	return array( 'q' => $r['prompt'], 'n' => $r['name'], 'i' => $r['industry'], 'c' => $r['city'], 'p' => $r['platforms'], 'v' => $r['visibility'] );
 }, $show );

@@ -25,7 +25,7 @@ parts = [
                ('Report and retain', 'Branded monthly AI visibility reporting shows your client where they\'re being recommended, so retainers renew.')])],
           'yr-section yr-bg', 900),
     group(head('What we fulfill', 'The complete AI search toolkit, <em>under your name.</em>', 'Offer one service or the full program. Everything is delivered to the same standard we use for our own clients.') + [
-        cards([('AUD', 'AI Visibility Audits', 'Branded audits that show prospects what ChatGPT, Gemini, Perplexity and Google AI say about them today.', None),
+        cards([('AUD', 'AI Visibility Audits', 'Branded audits that show prospects what ChatGPT, Gemini and Google AI say about them today.', None),
                ('ID', 'Entity Optimization', 'Consistent facts, profiles and entity signals so AI can clearly identify your client.', None),
                ('{ }', 'Schema & Structured Data', 'Machine-readable markup for organizations, services, locations, reviews and FAQs.', None)], 'yr-cards', 'yr-card yr-card--glow'),
         cards([('Q&A', 'Answer-First Content', 'Service pages, FAQs and comparison content written for AI to extract, quote and cite.', None),

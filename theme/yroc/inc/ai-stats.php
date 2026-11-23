@@ -29,7 +29,7 @@ function yroc_ai_platforms() {
 /** The four homepage stats (value can include a prefix/suffix, e.g. "$94.5M", "400+"). */
 function yroc_stat_slot_defaults() {
 	return array(
-		array( '6', 'AI platforms tracked for our clients' ),
+		array( '4', 'AI platforms tracked for our clients' ),
 		array( '400+', 'Companies advised since 2005' ),
 		array( '$94.5M', 'Client revenue generated' ),
 		array( '15+', 'Years in search & visibility' ),
@@ -100,6 +100,12 @@ function yroc_ai_stats() {
 	$slots = array_values( (array) $s['slots'] );
 	if ( count( $slots ) !== 4 ) {
 		$slots = yroc_stat_slot_defaults();
+	}
+	// We track four AI platforms (ChatGPT, Gemini, AI Overviews, AI Mode); correct an older saved "6".
+	foreach ( $slots as $i => $slot ) {
+		if ( is_array( $slot ) && '6' === trim( (string) ( $slot[0] ?? '' ) ) && false !== stripos( (string) ( $slot[1] ?? '' ), 'platforms tracked' ) ) {
+			$slots[ $i ][0] = '4';
+		}
 	}
 	$s['slots'] = $slots;
 	return $s;
