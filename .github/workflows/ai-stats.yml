@@ -4,8 +4,10 @@ name: Weekly AI visibility stats
 # This job reads the newest report and updates the homepage stats (totals only, no client names).
 on:
   schedule:
-    - cron: "30 22 * * 1"   # Mondays 22:30 UTC (4:30 pm Central), after the report arrives
-    - cron: "30 14 * * 2"   # Tuesday morning retry
+    # The report lands around 9 am Central on Mondays. Cron runs in UTC, so these are
+    # 10 am and 7 pm Central in winter (CST), 11 am and 8 pm in summer (CDT).
+    - cron: "5 16 * * 1"    # Monday morning, an hour after the report arrives
+    - cron: "5 1 * * 2"     # Monday evening backup (01:05 UTC Tuesday)
   workflow_dispatch:
 
 concurrency:
