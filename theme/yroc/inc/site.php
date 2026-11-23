@@ -72,6 +72,7 @@ function yroc_mega_menu() {
 				array( 'Business Reputation', '/reputation-management/business-reputation-management/', 'Protect your brand' ),
 				array( 'Knowledge Panel & Repair', '/reputation-management/knowledge-panel-repair/', 'Claim, fix & enhance' ),
 				array( 'Rebrand Strategy', '/reputation-management/rebrand-strategy/', 'Change without losing trust' ),
+				array( 'Who We Help', '/reputation-management/who-we-help/', 'Authors, athletes, leaders & more' ),
 			),
 		),
 		array(
@@ -275,6 +276,18 @@ add_action( 'template_redirect', function () {
 function yroc_primary_nav() {
 	return array(
 		array( 'label' => 'Services', 'mega' => true ),
+		array(
+			'label' => 'Industries',
+			'children' => array(
+				array( 'All Industries', '/industries/' ),
+				array( 'Home & Construction', '/industries/#home' ),
+				array( 'Health & Wellness', '/industries/#health' ),
+				array( 'Legal & Financial', '/industries/#legal' ),
+				array( 'Real Estate & Property', '/industries/#property' ),
+				array( 'Restaurants & Automotive', '/industries/#retail' ),
+				array( 'B2B & Agencies', '/industries/#b2b' ),
+			),
+		),
 		array( 'label' => 'AI Authority Engine', 'url' => 'https://aiauthorityengine.org/' ),
 		array( 'label' => 'Websites', 'url' => '/website-packages/' ),
 		array( 'label' => 'Results', 'url' => '/case-studies/' ),

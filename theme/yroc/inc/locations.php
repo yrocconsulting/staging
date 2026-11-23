@@ -39,7 +39,7 @@ add_shortcode( 'yroc_location', function ( $atts ) {
 	$l     = $all[ $atts['slug'] ];
 	$wins  = yroc_location_wins( $l );
 	$plats = array( 'chatgpt' => 'ChatGPT', 'aio' => 'AI Overviews', 'ai_mode' => 'AI Mode', 'gemini' => 'Gemini', 'perplexity' => 'Perplexity', 'copilot' => 'Copilot' );
-	$label = $l['main'] ? 'Headquarters' : ( $l['street'] ? 'Office' : 'Service area' );
+	$label = $l['street'] ? 'Office' : 'Service area';
 	ob_start();
 	?>
 	<section class="yr-pagehero yr-lochero">
@@ -170,7 +170,7 @@ add_shortcode( 'yroc_locations', function () {
 	ob_start();
 	echo '<div class="yr-locgrid">';
 	foreach ( yroc_locations() as $slug => $l ) {
-		$label = $l['main'] ? 'Headquarters' : ( $l['street'] ? 'Office' : 'Service area' );
+		$label = $l['street'] ? 'Office' : 'Service area';
 		?>
 		<div class="yr-loctile">
 			<iframe title="<?php echo esc_attr( $l['city'] ); ?> map" src="<?php echo esc_url( yroc_location_map_src( $l ) ); ?>" loading="lazy" referrerpolicy="no-referrer-when-downgrade" tabindex="-1" aria-hidden="true"></iframe>

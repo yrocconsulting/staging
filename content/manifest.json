@@ -349,6 +349,340 @@
       "title": "Signal, Q4 2026",
       "file": "pages/quarterly-2026-q4.html",
       "template": "page-magazine"
+    },
+    {
+      "slug": "industries",
+      "title": "Industries",
+      "file": "pages/industries.html",
+      "template": "page-landing"
+    },
+    {
+      "slug": "roofing-construction",
+      "title": "AI Search Optimization for Roofing & Construction",
+      "parent": "industries",
+      "file": "pages/industry-roofing-construction.html",
+      "template": "page-landing",
+      "order": 0
+    },
+    {
+      "slug": "tax-resolution",
+      "title": "AI Search Optimization for Tax Resolution Firms",
+      "parent": "industries",
+      "file": "pages/industry-tax-resolution.html",
+      "template": "page-landing",
+      "order": 1
+    },
+    {
+      "slug": "medical-wellness",
+      "title": "AI Search Optimization for Medical & Wellness Practices",
+      "parent": "industries",
+      "file": "pages/industry-medical-wellness.html",
+      "template": "page-landing",
+      "order": 2
+    },
+    {
+      "slug": "med-spas",
+      "title": "AI Search Optimization for Med Spas",
+      "parent": "industries",
+      "file": "pages/industry-med-spas.html",
+      "template": "page-landing",
+      "order": 3
+    },
+    {
+      "slug": "pest-control",
+      "title": "AI Search Optimization for Pest Control Companies",
+      "parent": "industries",
+      "file": "pages/industry-pest-control.html",
+      "template": "page-landing",
+      "order": 4
+    },
+    {
+      "slug": "law-firms",
+      "title": "AI Search Optimization for Law Firms",
+      "parent": "industries",
+      "file": "pages/industry-law-firms.html",
+      "template": "page-landing",
+      "order": 5
+    },
+    {
+      "slug": "home-services",
+      "title": "AI Search Optimization for Home Service Companies",
+      "parent": "industries",
+      "file": "pages/industry-home-services.html",
+      "template": "page-landing",
+      "order": 6
+    },
+    {
+      "slug": "real-estate",
+      "title": "AI Search Optimization for Real Estate Agents",
+      "parent": "industries",
+      "file": "pages/industry-real-estate.html",
+      "template": "page-landing",
+      "order": 7
+    },
+    {
+      "slug": "professional-services",
+      "title": "AI Search Optimization for Professional Services Firms",
+      "parent": "industries",
+      "file": "pages/industry-professional-services.html",
+      "template": "page-landing",
+      "order": 8
+    },
+    {
+      "slug": "restaurants",
+      "title": "AI Search Optimization for Restaurants",
+      "parent": "industries",
+      "file": "pages/industry-restaurants.html",
+      "template": "page-landing",
+      "order": 9
+    },
+    {
+      "slug": "hvac",
+      "title": "AI Search Optimization for HVAC Companies",
+      "parent": "industries",
+      "file": "pages/industry-hvac.html",
+      "template": "page-landing",
+      "order": 10
+    },
+    {
+      "slug": "plumbing",
+      "title": "AI Search Optimization for Plumbers",
+      "parent": "industries",
+      "file": "pages/industry-plumbing.html",
+      "template": "page-landing",
+      "order": 11
+    },
+    {
+      "slug": "electricians",
+      "title": "AI Search Optimization for Electricians",
+      "parent": "industries",
+      "file": "pages/industry-electricians.html",
+      "template": "page-landing",
+      "order": 12
+    },
+    {
+      "slug": "landscaping",
+      "title": "AI Search Optimization for Landscaping & Lawn Care",
+      "parent": "industries",
+      "file": "pages/industry-landscaping.html",
+      "template": "page-landing",
+      "order": 13
+    },
+    {
+      "slug": "cleaning-services",
+      "title": "AI Search Optimization for Cleaning Companies",
+      "parent": "industries",
+      "file": "pages/industry-cleaning-services.html",
+      "template": "page-landing",
+      "order": 14
+    },
+    {
+      "slug": "moving-companies",
+      "title": "AI Search Optimization for Moving Companies",
+      "parent": "industries",
+      "file": "pages/industry-moving-companies.html",
+      "template": "page-landing",
+      "order": 15
+    },
+    {
+      "slug": "home-builders",
+      "title": "AI Search Optimization for Home Builders",
+      "parent": "industries",
+      "file": "pages/industry-home-builders.html",
+      "template": "page-landing",
+      "order": 16
+    },
+    {
+      "slug": "dentists",
+      "title": "AI Search Optimization for Dentists",
+      "parent": "industries",
+      "file": "pages/industry-dentists.html",
+      "template": "page-landing",
+      "order": 17
+    },
+    {
+      "slug": "chiropractors",
+      "title": "AI Search Optimization for Chiropractors",
+      "parent": "industries",
+      "file": "pages/industry-chiropractors.html",
+      "template": "page-landing",
+      "order": 18
+    },
+    {
+      "slug": "physical-therapy",
+      "title": "AI Search Optimization for Physical Therapy Clinics",
+      "parent": "industries",
+      "file": "pages/industry-physical-therapy.html",
+      "template": "page-landing",
+      "order": 19
+    },
+    {
+      "slug": "veterinarians",
+      "title": "AI Search Optimization for Veterinarians",
+      "parent": "industries",
+      "file": "pages/industry-veterinarians.html",
+      "template": "page-landing",
+      "order": 20
+    },
+    {
+      "slug": "accountants",
+      "title": "AI Search Optimization for Accountants & CPAs",
+      "parent": "industries",
+      "file": "pages/industry-accountants.html",
+      "template": "page-landing",
+      "order": 21
+    },
+    {
+      "slug": "financial-advisors",
+      "title": "AI Search Optimization for Financial Advisors",
+      "parent": "industries",
+      "file": "pages/industry-financial-advisors.html",
+      "template": "page-landing",
+      "order": 22
+    },
+    {
+      "slug": "insurance-agencies",
+      "title": "AI Search Optimization for Insurance Agencies",
+      "parent": "industries",
+      "file": "pages/industry-insurance-agencies.html",
+      "template": "page-landing",
+      "order": 23
+    },
+    {
+      "slug": "mortgage-lenders",
+      "title": "AI Search Optimization for Mortgage Lenders & Brokers",
+      "parent": "industries",
+      "file": "pages/industry-mortgage-lenders.html",
+      "template": "page-landing",
+      "order": 24
+    },
+    {
+      "slug": "property-management",
+      "title": "AI Search Optimization for Property Management Companies",
+      "parent": "industries",
+      "file": "pages/industry-property-management.html",
+      "template": "page-landing",
+      "order": 25
+    },
+    {
+      "slug": "apartment-communities",
+      "title": "AI Search Optimization for Apartment Communities",
+      "parent": "industries",
+      "file": "pages/industry-apartment-communities.html",
+      "template": "page-landing",
+      "order": 26
+    },
+    {
+      "slug": "auto-repair",
+      "title": "AI Search Optimization for Auto Repair Shops",
+      "parent": "industries",
+      "file": "pages/industry-auto-repair.html",
+      "template": "page-landing",
+      "order": 27
+    },
+    {
+      "slug": "car-dealerships",
+      "title": "AI Search Optimization for Car Dealerships",
+      "parent": "industries",
+      "file": "pages/industry-car-dealerships.html",
+      "template": "page-landing",
+      "order": 28
+    },
+    {
+      "slug": "cold-storage-logistics",
+      "title": "AI Search Optimization for Cold Storage & Logistics",
+      "parent": "industries",
+      "file": "pages/industry-cold-storage-logistics.html",
+      "template": "page-landing",
+      "order": 29
+    },
+    {
+      "slug": "who-we-help",
+      "title": "Who We Help: Reputation Management",
+      "parent": "reputation-management",
+      "file": "pages/rep-who-we-help.html",
+      "template": "page-landing",
+      "order": 10
+    },
+    {
+      "slug": "authors",
+      "title": "Reputation Management for Authors",
+      "parent": "reputation-management",
+      "file": "pages/rep-who-authors.html",
+      "template": "page-landing",
+      "order": 11
+    },
+    {
+      "slug": "speakers",
+      "title": "Reputation Management for Speakers",
+      "parent": "reputation-management",
+      "file": "pages/rep-who-speakers.html",
+      "template": "page-landing",
+      "order": 12
+    },
+    {
+      "slug": "coaches-consultants",
+      "title": "Reputation Management for Coaches & Consultants",
+      "parent": "reputation-management",
+      "file": "pages/rep-who-coaches-consultants.html",
+      "template": "page-landing",
+      "order": 13
+    },
+    {
+      "slug": "athletes",
+      "title": "Reputation Management for Athletes",
+      "parent": "reputation-management",
+      "file": "pages/rep-who-athletes.html",
+      "template": "page-landing",
+      "order": 14
+    },
+    {
+      "slug": "executives",
+      "title": "Reputation Management for Executives & CEOs",
+      "parent": "reputation-management",
+      "file": "pages/rep-who-executives.html",
+      "template": "page-landing",
+      "order": 15
+    },
+    {
+      "slug": "founders-entrepreneurs",
+      "title": "Reputation Management for Founders & Entrepreneurs",
+      "parent": "reputation-management",
+      "file": "pages/rep-who-founders-entrepreneurs.html",
+      "template": "page-landing",
+      "order": 16
+    },
+    {
+      "slug": "physicians",
+      "title": "Reputation Management for Physicians",
+      "parent": "reputation-management",
+      "file": "pages/rep-who-physicians.html",
+      "template": "page-landing",
+      "order": 17
+    },
+    {
+      "slug": "creators-influencers",
+      "title": "Reputation Management for Creators & Influencers",
+      "parent": "reputation-management",
+      "file": "pages/rep-who-creators-influencers.html",
+      "template": "page-landing",
+      "order": 18
+    },
+    {
+      "slug": "entertainers",
+      "title": "Reputation Management for Entertainers",
+      "parent": "reputation-management",
+      "file": "pages/rep-who-entertainers.html",
+      "template": "page-landing",
+      "order": 19
+    },
+    {
+      "slug": "public-figures",
+      "title": "Reputation Management for High-Profile Individuals",
+      "parent": "reputation-management",
+      "file": "pages/rep-who-public-figures.html",
+      "template": "page-landing",
+      "order": 20
     }
   ]
 }
