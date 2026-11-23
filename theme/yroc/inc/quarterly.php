@@ -28,6 +28,37 @@ function yroc_quarterly_issues() {
 	return $issues;
 }
 
+/**
+ * Draft issues are visible on staging, and to logged-in staff on the live site, until they're published
+ * ("status": "published" in the issue file).
+ */
+function yroc_quarterly_visible( $issue ) {
+	if ( ( $issue['status'] ?? '' ) === 'published' ) {
+		return true;
+	}
+	return current_user_can( 'edit_posts' ) || false !== strpos( (string) wp_parse_url( home_url(), PHP_URL_HOST ), 'yrocstaging' );
+}
+
+/** Keep search engines away from draft issues and from the archive while it has nothing public. */
+add_filter( 'wp_robots', function ( $robots ) {
+	$post = is_singular() ? get_post() : null;
+	if ( ! $post ) {
+		return $robots;
+	}
+	if ( preg_match( '/\[yroc_quarterly issue="([^"]+)"/', $post->post_content, $m ) ) {
+		$issue = yroc_quarterly_issue( $m[1] );
+		if ( ! $issue || ( $issue['status'] ?? '' ) !== 'published' ) {
+			$robots['noindex'] = true;
+		}
+	} elseif ( has_shortcode( $post->post_content, 'yroc_quarterly_list' ) ) {
+		$public = array_filter( yroc_quarterly_issues(), function ( $i ) { return ( $i['status'] ?? '' ) === 'published'; } );
+		if ( ! $public ) {
+			$robots['noindex'] = true;
+		}
+	}
+	return $robots;
+} );
+
 function yroc_quarterly_issue( $slug ) {
 	$all = yroc_quarterly_issues();
 	return $all[ $slug ] ?? null;
@@ -86,6 +117,9 @@ add_shortcode( 'yroc_quarterly', function ( $atts ) {
 	$issue = yroc_quarterly_issue( $atts['issue'] );
 	if ( ! $issue ) {
 		return current_user_can( 'edit_posts' ) ? '<p>Quarterly issue not found: ' . esc_html( $atts['issue'] ) . '</p>' : '';
+	}
+	if ( ! yroc_quarterly_visible( $issue ) ) {
+		return '<div class="yq yq-soon"><div class="yq-top"><a class="yq-home" href="' . esc_url( home_url( '/' ) ) . '"><img src="' . esc_url( get_theme_file_uri( 'assets/img/logo-white.png' ) ) . '" alt="Yroc Consulting" width="128" height="32"></a></div><div class="yq-soon-in"><p class="yq-mast-name">Signal</p><p>The ' . esc_html( $issue['issue'] ) . ' issue is coming in ' . esc_html( $issue['date'] ) . '.</p></div></div>';
 	}
 	$info  = yroc_info();
 	$pages = array();
@@ -279,12 +313,12 @@ add_shortcode( 'yroc_quarterly', function ( $atts ) {
 add_shortcode( 'yroc_quarterly_list', function () {
 	$out = '';
 	foreach ( yroc_quarterly_issues() as $slug => $issue ) {
-		if ( ( $issue['status'] ?? '' ) === 'hidden' ) {
+		if ( ( $issue['status'] ?? '' ) === 'hidden' || ! yroc_quarterly_visible( $issue ) ) {
 			continue;
 		}
 		$out .= '<a class="yq-card" href="' . esc_url( home_url( '/quarterly/' . $slug . '/' ) ) . '">'
 			. '<span class="yq-card-cover yq-dark"><span class="yq-mast-name">' . esc_html( $issue['title'] ) . '</span><span class="yq-card-issue">' . esc_html( $issue['issue'] ) . '</span><span class="yq-card-h">' . yroc_q_text( $issue['cover']['headline'] ) . '</span></span>'
 			. '<span class="yq-card-meta">' . esc_html( $issue['date'] ) . '</span></a>';
 	}
-	return '<div class="yq-cards">' . $out . '</div>';
+	return $out ? '<div class="yq-cards">' . $out . '</div>' : '<p class="yr-lead">The first issue of Signal arrives in January 2027.</p>';
 } );
