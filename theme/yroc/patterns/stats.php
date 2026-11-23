@@ -34,9 +34,12 @@ $label = $live ? 'Live · updated ' . ( $asof ? $asof : human_time_diff( $s['upd
         <p class="yr-stat__live"><span class="yr-stat__dot"></span><?php echo esc_html( $label ); ?></p>
         <p class="yr-stat__n"><span data-count="<?php echo esc_attr( $big ); ?>"><?php echo esc_html( number_format( $big ) ); ?></span>+</p>
         <p class="yr-stat__l">Client appearances in AI answers, and counting</p>
-        <?php if ( $s['total_mentions'] || $s['total_links'] ) : ?>
-          <p class="yr-aistat__split"><span><b><?php echo esc_html( number_format( max( $s['total_mentions'], $s['mentions'] ) ) ); ?></b> mentions</span><span><b><?php echo esc_html( number_format( max( $s['total_links'], $s['links'] ) ) ); ?></b> citations</span></p>
-        <?php endif; ?>
+        <p class="yr-aistat__split">
+          <?php if ( $s['total_mentions'] || $s['total_links'] ) : ?>
+            <span><b><?php echo esc_html( number_format( max( $s['total_mentions'], $s['mentions'] ) ) ); ?></b> mentions</span><span><b><?php echo esc_html( number_format( max( $s['total_links'], $s['links'] ) ) ); ?></b> citations</span>
+          <?php endif; ?>
+          <span><b>4</b> AI platforms tracked</span>
+        </p>
       </div>
       <?php foreach ( $plats as $k => $pl ) : ?>
         <div class="yr-aistat yr-aistat--<?php echo esc_attr( $k ); ?>" data-reveal>
