@@ -72,6 +72,7 @@ function yroc_mega_menu() {
 				array( 'Business Reputation', '/reputation-management/business-reputation-management/', 'Protect your brand' ),
 				array( 'Knowledge Panel & Repair', '/reputation-management/knowledge-panel-repair/', 'Claim, fix & enhance' ),
 				array( 'Rebrand Strategy', '/reputation-management/rebrand-strategy/', 'Change without losing trust' ),
+				array( 'Who We Help', '/reputation-management/who-we-help/', 'Authors, athletes, leaders & more' ),
 			),
 		),
 		array(

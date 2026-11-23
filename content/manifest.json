@@ -595,6 +595,94 @@
       "file": "pages/industry-cold-storage-logistics.html",
       "template": "page-landing",
       "order": 29
+    },
+    {
+      "slug": "who-we-help",
+      "title": "Who We Help: Reputation Management",
+      "parent": "reputation-management",
+      "file": "pages/rep-who-we-help.html",
+      "template": "page-landing",
+      "order": 10
+    },
+    {
+      "slug": "authors",
+      "title": "Reputation Management for Authors",
+      "parent": "reputation-management",
+      "file": "pages/rep-who-authors.html",
+      "template": "page-landing",
+      "order": 11
+    },
+    {
+      "slug": "speakers",
+      "title": "Reputation Management for Speakers",
+      "parent": "reputation-management",
+      "file": "pages/rep-who-speakers.html",
+      "template": "page-landing",
+      "order": 12
+    },
+    {
+      "slug": "coaches-consultants",
+      "title": "Reputation Management for Coaches & Consultants",
+      "parent": "reputation-management",
+      "file": "pages/rep-who-coaches-consultants.html",
+      "template": "page-landing",
+      "order": 13
+    },
+    {
+      "slug": "athletes",
+      "title": "Reputation Management for Athletes",
+      "parent": "reputation-management",
+      "file": "pages/rep-who-athletes.html",
+      "template": "page-landing",
+      "order": 14
+    },
+    {
+      "slug": "executives",
+      "title": "Reputation Management for Executives & CEOs",
+      "parent": "reputation-management",
+      "file": "pages/rep-who-executives.html",
+      "template": "page-landing",
+      "order": 15
+    },
+    {
+      "slug": "founders-entrepreneurs",
+      "title": "Reputation Management for Founders & Entrepreneurs",
+      "parent": "reputation-management",
+      "file": "pages/rep-who-founders-entrepreneurs.html",
+      "template": "page-landing",
+      "order": 16
+    },
+    {
+      "slug": "physicians",
+      "title": "Reputation Management for Physicians",
+      "parent": "reputation-management",
+      "file": "pages/rep-who-physicians.html",
+      "template": "page-landing",
+      "order": 17
+    },
+    {
+      "slug": "creators-influencers",
+      "title": "Reputation Management for Creators & Influencers",
+      "parent": "reputation-management",
+      "file": "pages/rep-who-creators-influencers.html",
+      "template": "page-landing",
+      "order": 18
+    },
+    {
+      "slug": "entertainers",
+      "title": "Reputation Management for Entertainers",
+      "parent": "reputation-management",
+      "file": "pages/rep-who-entertainers.html",
+      "template": "page-landing",
+      "order": 19
+    },
+    {
+      "slug": "public-figures",
+      "title": "Reputation Management for High-Profile Individuals",
+      "parent": "reputation-management",
+      "file": "pages/rep-who-public-figures.html",
+      "template": "page-landing",
+      "order": 20
     }
   ]
 }
