@@ -276,18 +276,6 @@ add_action( 'template_redirect', function () {
 function yroc_primary_nav() {
 	return array(
 		array( 'label' => 'Services', 'mega' => true ),
-		array(
-			'label' => 'Industries',
-			'children' => array(
-				array( 'All Industries', '/industries/' ),
-				array( 'Home & Construction', '/industries/#home' ),
-				array( 'Health & Wellness', '/industries/#health' ),
-				array( 'Legal & Financial', '/industries/#legal' ),
-				array( 'Real Estate & Property', '/industries/#property' ),
-				array( 'Restaurants & Automotive', '/industries/#retail' ),
-				array( 'B2B & Agencies', '/industries/#b2b' ),
-			),
-		),
 		array( 'label' => 'AI Authority Engine', 'url' => 'https://aiauthorityengine.org/' ),
 		array( 'label' => 'Websites', 'url' => '/website-packages/' ),
 		array( 'label' => 'Results', 'url' => '/case-studies/' ),

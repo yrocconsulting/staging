@@ -18,6 +18,7 @@ require_once __DIR__ . '/inc/seo.php';
 require_once __DIR__ . '/inc/locations.php';
 require_once __DIR__ . '/inc/quarterly.php';
 require_once __DIR__ . '/inc/indexnow.php';
+require_once __DIR__ . '/inc/favicon.php';
 
 add_action( 'after_setup_theme', function () {
 	add_theme_support( 'wp-block-styles' );
