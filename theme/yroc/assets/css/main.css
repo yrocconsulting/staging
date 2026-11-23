@@ -461,6 +461,12 @@ mark.yr-hl, .yr-hl { background: linear-gradient(transparent 62%, rgba(126, 217,
 .yr-page .wp-block-post-content { padding-bottom: clamp(3rem, 6vw, 5rem); }
 .yr-single .wp-block-post-content { font-size: 1.075rem; }
 .yr-single .wp-block-post-content h2 { margin-top: 2.5rem; }
+.yr-tldr { margin: 0 0 2.5rem; padding: 1.4rem 1.6rem; background: #F2FAEC; border: 1px solid #D6EDC8; border-left: 4px solid var(--yr-green-d); border-radius: 16px; color: var(--yr-ink); }
+.yr-single .wp-block-post-content .yr-tldr h2 { margin: 0 0 .6rem; font-family: var(--yr-mono); font-size: .85rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--yr-green-d); }
+.yr-tldr p { margin: 0 0 .75rem; font-weight: 500; }
+.yr-tldr ul { margin: 0; padding-left: 1.2rem; }
+.yr-tldr li + li { margin-top: .35rem; }
+.yr-tldr > :last-child { margin-bottom: 0; }
 .yr-feature-img img { border-radius: 22px; }
 .yr-postgrid { padding-bottom: 5rem; }
 .yr-postcard { padding: 0 !important; overflow: hidden; height: 100%; }

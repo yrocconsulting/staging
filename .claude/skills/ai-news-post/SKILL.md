@@ -35,13 +35,33 @@ so every check below matters.
 
 - **Length**: 700 to 1,100 words. **Reading level**: plain English, short paragraphs (2 to 4 sentences).
 - **Structure** (plain HTML, same as other posts in `content/posts/`; no `<h1>`, no inline styles, no scripts):
-  - Opening `<p>`: what happened and why it matters, in 2 to 3 sentences.
+  - **TL;DR block first** (required; `tools/new_post.py` refuses a post without it). It is the answer block
+    readers and AI assistants lift as the summary, so it must stand on its own:
+    ```html
+    <div class="yr-tldr">
+    <h2>TL;DR</h2>
+    <p>One or two plain sentences that directly answer "what happened and what should I do?"</p>
+    <ul>
+    <li>Key point 1 (one short sentence)</li>
+    <li>Key point 2</li>
+    <li>Key point 3 (usually the main action to take)</li>
+    </ul>
+    </div>
+    ```
+    Use 3 or 4 bullets, no links, no jargon, and name the thing the post is about (e.g. "ChatGPT", "Google") so it makes sense quoted alone.
+  - Opening `<p>` after the TL;DR: what happened and why it matters, in 2 to 3 sentences.
   - 3 to 5 `<h2>` sections, e.g. "What changed", "Who it affects", "What to do now". Use `<h3>`, `<ul>`/`<ol>` where helpful.
   - A practical section with concrete steps the reader can take this week.
   - Closing `<p>` that ties back to AI visibility and links to one relevant page on the site, e.g.
     `/ai-visibility-audit/`, `/ai-search-optimization/`, `/reputation-management/`, `/book-a-strategy-call/`,
     or a `/kb/` article. One soft call to action, no hard sell.
-- **Voice**: Yroc Consulting as an established firm ("we", "our team", office in Sherman, TX). Confident, helpful, no hype.
+- **Voice**: Yroc Consulting as an established firm ("we", "our team", office in Sherman, TX). Informative and
+  educational, confident, helpful, no hype. Most readers are **business owners, not marketers or tech people**:
+  - Write the way you would explain it to a smart client over coffee. If a 10th grader would stumble on a sentence, simplify it.
+  - Avoid technical terms (DNS, crawlable, schema, API, LLM, feed specification, etc.). If one is unavoidable,
+    explain it in plain words the first time ("a small setting on your website's domain, which your web person can add").
+  - Focus on what it means for their business and what to do, not how the technology works.
+  - Leave out detail that does not change what the reader does; one clear point beats three precise ones.
 - **Title**: specific and useful, under 70 characters, no clickbait. **Excerpt**: 110 to 160 characters, used as the meta description.
 - **Tags**: 2 to 4, comma-separated (e.g. "Google AI Overviews, Local SEO").
 

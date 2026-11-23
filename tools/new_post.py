@@ -5,7 +5,8 @@ Usage:
   tools/new_post.py --title "..." --excerpt "..." --body draft.html \
       [--slug my-post] [--category ai-news] [--tags "AI, ChatGPT"] [--eyebrow "AI News & Tips"]
 
-The body is plain HTML (h2/h3/p/ul/ol/blockquote/a/strong), same as the other posts.
+The body is plain HTML (h2/h3/p/ul/ol/blockquote/a/strong), same as the other posts, and must open with
+the TL;DR block (<div class="yr-tldr">, styled in main.css).
 The post date is now (US Central). Checks the house rules (no em dashes, no staff names but Cory Long)
 and refuses to publish if they fail. Needs Pillow (pip install pillow).
 """
@@ -94,6 +95,8 @@ def main():
     problems = check_rules('title', a.title) + check_rules('excerpt', a.excerpt) + check_rules('body', body)
     if not 110 <= len(a.excerpt) <= 160:
         problems.append(f'excerpt is {len(a.excerpt)} characters (needs 110 to 160)')
+    if not body.startswith('<div class="yr-tldr">'):
+        problems.append('body must start with the TL;DR block: <div class="yr-tldr"><h2>TL;DR</h2><p>...</p><ul>...</ul></div>')
     if len(a.title) > 70:
         problems.append(f'title is {len(a.title)} characters (keep it under 70)')
     if re.search(r'<h1\b', body):
