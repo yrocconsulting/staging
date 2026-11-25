@@ -926,6 +926,23 @@
    "excerpt": "The FBI says criminals hacked 1,000+ WordPress sites to trick Google searchers into downloading ransomware. Here is how to protect your business this week.",
    "featured": "https://raw.githubusercontent.com/yrocconsulting/staging/main/content/blog-images/fbi-warning-hacked-websites-are-hiding-in-google-search-results.png",
    "file": "posts/fbi-warning-hacked-websites-are-hiding-in-google-search-results.html"
+  },
+  {
+   "slug": "how-google-picks-the-websites-it-links-in-ai-overviews",
+   "title": "How Google Picks the Websites It Links in AI Overviews",
+   "date": "2026-11-25T06:54:39",
+   "modified": "2026-11-25T06:54:39",
+   "categories": [
+    "ai-news"
+   ],
+   "tags": [
+    "Google AI Overviews",
+    "AI Mode",
+    "AI Search"
+   ],
+   "excerpt": "Google just explained how AI Overviews and AI Mode choose which websites to link. Here is what it means for your business and what to do this week.",
+   "featured": "https://raw.githubusercontent.com/yrocconsulting/staging/main/content/blog-images/how-google-picks-the-websites-it-links-in-ai-overviews.png",
+   "file": "posts/how-google-picks-the-websites-it-links-in-ai-overviews.html"
   }
  ]
 }
